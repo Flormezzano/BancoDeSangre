@@ -17,6 +17,7 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String nombre;
+    private String apellido;
     private Integer edad;
     private String sexo;
     private String mail;
