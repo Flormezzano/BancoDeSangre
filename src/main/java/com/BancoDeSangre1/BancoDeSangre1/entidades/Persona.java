@@ -33,9 +33,10 @@ public class Persona implements Serializable{
     public Persona() {
     }
 
-    public Persona(String id, String nombre, Integer edad, String sexo, String mail, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante) {
+    public Persona(String id, String nombre, String apellido, Integer edad, String sexo, String mail, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante) {
         this.id = id;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.edad = edad;
         this.sexo = sexo;
         this.mail = mail;
@@ -59,6 +60,14 @@ public class Persona implements Serializable{
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public Integer getEdad() {
@@ -116,4 +125,6 @@ public class Persona implements Serializable{
     public void setDonante(Boolean donante) {
         this.donante = donante;
     }
+
+    
 }

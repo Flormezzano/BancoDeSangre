@@ -24,9 +24,10 @@ public class Provincia implements Serializable{
     public Provincia() {
     }
 
-    public Provincia(String id, String nombre) {
+    public Provincia(String id, String nombre, Ciudad ciudad) {
         this.id = id;
         this.nombre = nombre;
+        this.ciudad = ciudad;
     }
 
     public String getId() {
@@ -45,4 +46,13 @@ public class Provincia implements Serializable{
         this.nombre = nombre;
     }
 
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    
 }
