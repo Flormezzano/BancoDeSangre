@@ -1,5 +1,6 @@
 package com.BancoDeSangre1.BancoDeSangre1.entidades;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +11,7 @@ import javax.persistence.Id;
  * @author Gastón
  */
 @Entity
-public class Ciudad {
+public class Ciudad implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
