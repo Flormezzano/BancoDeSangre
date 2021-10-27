@@ -30,7 +30,7 @@ public class Ciudad implements Serializable{
         this.nombre = nombre;
         this.provincia = provincia;
     }
-
+//Vamo los pibe
     public String getId() {
         return id;
     }
