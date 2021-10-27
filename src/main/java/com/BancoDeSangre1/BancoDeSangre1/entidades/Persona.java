@@ -1,11 +1,12 @@
 package com.BancoDeSangre1.BancoDeSangre1.entidades;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -15,18 +16,19 @@ import javax.persistence.ManyToOne;
 public class Persona implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombre;
     private String apellido;
     private Integer edad;
     private String sexo;
     private String mail;
-    @ManyToOne
+    @ManyToOne (cascade=CascadeType.PERSIST)
     private TipoDeSangre tipo;
-    @ManyToOne
+    @ManyToOne (cascade=CascadeType.PERSIST)
     private Provincia provincia;
-    @ManyToOne
+    @ManyToOne (cascade=CascadeType.PERSIST)
     private Ciudad ciudad;
     private Boolean donante;
 

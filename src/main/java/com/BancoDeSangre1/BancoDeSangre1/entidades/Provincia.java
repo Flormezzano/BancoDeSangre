@@ -3,9 +3,8 @@ package com.BancoDeSangre1.BancoDeSangre1.entidades;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -15,11 +14,10 @@ import javax.persistence.OneToMany;
 public class Provincia implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombre;
-    @OneToMany
-    private Ciudad ciudad;
 
     public Provincia() {
     }
@@ -27,7 +25,6 @@ public class Provincia implements Serializable{
     public Provincia(String id, String nombre, Ciudad ciudad) {
         this.id = id;
         this.nombre = nombre;
-        this.ciudad = ciudad;
     }
 
     public String getId() {
@@ -45,14 +42,4 @@ public class Provincia implements Serializable{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public Ciudad getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(Ciudad ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    
 }
