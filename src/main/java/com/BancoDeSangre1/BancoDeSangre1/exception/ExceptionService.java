@@ -1,4 +1,4 @@
-package com.BancoDeSangre1.BancoDeSangre1.Exception;
+package com.BancoDeSangre1.BancoDeSangre1.exception;
 
 /**
  *

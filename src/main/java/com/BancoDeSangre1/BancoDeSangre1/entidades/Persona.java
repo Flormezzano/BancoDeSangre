@@ -1,7 +1,7 @@
 package com.BancoDeSangre1.BancoDeSangre1.entidades;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +22,7 @@ public class Persona implements Serializable{
     private String id;
     private String nombre;
     private String apellido;
-    private Date date;
+    private String date;
     private String sexo;
     private String mail;
     private String contrasenia1;
@@ -39,7 +39,7 @@ public class Persona implements Serializable{
     public Persona() {
     }
 
-    public Persona(String id, String nombre, String apellido, Date date, String sexo, String mail, String contrasenia1, String contrasenia2, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante, Boolean alta) {
+    public Persona(String id, String nombre, String apellido, String date, String sexo, String mail, String contrasenia1, String contrasenia2, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante, Boolean alta) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -79,11 +79,11 @@ public class Persona implements Serializable{
         this.apellido = apellido;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
