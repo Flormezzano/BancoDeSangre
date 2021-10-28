@@ -1,6 +1,6 @@
 package com.BancoDeSangre1.BancoDeSangre1.Servicios;
 
-import com.BancoDeSangre1.BancoDeSangre1.Exception.ExceptionService;
+import com.BancoDeSangre1.BancoDeSangre1.exception.ExceptionService;
 import com.BancoDeSangre1.BancoDeSangre1.Repositorios.PersonaRepositorio;
 import com.BancoDeSangre1.BancoDeSangre1.entidades.Persona;
 import java.util.List;
