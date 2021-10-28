@@ -1,7 +1,7 @@
 package com.BancoDeSangre1.BancoDeSangre1.controllers;
 
+import com.BancoDeSangre1.BancoDeSangre1.Servicios.CiudadService;
 import com.BancoDeSangre1.BancoDeSangre1.entidades.Ciudad;
-import com.BancoDeSangre1.BancoDeSangre1.servicios.CiudadServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CiudadController {
 
 //    @Autowired
-//    private CiudadServicio ciudadServicio;
+//    private CiudadService ciudadServicio;
 //    
 //    @GetMapping("/lista")
 //    public String lista(Model model, @RequestParam(required = false) String nombre){
