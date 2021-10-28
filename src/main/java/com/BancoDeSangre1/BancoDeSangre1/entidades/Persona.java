@@ -1,6 +1,7 @@
 package com.BancoDeSangre1.BancoDeSangre1.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,9 +22,11 @@ public class Persona implements Serializable{
     private String id;
     private String nombre;
     private String apellido;
-    private Integer edad;
+    private Date date;
     private String sexo;
     private String mail;
+    private String contrasenia1;
+    private String contrasenia2;
     @ManyToOne (cascade=CascadeType.PERSIST)
     private TipoDeSangre tipo;
     @ManyToOne (cascade=CascadeType.PERSIST)
@@ -31,21 +34,25 @@ public class Persona implements Serializable{
     @ManyToOne (cascade=CascadeType.PERSIST)
     private Ciudad ciudad;
     private Boolean donante;
+    private Boolean alta;
 
     public Persona() {
     }
 
-    public Persona(String id, String nombre, String apellido, Integer edad, String sexo, String mail, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante) {
+    public Persona(String id, String nombre, String apellido, Date date, String sexo, String mail, String contrasenia1, String contrasenia2, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante, Boolean alta) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.edad = edad;
+        this.date = date;
         this.sexo = sexo;
         this.mail = mail;
+        this.contrasenia1 = contrasenia1;
+        this.contrasenia2 = contrasenia2;
         this.tipo = tipo;
         this.provincia = provincia;
         this.ciudad = ciudad;
         this.donante = donante;
+        this.alta = alta;
     }
 
     public String getId() {
@@ -72,12 +79,12 @@ public class Persona implements Serializable{
         this.apellido = apellido;
     }
 
-    public Integer getEdad() {
-        return edad;
+    public Date getDate() {
+        return date;
     }
 
-    public void setEdad(Integer edad) {
-        this.edad = edad;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getSexo() {
@@ -94,6 +101,22 @@ public class Persona implements Serializable{
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getContrasenia1() {
+        return contrasenia1;
+    }
+
+    public void setContrasenia1(String contrasenia1) {
+        this.contrasenia1 = contrasenia1;
+    }
+
+    public String getContrasenia2() {
+        return contrasenia2;
+    }
+
+    public void setContrasenia2(String contrasenia2) {
+        this.contrasenia2 = contrasenia2;
     }
 
     public TipoDeSangre getTipo() {
@@ -128,5 +151,12 @@ public class Persona implements Serializable{
         this.donante = donante;
     }
 
+    public Boolean getAlta() {
+        return alta;
+    }
+
+    public void setAlta(Boolean alta) {
+        this.alta = alta;
+    }
     
 }
