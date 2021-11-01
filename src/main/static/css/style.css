@@ -1,11 +1,82 @@
-:root{
-    --ColorFooter: #406661;
-    --ColorVerdePrincipal: #0EB29A;
-    --ColorVerdeBtn: #198754;
-    --ColorBlanco: #FFFFFF;
-    --ColorNegro: #000000;
-    --ColorGrisClaro: #F5F5F5;
-    --ColorGrisOscuro: #C4C4C4;
-    --ColorAmarillo: #FACE14;
-    --ColorRojo: #D30E02;
+:root {
+  --ColorFooter: #406661;
+  --ColorVerdePrincipal: #0eb29a;
+  --ColorVerdeBtn: #198754;
+  --ColorBlanco: #ffffff;
+  --ColorNegro: #000000;
+  --ColorGrisClaro: #f5f5f5;
+  --ColorGrisOscuro: #c4c4c4;
+  --ColorAmarillo: #face14;
+  --ColorRojo: #d30e02;
+  --ColorBackground: rgb(0, 0, 0, 0.65);
+}
+/* navegacion */
+.navigator {
+  background-color: var(--ColorGrisClaro);
+
+  width: 100%;
+  height: 128px;
+  display: flex;
+  justify-content: space-between;
+}
+.titulo {
+  font-weight: 900;
+  font-size: 85px;
+  color: var(--ColorAmarillo);
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.vida {
+  color: var(--ColorRojo);
+  text-transform: uppercase;
+}
+.imagen {
+  background-image: url("../img/index.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.logotipo {
+  width: 50px;
+  height: 72px;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+.logo-flex {
+  display: flex;
+  gap: 20px;
+}
+.button-index {
+  height: 70px;
+  width: 180px;
+  margin: 10px 10px;
+  margin-right: 30px;
+  margin-top: 30px;
+}
+.letras {
+  font-size: 24px;
+}
+/* Login - Espacio de ingreso de usuario */
+.login {
+  width: 607px;
+  height: 507px;
+  left: 423px;
+  top: 270px;
+  color: var(--ColorBackground);
+}
+.carousel-caption {
+  background: var(--ColorBackground);
+  width: 400px;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 4px;
+  font-family: "calibri";
+  color: white;
+  box-shadow: 7px 13px 37px #000;
+}
+
+.button-login {
+  background-color: var(--ColorVerdePrincipal);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: white;
 }
