@@ -16,5 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("")
 public class TipoDeSangreController {
+
     TipoDeSangreService TipoDeSangreServicio;
 }
