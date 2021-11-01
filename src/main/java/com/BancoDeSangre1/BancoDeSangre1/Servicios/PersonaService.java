@@ -59,7 +59,7 @@ public class PersonaService {
         return persona;
     }
 
-    public void modificar(Persona persona) throws ExceptionService {
+    public Persona modificar(Persona persona) throws ExceptionService {
 
         Optional<Persona> respuesta = personaRepositorio.findById(persona.getId());
         if (respuesta.isPresent()) {
@@ -98,6 +98,7 @@ public class PersonaService {
         } else {
             throw new ExceptionService("No se encuentra el usuario");
         }
+        return persona;
     }
 
     public void baja(Persona persona) {
@@ -106,6 +107,33 @@ public class PersonaService {
             persona = respuesta.get();
             persona.setAlta(false);
             personaRepositorio.save(persona);
+        }
+    }
+
+    public void iniciarSesion(Persona persona) throws ExceptionService {
+        Persona mail = personaRepositorio.mail(persona.getMail());
+        String contraseña = mail.getContrasenia1();
+        if (mail != null) {
+            if (!persona.getContrasenia1().equals(contraseña)) {
+                throw new ExceptionService("Contraseña invalida");
+            }
+        } else {
+            throw new ExceptionService("El mail ingresado no se encuentra registrado");
+        }
+    }
+
+    public void recuperarContrasenia(Persona persona) throws ExceptionService {
+        Persona mail = personaRepositorio.mail(persona.getMail());
+        if (mail != null) {
+            mail.setContrasenia1(persona.getContrasenia1());
+            if (mail.getContrasenia1().equals(persona.getContrasenia2())) {
+                mail.setContrasenia2(persona.getContrasenia2());
+                personaRepositorio.save(mail);
+            } else {
+                throw new ExceptionService("Las contraseñas no coinciden");
+            }
+        } else {
+            throw new ExceptionService("El mail ingresado no se encuentra registrado");
         }
     }
 
@@ -119,6 +147,14 @@ public class PersonaService {
 
     public List<Persona> listaPersonaPorSangre(String nombre) {
         return personaRepositorio.listaPersonaPorSangre(nombre);
+    }
+
+    public List<Persona> listaPersona() {
+        return personaRepositorio.findAll();
+    }
+
+    public Persona personaPorId(Persona persona) {
+        return personaRepositorio.getById(persona.getId());
     }
 
     private void validacion(Persona persona) throws ExceptionService {

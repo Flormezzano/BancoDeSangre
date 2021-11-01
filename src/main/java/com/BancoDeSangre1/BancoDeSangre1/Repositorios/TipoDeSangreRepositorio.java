@@ -9,6 +9,7 @@ import com.BancoDeSangre1.BancoDeSangre1.entidades.TipoDeSangre;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -18,7 +19,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TipoDeSangreRepositorio extends  JpaRepository<TipoDeSangre, String>{
     
-    
-    @Query("Select * from tipo_de_sangre")
+    @Query("Select t from TipoDeSangre t ")
     public List<TipoDeSangre> listaTipoSangre();
+    
+    @Query("Select t from TipoDeSangre t where t.nombre like :nombre")
+    public List<TipoDeSangre> listaCiudadPorNombre(@Param("nombre") String nombre);
 }

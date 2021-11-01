@@ -17,14 +17,16 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TipoDeSangreService {
-     @Autowired
+     
+    @Autowired
     TipoDeSangreRepositorio TipoDeSangreRepositorio; 
      
-     public List<TipoDeSangre> listaTipoSangre(){
+    public List<TipoDeSangre> listaTipoSangre(){
         return TipoDeSangreRepositorio.listaTipoSangre();
     }
     
-   
-    
-    
+    public List<TipoDeSangre> listar(){
+     List<TipoDeSangre> sangre = TipoDeSangreRepositorio.findAll();
+      return sangre;
+    }
 }
