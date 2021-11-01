@@ -12,4 +12,7 @@ public class controllerGral {
     public String inicio(){
         return "index";
     }
+  
+    
+    
 }
