@@ -19,6 +19,6 @@ import org.springframework.stereotype.Repository;
 public interface TipoDeSangreRepositorio extends  JpaRepository<TipoDeSangre, String>{
     
     
-    @Query("Select * from tipo_de_sangre")
+    @Query("Select t from TipoDeSangre t")
     public List<TipoDeSangre> listaTipoSangre();
 }
