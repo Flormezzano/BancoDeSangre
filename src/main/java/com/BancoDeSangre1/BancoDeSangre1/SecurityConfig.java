@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //Para q no pida la contraseña para entrar todo el tiempo
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/css/*", "/img/*", "/js/*").permitAll()
+        http.authorizeRequests().antMatchers("/*").permitAll()
             .and().formLogin()
                 .loginPage("/login")
                 .usernameParameter("username")
