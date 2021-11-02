@@ -1,9 +1,12 @@
 package com.BancoDeSangre1.BancoDeSangre1.entidades;
 
+import com.BancoDeSangre1.BancoDeSangre1.Enums.Roles;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -35,6 +38,9 @@ public class Persona implements Serializable{
     private Ciudad ciudad;
     private Boolean donante;
     private Boolean alta;
+    @Enumerated(EnumType.STRING)
+    private Roles rol;
+    
 
     public Persona() {
     }

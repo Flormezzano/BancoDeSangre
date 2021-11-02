@@ -6,9 +6,17 @@ import com.BancoDeSangre1.BancoDeSangre1.entidades.Persona;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,7 +24,7 @@ import org.springframework.stereotype.Service;
  * @author Gastón
  */
 @Service
-public class PersonaService {
+public class PersonaService implements UserDetailsService {
 
     @Autowired
     private PersonaRepositorio personaRepositorio;
@@ -24,6 +32,7 @@ public class PersonaService {
     public Persona Registro(Persona persona) throws ExceptionService {
 
         validacion(persona);
+        BCryptPasswordEncoder encoder =new BCryptPasswordEncoder();
         persona.setNombre(persona.getNombre());
         persona.setApellido(persona.getApellido());
         persona.setDate(persona.getDate());
@@ -36,9 +45,9 @@ public class PersonaService {
             throw new ExceptionService("Lo sentimos, este mail está en uso");
         }
 
-        persona.setContrasenia1(persona.getContrasenia1());
+        persona.setContrasenia1(encoder.encode(persona.getContrasenia1()));
         if (persona.getContrasenia1().equals(persona.getContrasenia2())) {
-            persona.setContrasenia2(persona.getContrasenia2());
+            persona.setContrasenia2(encoder.encode(persona.getContrasenia2()));
         } else {
             throw new ExceptionService("Las contraseñas no coinciden");
         }
@@ -205,5 +214,21 @@ public class PersonaService {
             throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
         }
         return donante;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+      
+        try {
+             Persona persona = personaRepositorio.mail(mail);
+             User user;
+             List<GrantedAuthority>authorities=new ArrayList<>();
+             authorities.add(new SimpleGrantedAuthority("ADMINISTRADOR"));
+             authorities.add(new SimpleGrantedAuthority("USUARIO"));
+             
+             return new User(mail, persona.getContrasenia1(), authorities);
+        } catch (Exception e) {
+            throw new UsernameNotFoundException("Mail no existente");
+        }
     }
 }
