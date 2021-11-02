@@ -1,4 +1,4 @@
-package com.BancoDeSangre1.BancoDeSangre1.Controladores;
+package com.BancoDeSangre1.BancoDeSangre1.controllers;
 
 import com.BancoDeSangre1.BancoDeSangre1.Servicios.ProvinciaService;
 import org.springframework.beans.factory.annotation.Autowired;
