@@ -9,15 +9,38 @@
   --ColorAmarillo: #face14;
   --ColorRojo: #d30e02;
   --ColorBackground: rgb(0, 0, 0, 0.65);
+
+  --FuenteMartel: "Martel Sans", sans-serif;
+  --FuenteCoolvetica: "Coolvetica";
+  --FuenteHeaters: "Heaters";
+  --FuenteMagra: "Magra", "Regular";
+  --FuenteOpenSans: "Open Sans", sans-serif;
+}
+/***Generales**/
+/*botones*/
+.btn-centrado {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-success {
+  background-color: var(--ColorVerdePrincipal) !important;
+  border-color: var(--ColorVerdePrincipal) !important;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.subrayado {
+  border-bottom: 2px solid var(--ColorAmarillo);
 }
 /* navegacion */
 .navigator {
   background-color: var(--ColorGrisClaro);
-
   width: 100%;
   height: 128px;
-  display: flex;
-  justify-content: space-between;
 }
 .titulo {
   font-weight: 900;
@@ -55,28 +78,156 @@
 .letras {
   font-size: 24px;
 }
-/* Login - Espacio de ingreso de usuario */
-.login {
-  width: 607px;
-  height: 507px;
-  left: 423px;
-  top: 270px;
-  color: var(--ColorBackground);
-}
-.carousel-caption {
-  background: var(--ColorBackground);
-  width: 400px;
-  padding: 30px;
-  margin: auto;
-  margin-top: 100px;
-  border-radius: 4px;
-  font-family: "calibri";
-  color: white;
-  box-shadow: 7px 13px 37px #000;
+/*  Slider */
+section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: url("../img/sangre.jpg");
+  background-size: cover;
+  background-position: center center;
 }
 
-.button-login {
-  background-color: var(--ColorVerdePrincipal);
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: white;
+/**Formulario**/
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6));
+  width: 380px;
+  padding: 40px 30px;
+  box-shadow: 7px 7px 60px #000000;
+}
+.login {
+  /* text-transform: uppercase; */
+  font-family: var(--FuenteOpenSans);
+  color: var(--ColorBlanco);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.label {
+  text-transform: uppercase;
+  color: var(--ColorBlanco);
+  padding: 10px;
+}
+.control input {
+  width: 100%;
+  display: block;
+  padding: 8px;
+  margin-bottom: 20px;
+}
+.checkbox {
+  color: var(--ColorBlanco);
+}
+/* informacion */
+.margin-bot {
+  margin-bottom: 100px;
+}
+.container-info {
+  margin: 50px;
+}
+.titulo-general {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--FuenteCoolvetica);
+  margin: 30px 0px;
+  color: var(--ColorVerdePrincipal);
+}
+.p-informacion {
+  font-family: var(--FuenteMartel);
+  font-size: 18px;
+  text-align: center;
+  padding: 20px 20px 0px 20px;
+  margin-right: 40px;
+}
+.img-informacion {
+  height: 30%;
+  width: 30%;
+  margin-right: 30px;
+  transform: rotate(10deg);
+}
+/* Mas info */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  text-align: center;
+}
+.p-info {
+  font-family: var(--FuenteMartel);
+  font-size: 18px;
+  text-align: center;
+  margin: 30px;
+}
+/* Banner */
+.banner {
+  background-color: var(--ColorRojo);
+  padding: 20px;
+}
+.flex-config {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.slogan {
+  color: var(--ColorBlanco);
+  font-size: 96px;
+  line-height: 80px;
+  font-family: var(--FuenteHeaters);
+  text-align: center;
+}
+.btn-rojo {
+  background-color: var(--ColorRojo) !important;
+  border-color: var(--ColorBlanco) !important;
+  width: 230px;
+  height: 50px;
+}
+.btn-slogan {
+  font-size: 25px;
+  color: var(--ColorBlanco);
+}
+/* Tipos de sangre */
+.tds-general {
+  margin-bottom: 50px;
+}
+.img-tds {
+  margin: 30px;
+}
+.img-tds2 {
+  margin-left: 60px;
+  margin-top: 20px;
+}
+.text-tds {
+  text-align: center;
+  font-family: var(--FuenteMartel);
+  font-size: 18px;
+  line-height: 2;
+  height: 939px;
+}
+.text-tds h4 {
+  text-transform: uppercase;
+}
+h4 {
+  text-align: center;
+}
+/* footer */
+.footer {
+  background-color: var(--ColorFooter);
+  padding: 18px;
+}
+.derechos-footer {
+  font-size: 24px;
+  font-family: var(--FuenteOpenSans);
+  color: var(--ColorBlanco);
+  justify-items: center;
+  margin-top: 45px;
+}
+.footer p {
+  font-size: 18px;
+  font-family: var(--FuenteOpenSans);
+  color: var(--ColorBlanco);
+}
+.iconos {
+  margin-top: 45px;
 }
