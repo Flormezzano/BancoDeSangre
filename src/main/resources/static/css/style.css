@@ -1,20 +1,20 @@
 :root {
-  --ColorFooter: #406661;
-  --ColorVerdePrincipal: #0eb29a;
-  --ColorVerdeBtn: #198754;
-  --ColorBlanco: #ffffff;
-  --ColorNegro: #000000;
-  --ColorGrisClaro: #f5f5f5;
-  --ColorGrisOscuro: #c4c4c4;
-  --ColorAmarillo: #face14;
-  --ColorRojo: #d30e02;
-  --ColorBackground: rgb(0, 0, 0, 0.65);
+  --ColorFooter: #406661
+  --ColorVerdePrincipal: #0eb29a
+  --ColorVerdeBtn: #198754
+  --ColorBlanco: #ffffff
+  --ColorNegro: #000000
+  --ColorGrisClaro: #f5f5f5
+  --ColorGrisOscuro: #c4c4c4
+  --ColorAmarillo: #face14
+  --ColorRojo: #d30e02
+  --ColorBackground: rgb(0, 0, 0, 0.65)
 
-  --FuenteMartel: "Martel Sans", sans-serif;
-  --FuenteCoolvetica: "Coolvetica";
-  --FuenteHeaters: "Heaters";
-  --FuenteMagra: "Magra", "Regular";
-  --FuenteOpenSans: "Open Sans", sans-serif;
+  --FuenteMartel: "Martel Sans", sans-serif
+  --FuenteCoolvetica: "Coolvetica"
+  --FuenteHeaters: "Heaters"
+  --FuenteMagra: "Magra", "Regular"
+  --FuenteOpenSans: "Open Sans", sans-serif
 }
 /***Generales**/
 /*botones*/
@@ -95,7 +95,7 @@ section {
   left: 50%;
   transform: translate(-50%, -50%);
   background: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6));
-  width: 380px;
+  width: 420px;
   padding: 40px 30px;
   box-shadow: 7px 7px 60px #000000;
 }
@@ -105,6 +105,7 @@ section {
   color: var(--ColorBlanco);
   text-align: center;
   margin-bottom: 20px;
+  text-transform: uppercase;
 }
 .label {
   text-transform: uppercase;
@@ -232,6 +233,7 @@ h4 {
   margin-top: 45px;
 }
 
+<<<<<<< HEAD:src/main/static/css/style.css
 /* PAGINA DE LISTA DE DONANTES */
 /* Lista */
 .atributos-lista {
@@ -248,3 +250,47 @@ h4 {
 .nav-lista {
   margin-top: 30 px !important;
 }
+=======
+/*Registro*/
+.bg-registro{
+  background-color:#c0c0c0a4;
+}
+.img-registro{
+  background-image: url(../img/Superheroe-registro.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vh;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.form-registro{
+  height:750px;
+}
+.label-registro{
+  color: var(--ColorBlanco);
+  text-align: left;
+  font-family: var(--FuenteOpenSans);
+  font-size: 17px;
+}
+.campo-registro{
+  margin: 20px 0px; 
+}
+.campo-registro p{
+  text-align: center;
+  color: var(--ColorBlanco);
+}
+.input-registro{
+  float:right;
+  padding: 0px 8px;
+}
+.span-registro{
+  color: var(--ColorBlanco);
+}
+.btn-margen-top{
+  margin-top: 50px;
+}
+
+>>>>>>> 772676a6958fd43ccba94379c2151b87d56436b4:src/main/resources/static/css/style.css

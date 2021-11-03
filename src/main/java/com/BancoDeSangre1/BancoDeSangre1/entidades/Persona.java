@@ -1,47 +1,64 @@
 package com.BancoDeSangre1.BancoDeSangre1.entidades;
 
+import com.BancoDeSangre1.BancoDeSangre1.Enums.Roles;
+import java.io.Serializable;
+import java.time.LocalDate;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author Gastón
  */
 @Entity
-public class Persona {
+public class Persona implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombre;
     private String apellido;
-    private Integer edad;
+    private String date;
     private String sexo;
     private String mail;
-    @ManyToOne
+    private String contrasenia1;
+    private String contrasenia2;
+    @ManyToOne (cascade=CascadeType.PERSIST)
     private TipoDeSangre tipo;
-    @ManyToOne
+    @ManyToOne (cascade=CascadeType.PERSIST)
     private Provincia provincia;
-    @ManyToOne
+    @ManyToOne (cascade=CascadeType.PERSIST)
     private Ciudad ciudad;
     private Boolean donante;
+    private Boolean alta;
+    @Enumerated(EnumType.STRING)
+    private Roles rol;
+    
 
     public Persona() {
     }
 
-    public Persona(String id, String nombre, Integer edad, String sexo, String mail, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante) {
+    public Persona(String id, String nombre, String apellido, String date, String sexo, String mail, String contrasenia1, String contrasenia2, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante, Boolean alta) {
         this.id = id;
         this.nombre = nombre;
-        this.edad = edad;
+        this.apellido = apellido;
+        this.date = date;
         this.sexo = sexo;
         this.mail = mail;
+        this.contrasenia1 = contrasenia1;
+        this.contrasenia2 = contrasenia2;
         this.tipo = tipo;
         this.provincia = provincia;
         this.ciudad = ciudad;
         this.donante = donante;
+        this.alta = alta;
     }
 
     public String getId() {
@@ -60,12 +77,20 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public Integer getEdad() {
-        return edad;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setEdad(Integer edad) {
-        this.edad = edad;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getSexo() {
@@ -82,6 +107,22 @@ public class Persona {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getContrasenia1() {
+        return contrasenia1;
+    }
+
+    public void setContrasenia1(String contrasenia1) {
+        this.contrasenia1 = contrasenia1;
+    }
+
+    public String getContrasenia2() {
+        return contrasenia2;
+    }
+
+    public void setContrasenia2(String contrasenia2) {
+        this.contrasenia2 = contrasenia2;
     }
 
     public TipoDeSangre getTipo() {
@@ -115,4 +156,13 @@ public class Persona {
     public void setDonante(Boolean donante) {
         this.donante = donante;
     }
+
+    public Boolean getAlta() {
+        return alta;
+    }
+
+    public void setAlta(Boolean alta) {
+        this.alta = alta;
+    }
+    
 }
