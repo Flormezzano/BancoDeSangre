@@ -231,3 +231,20 @@ h4 {
 .iconos {
   margin-top: 45px;
 }
+
+/* PAGINA DE LISTA DE DONANTES */
+/* Lista */
+.atributos-lista {
+  font-family: var(--FuenteOpenSans);
+}
+.button-contactar {
+  padding: 10px 30px !important;
+  font-size: 24px;
+}
+/* iconos */
+.iconos-pag {
+  text-align: center;
+}
+.nav-lista {
+  margin-top: 30 px !important;
+}
