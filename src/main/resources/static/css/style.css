@@ -1,20 +1,33 @@
 :root {
-  --ColorFooter: #406661
-  --ColorVerdePrincipal: #0eb29a
-  --ColorVerdeBtn: #198754
-  --ColorBlanco: #ffffff
-  --ColorNegro: #000000
-  --ColorGrisClaro: #f5f5f5
-  --ColorGrisOscuro: #c4c4c4
-  --ColorAmarillo: #face14
-  --ColorRojo: #d30e02
-  --ColorBackground: rgb(0, 0, 0, 0.65)
+  --ColorFooter: #406661;
+  --ColorVerdePrincipal: #0eb29a;
+  --ColorVerdeBtn: #198754;
+  --ColorBlanco: #ffffff;
+  --ColorNegro: #000000;
+  --ColorGrisClaro: #f5f5f5;
+  --ColorGrisOscuro: #c4c4c4;
+  --ColorAmarillo: #face14;
+  --ColorRojo: #d30e02;
+  --ColorBackground: rgb(0, 0, 0, 0.65);
 
-  --FuenteMartel: "Martel Sans", sans-serif
-  --FuenteCoolvetica: "Coolvetica"
-  --FuenteHeaters: "Heaters"
-  --FuenteMagra: "Magra", "Regular"
-  --FuenteOpenSans: "Open Sans", sans-serif
+  --FuenteMartel: "Martel Sans", sans-serif;
+  --FuenteCoolvetica: "Coolvetica";
+  --FuenteHeaters: "Heaters";
+  --FuenteMagra: "Magra", "Regular";
+  --FuenteOpenSans: "Open Sans", sans-serif;
+}
+
+@font-face {
+  font-family: "Coolvetica";
+  src: url("../fonts/coolvetica\ rg.ttf") format("Regular");
+}
+@font-face {
+  font-family: "Heaters";
+  src: url(../fonts/Heaters.otf);
+}
+@font-face {
+  font-family: "Magra";
+  src: url(../fonts/Magra-Regular.ttf);
 }
 /***Generales**/
 /*botones*/
@@ -131,7 +144,7 @@ section {
 .titulo-general {
   text-align: center;
   text-transform: uppercase;
-  font-family: var(--FuenteCoolvetica);
+  font-family: "Coolvetica";
   margin: 30px 0px;
   color: var(--ColorVerdePrincipal);
 }
@@ -175,7 +188,7 @@ section {
   color: var(--ColorBlanco);
   font-size: 96px;
   line-height: 80px;
-  font-family: var(--FuenteHeaters);
+  font-family: "Heaters";
   text-align: center;
 }
 .btn-rojo {
@@ -233,7 +246,6 @@ h4 {
   margin-top: 45px;
 }
 
-<<<<<<< HEAD:src/main/static/css/style.css
 /* PAGINA DE LISTA DE DONANTES */
 /* Lista */
 .atributos-lista {
@@ -248,14 +260,14 @@ h4 {
   text-align: center;
 }
 .nav-lista {
-  margin-top: 30 px !important;
+  margin-top: 30px !important;
 }
-=======
+
 /*Registro*/
-.bg-registro{
-  background-color:#c0c0c0a4;
+.bg-registro {
+  background-color: #c0c0c0a4;
 }
-.img-registro{
+.img-registro {
   background-image: url(../img/Superheroe-registro.jpg);
   background-position: center center;
   background-repeat: no-repeat;
@@ -264,33 +276,30 @@ h4 {
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
-
 }
-.form-registro{
-  height:750px;
+.form-registro {
+  height: 750px;
 }
-.label-registro{
+.label-registro {
   color: var(--ColorBlanco);
   text-align: left;
   font-family: var(--FuenteOpenSans);
   font-size: 17px;
 }
-.campo-registro{
-  margin: 20px 0px; 
+.campo-registro {
+  margin: 20px 0px;
 }
-.campo-registro p{
+.campo-registro p {
   text-align: center;
   color: var(--ColorBlanco);
 }
-.input-registro{
-  float:right;
+.input-registro {
+  float: right;
   padding: 0px 8px;
 }
-.span-registro{
-  color: var(--ColorBlanco);
+.span-registro {
+  color: var;
 }
-.btn-margen-top{
+.btn-margen-top {
   margin-top: 50px;
 }
-
->>>>>>> 772676a6958fd43ccba94379c2151b87d56436b4:src/main/resources/static/css/style.css
