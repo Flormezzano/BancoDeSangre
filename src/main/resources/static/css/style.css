@@ -1,11 +1,277 @@
-/*:root{
-    --ColorFooter: #406661;
-    --ColorVerdePrincipal: #0EB29A;
-    --ColorVerdeBtn: #198754;
-    --ColorBlanco: #FFFFFF;
-    --ColorNegro: #000000;
-    --ColorGrisClaro: #F5F5F5;
-    --ColorGrisOscuro: #C4C4C4;
-    --ColorAmarillo: #FACE14;
-    --ColorRojo: #D30E02;
-}*/
+:root {
+  --ColorFooter: #406661
+  --ColorVerdePrincipal: #0eb29a
+  --ColorVerdeBtn: #198754
+  --ColorBlanco: #ffffff
+  --ColorNegro: #000000
+  --ColorGrisClaro: #f5f5f5
+  --ColorGrisOscuro: #c4c4c4
+  --ColorAmarillo: #face14
+  --ColorRojo: #d30e02
+  --ColorBackground: rgb(0, 0, 0, 0.65)
+
+  --FuenteMartel: "Martel Sans", sans-serif
+  --FuenteCoolvetica: "Coolvetica"
+  --FuenteHeaters: "Heaters"
+  --FuenteMagra: "Magra", "Regular"
+  --FuenteOpenSans: "Open Sans", sans-serif
+}
+/***Generales**/
+/*botones*/
+.btn-centrado {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-success {
+  background-color: var(--ColorVerdePrincipal) !important;
+  border-color: var(--ColorVerdePrincipal) !important;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.subrayado {
+  border-bottom: 2px solid var (--ColorAmarillo);
+}
+/* navegacion */
+.navigator {
+  background-color: var(--ColorGrisClaro);
+  width: 100%;
+  height: 128px;
+}
+.titulo {
+  font-weight: 900;
+  font-size: 85px;
+  color: var(--ColorAmarillo);
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.vida {
+  color: var(--ColorRojo);
+  text-transform: uppercase;
+}
+.imagen {
+  background-image: url("../img/index.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.logotipo {
+  width: 50px;
+  height: 72px;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+.logo-flex {
+  display: flex;
+  gap: 20px;
+}
+.button-index {
+  height: 70px;
+  width: 180px;
+  margin: 10px 10px;
+  margin-right: 30px;
+  margin-top: 30px;
+}
+.letras {
+  font-size: 24px;
+}
+/*  Slider */
+section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: url("../img/sangre.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+/**Formulario**/
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6));
+  width: 420px;
+  padding: 40px 30px;
+  box-shadow: 7px 7px 60px #000000;
+}
+.login {
+  /* text-transform: uppercase; */
+  font-family: var(--FuenteOpenSans);
+  color: var(--ColorBlanco);
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.label {
+  text-transform: uppercase;
+  color: var(--ColorBlanco);
+  padding: 10px;
+}
+.control input {
+  width: 100%;
+  display: block;
+  padding: 8px;
+  margin-bottom: 20px;
+}
+.checkbox {
+  color: var(--ColorBlanco);
+}
+/* informacion */
+.margin-bot {
+  margin-bottom: 100px;
+}
+.container-info {
+  margin: 50px;
+}
+.titulo-general {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--FuenteCoolvetica);
+  margin: 30px 0px;
+  color: var(--ColorVerdePrincipal);
+}
+.p-informacion {
+  font-family: var(--FuenteMartel);
+  font-size: 18px;
+  text-align: center;
+  padding: 20px 20px 0px 20px;
+  margin-right: 40px;
+}
+.img-informacion {
+  height: 30%;
+  width: 30%;
+  margin-right: 30px;
+  transform: rotate(10deg);
+}
+/* Mas info */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  text-align: center;
+}
+.p-info {
+  font-family: var(--FuenteMartel);
+  font-size: 18px;
+  text-align: center;
+  margin: 30px;
+}
+/* Banner */
+.banner {
+  background-color: var(--ColorRojo);
+  padding: 20px;
+}
+.flex-config {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.slogan {
+  color: var(--ColorBlanco);
+  font-size: 96px;
+  line-height: 80px;
+  font-family: var(--FuenteHeaters);
+  text-align: center;
+}
+.btn-rojo {
+  background-color: var(--ColorRojo) !important;
+  border-color: var(--ColorBlanco) !important;
+  width: 230px;
+  height: 50px;
+}
+.btn-slogan {
+  font-size: 25px;
+  color: var(--ColorBlanco);
+}
+/* Tipos de sangre */
+.tds-general {
+  margin-bottom: 50px;
+}
+.img-tds {
+  margin: 30px;
+}
+.img-tds2 {
+  margin-left: 60px;
+  margin-top: 20px;
+}
+.text-tds {
+  text-align: center;
+  font-family: var(--FuenteMartel);
+  font-size: 18px;
+  line-height: 2;
+  height: 939px;
+}
+.text-tds h4 {
+  text-transform: uppercase;
+}
+h4 {
+  text-align: center;
+}
+/* footer */
+.footer {
+  background-color: var(--ColorFooter);
+  padding: 18px;
+}
+.derechos-footer {
+  font-size: 24px;
+  font-family: var(--FuenteOpenSans);
+  color: var(--ColorBlanco);
+  justify-items: center;
+  margin-top: 45px;
+}
+.footer p {
+  font-size: 18px;
+  font-family: var(--FuenteOpenSans);
+  color: var(--ColorBlanco);
+}
+.iconos {
+  margin-top: 45px;
+}
+
+/*Registro*/
+.bg-registro{
+  background-color:#c0c0c0a4;
+}
+.img-registro{
+  background-image: url(../img/Superheroe-registro.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vh;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.form-registro{
+  height:750px;
+}
+.label-registro{
+  color: var(--ColorBlanco);
+  text-align: left;
+  font-family: var(--FuenteOpenSans);
+  font-size: 17px;
+}
+.campo-registro{
+  margin: 20px 0px; 
+}
+.campo-registro p{
+  text-align: center;
+  color: var(--ColorBlanco);
+}
+.input-registro{
+  float:right;
+  padding: 0px 8px;
+}
+.span-registro{
+  color: var(--ColorBlanco);
+}
+.btn-margen-top{
+  margin-top: 50px;
+}
+

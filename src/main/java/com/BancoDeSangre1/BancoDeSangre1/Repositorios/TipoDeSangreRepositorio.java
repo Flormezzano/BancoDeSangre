@@ -19,10 +19,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TipoDeSangreRepositorio extends  JpaRepository<TipoDeSangre, String>{
     
+<<<<<<< HEAD
  
+=======
+    
+>>>>>>> 63bde5f7962d181fc855330f7bfe5dc5387896e7
     @Query("Select t from TipoDeSangre t")
     public List<TipoDeSangre> listaTipoSangre();
     
     @Query("Select t from TipoDeSangre t where t.nombre like :nombre")
     public List<TipoDeSangre> listaCiudadPorNombre(@Param("nombre") String nombre);
 }
+
