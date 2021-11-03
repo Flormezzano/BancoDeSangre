@@ -34,7 +34,7 @@
   justify-content: space-between;
 }
 .subrayado {
-  border-bottom: 2px solid var(--ColorAmarillo);
+  border-bottom: 2px solid var (--ColorAmarillo);
 }
 /* navegacion */
 .navigator {
