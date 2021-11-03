@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,11 +29,14 @@ public class PersonaService implements UserDetailsService {
 
     @Autowired
     private PersonaRepositorio personaRepositorio;
+    
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     public Persona Registro(Persona persona) throws ExceptionService {
 
         validacion(persona);
-        BCryptPasswordEncoder encoder =new BCryptPasswordEncoder();
+//        BCryptPasswordEncoder encoder =new BCryptPasswordEncoder(); LO Puse general para que Sprint lo trabaje y pueda usarlo en los dos metodos
         persona.setNombre(persona.getNombre());
         persona.setApellido(persona.getApellido());
         persona.setDate(persona.getDate());
@@ -85,9 +89,9 @@ public class PersonaService implements UserDetailsService {
                 throw new ExceptionService("Lo sentimos, este mail está en uso");
             }
 
-            persona.setContrasenia1(persona.getContrasenia1());
+            persona.setContrasenia1(encoder.encode(persona.getContrasenia1()));
             if (persona.getContrasenia1().equals(persona.getContrasenia2())) {
-                persona.setContrasenia2(persona.getContrasenia2());
+                persona.setContrasenia2(encoder.encode(persona.getContrasenia2()));
             } else {
                 throw new ExceptionService("Las contraseñas no coinciden");
             }
@@ -119,17 +123,18 @@ public class PersonaService implements UserDetailsService {
         }
     }
 
-    public void iniciarSesion(Persona persona) throws ExceptionService {
-        Persona mail = personaRepositorio.mail(persona.getMail());
-        String contraseña = mail.getContrasenia1();
-        if (mail != null) {
-            if (!persona.getContrasenia1().equals(contraseña)) {
-                throw new ExceptionService("Contraseña invalida");
-            }
-        } else {
-            throw new ExceptionService("El mail ingresado no se encuentra registrado");
-        }
-    }
+    //VALIDACION MAIL - CONTROLLER LIA 89
+//    public void iniciarSesion(Persona persona) throws ExceptionService {
+//        Persona mail = personaRepositorio.mail(persona.getMail());
+//        String contraseña = mail.getContrasenia1();
+//        if (mail != null) {
+//            if (!persona.getContrasenia1().equals(contraseña)) {
+//                throw new ExceptionService("Contraseña invalida");
+//            }
+//        } else {
+//            throw new ExceptionService("El mail ingresado no se encuentra registrado");
+//        }
+//    }
 
     public void recuperarContrasenia(Persona persona) throws ExceptionService {
         Persona mail = personaRepositorio.mail(persona.getMail());
@@ -219,16 +224,24 @@ public class PersonaService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
       
-        try {
              Persona persona = personaRepositorio.mail(mail);
-             User user;
-             List<GrantedAuthority>authorities=new ArrayList<>();
-             authorities.add(new SimpleGrantedAuthority("ADMINISTRADOR"));
-             authorities.add(new SimpleGrantedAuthority("USUARIO"));
+             UserBuilder user;
+             if(persona != null){
+                 user = User.withUsername(mail);
+                 user.disabled(false);
+                 user.password(persona.getContrasenia1());
+                 user.authorities(new SimpleGrantedAuthority("ROL_USER"));
+             }else{
+                 throw new UsernameNotFoundException("Mail no existente");
+             }
              
-             return new User(mail, persona.getContrasenia1(), authorities);
-        } catch (Exception e) {
-            throw new UsernameNotFoundException("Mail no existente");
-        }
+//             List<GrantedAuthority>authorities=new ArrayList<>();
+//             authorities.add(new SimpleGrantedAuthority("ADMINISTRADOR"));
+//             authorities.add(new SimpleGrantedAuthority("USUARIO"));
+//             
+//             return new User(mail, persona.getContrasenia1(), authorities);
+
+            
+        return user.build();
     }
 }

@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class controllerGral {
    
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 63bde5f7962d181fc855330f7bfe5dc5387896e7
     @GetMapping("/nosotros")
     public String nosotros(){
         return "nosotros";

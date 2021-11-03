@@ -69,20 +69,27 @@ public class PersonaController {
         }
     }
     
-    @GetMapping("/iniciarSesion")
-    public String iniciarSesion() {
+    @GetMapping("/login")
+    public String login(Model model, @RequestParam Persona persona, @RequestParam(required = false) String error,@RequestParam(required = false) String mail,@RequestParam(required = false) String logout){
+        if (error!=null) {
+            model.addAttribute("persona", persona);
+            model.addAttribute("error", "El usuario ingresado o la contraseña son incorrectas");
+        }
+        if (mail!=null) {
+            model.addAttribute("mail", mail);
+        }
         return "index";
     }
     
-    @PostMapping("/iniciarSesion")
-    public String iniciar(ModelMap model, @RequestParam Persona persona) {
-        try {
-            personaServ.iniciarSesion(persona);
-            return "inicioUsuario";
-        } catch (Exception e) {
-            model.addAttribute("persona", persona);
-            model.put("error", e.getMessage());
-            return "index";
-        }
-    }
+//    @PostMapping("/iniciarSesion")
+//    public String iniciar(ModelMap model, @RequestParam Persona persona) {
+//        try {
+//            personaServ.iniciarSesion(persona);
+//            return "inicioUsuario";
+//        } catch (Exception e) {
+//            model.addAttribute("persona", persona);
+//            model.put("error", e.getMessage());
+//            return "index";
+//        }
+//    }
 }
