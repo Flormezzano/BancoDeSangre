@@ -11,11 +11,25 @@
   --ColorBackground: rgb(0, 0, 0, 0.65);
 
   --FuenteMartel: "Martel Sans", sans-serif;
+  --FuenteOpenSans: "Open Sans", sans-serif;
   --FuenteCoolvetica: "Coolvetica";
   --FuenteHeaters: "Heaters";
   --FuenteMagra: "Magra", "Regular";
-  --FuenteOpenSans: "Open Sans", sans-serif;
 }
+
+@font-face {
+  font-family: "Coolvetica";
+  src: url(../fonts/coolvetica\ rg.ttf);
+}
+@font-face {
+  font-family: "Heaters";
+  src: url(../fonts/Heaters.otf);
+}
+@font-face {
+  font-family: "Magra";
+  src: url(../fonts/Magra-Regular.ttf);
+}
+
 /***Generales**/
 /*botones*/
 .btn-centrado {
@@ -131,7 +145,7 @@ section {
 .titulo-general {
   text-align: center;
   text-transform: uppercase;
-  font-family: var(--FuenteCoolvetica);
+  font-family: "Coolvetica";
   margin: 30px 0px;
   color: var(--ColorVerdePrincipal);
 }
@@ -175,7 +189,7 @@ section {
   color: var(--ColorBlanco);
   font-size: 96px;
   line-height: 80px;
-  font-family: var(--FuenteHeaters);
+  font-family: "Heaters";
   text-align: center;
 }
 .btn-rojo {
@@ -234,19 +248,13 @@ h4 {
 }
 
 /*Registro*/
-.bg-registro{
-  background-color:#c0c0c0a4;
-}
-.img-registro{
+.modal-img{
   background-image: url(../img/Superheroe-registro.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100vh;
-  height: 100vh;
   margin-left: auto;
   margin-right: auto;
-
 }
 .form-registro{
   height:750px;
@@ -274,4 +282,66 @@ h4 {
 .btn-margen-top{
   margin-top: 50px;
 }
+
+/* USUARIO */
+.margin-bottom30{
+  margin-bottom: 30px;
+}
+.titulo-usuario{
+  font-family: var(--FuenteOpenSans);
+  font-size: 70px;
+  text-align: center;
+  margin-top: 30px;
+}
+.btn-usuario{
+  padding: 20px 30px !important;
+}
+.titulo-requisitos{
+  font-family: var(--FuenteMartel);
+  font-size: 36px;
+  text-align: center;
+  color: var(--ColorVerdePrincipal);
+
+}
+.lista-requisitos{
+  font-family: var(--FuenteOpenSans);
+  font-size: 18px;
+  margin: 5px 0px; 
+  line-height: 3;
+}
+.flex-config2{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.pie-usuario{
+  font-family: var(--FuenteOpenSans);
+  text-align: center;
+  font-size: 24px;
+  color: var(--ColorVerdePrincipal);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* PAGINA DE LISTA DE DONANTES */
+/* Lista */
+.atributos-lista {
+  font-family: var(--FuenteOpenSans);
+  font-size: 24px;
+}
+.button-contactar {
+  padding: 10px 30px !important;
+  font-size: 24px;
+}
+/* iconos */
+.iconos-lista{
+  margin: 0px 50px;
+}
+.iconos-pag {
+  text-align: center;
+}
+.nav-lista {
+  margin: 30px 15px 15px 0px !important ;
+}
+
 

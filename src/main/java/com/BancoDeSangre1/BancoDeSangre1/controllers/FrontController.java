@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/front")
 public class FrontController {
     
- @GetMapping("/index")
+ @GetMapping("/")
  public String index(){
     return "index";
  } 
  @GetMapping("/registrarse")
- public String registrarse(){
-    return "registrarse";
+ public String modelRegistro(){
+    return "modelRegistro";
  } 
  
  @GetMapping("/inicioUsuario")
@@ -28,16 +28,14 @@ public class FrontController {
  } 
  
  @GetMapping("/donantes")
- public String donantes(){
-    return "donantes";
+ public String listaDonantes(){
+    return "listaDonantes";
  }
  
   @GetMapping("/nosotros")
  public String nosotros(){
     return "nosotros";
  }
- 
- 
  
  
 }
