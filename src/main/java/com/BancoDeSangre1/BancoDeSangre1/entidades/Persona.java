@@ -1,8 +1,8 @@
 package com.BancoDeSangre1.BancoDeSangre1.entidades;
 
 import com.BancoDeSangre1.BancoDeSangre1.Enums.Roles;
+import com.BancoDeSangre1.BancoDeSangre1.Enums.Sexo;
 import java.io.Serializable;
-import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -25,8 +25,11 @@ public class Persona implements Serializable{
     private String id;
     private String nombre;
     private String apellido;
+//    @Temporal(TemporalType.DATE)
+//    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private String date;
-    private String sexo;
+    @Enumerated(EnumType.STRING)
+    private Sexo sexo;
     private String mail;
     private String contrasenia1;
     private String contrasenia2;
@@ -39,13 +42,14 @@ public class Persona implements Serializable{
     private Boolean donante;
     private Boolean alta;
     @Enumerated(EnumType.STRING)
-    private Roles rol;
-    
+     private Roles rol;
+
+  
 
     public Persona() {
     }
 
-    public Persona(String id, String nombre, String apellido, String date, String sexo, String mail, String contrasenia1, String contrasenia2, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante, Boolean alta) {
+    public Persona(String id, String nombre, String apellido, String date, Sexo sexo, String mail, String contrasenia1, String contrasenia2, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante, Boolean alta, Roles rol) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -59,6 +63,7 @@ public class Persona implements Serializable{
         this.ciudad = ciudad;
         this.donante = donante;
         this.alta = alta;
+        this.rol = rol;
     }
 
     public String getId() {
@@ -93,11 +98,11 @@ public class Persona implements Serializable{
         this.date = date;
     }
 
-    public String getSexo() {
+    public Sexo getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
 
@@ -164,5 +169,13 @@ public class Persona implements Serializable{
     public void setAlta(Boolean alta) {
         this.alta = alta;
     }
+
+    public Roles getRol() {
+        return rol;
+    }
+
+    public void setRol(Roles rol) {
+        this.rol = rol;
+    }
     
-}
+} 

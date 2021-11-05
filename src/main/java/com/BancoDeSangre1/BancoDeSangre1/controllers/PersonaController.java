@@ -6,6 +6,7 @@ import com.BancoDeSangre1.BancoDeSangre1.Servicios.ProvinciaService;
 import com.BancoDeSangre1.BancoDeSangre1.Servicios.TipoDeSangreService;
 import com.BancoDeSangre1.BancoDeSangre1.entidades.Persona;
 import com.BancoDeSangre1.BancoDeSangre1.exception.ExceptionService;
+import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,11 +43,16 @@ public class PersonaController {
         model.addAttribute("provincias", provinciaServ.listar());
         model.addAttribute("ciudades", ciudadServ.listar());
         model.addAttribute("sangre", tipoServ.listar());
+        model.addAttribute("sexos", personaServ.sexo());
         return "modelRegistro";
     }
 
     @PostMapping("/registrar")
+<<<<<<< HEAD
     public String registro(ModelMap model, @ModelAttribute("persona") Persona persona) {
+=======
+    public String registro(ModelMap model, @ModelAttribute Persona persona) {
+>>>>>>> ef0a40acc7e516d53e2636a17d738812cad4e1ba
         try {
             personaServ.Registro(persona);
             return "inicioUsuario";
