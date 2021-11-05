@@ -209,6 +209,7 @@ public class PersonaService implements UserDetailsService {
 
     private Boolean validacioDate(Persona persona) throws ExceptionService {
         Boolean donante = false;
+        
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fechaNac = LocalDate.parse(persona.getDate(), fmt);
         LocalDate ahora = LocalDate.now();
