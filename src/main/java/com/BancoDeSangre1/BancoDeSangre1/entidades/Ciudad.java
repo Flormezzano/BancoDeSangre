@@ -12,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
  * @author Gastón
  */
 @Entity
-public class Ciudad implements Serializable{
+public class Ciudad implements Serializable, Comparable<Ciudad>{
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -53,6 +53,11 @@ public class Ciudad implements Serializable{
 
     public void setProvincia(Provincia provincia) {
         this.provincia = provincia;
+    }
+
+    @Override
+    public int compareTo(Ciudad t) {
+       return this.nombre.compareTo(t.getNombre());
     }
     
     
