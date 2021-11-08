@@ -32,4 +32,8 @@ public class CiudadService {
      List<Ciudad> ciudades = ciudadReposiotrio.findAll();
       return ciudades;
     }
+    
+    public Ciudad traerPorID(String id) {
+        return ciudadReposiotrio.getById(id);
+    }
 }

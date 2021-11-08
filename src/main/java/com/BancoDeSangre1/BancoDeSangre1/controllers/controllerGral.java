@@ -23,14 +23,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class controllerGral {
    
-    @GetMapping("/nosotros")
-    public String nosotros(){
-        return "nosotros";
-    }
-    
-    @GetMapping("/error")
-    public String error(){
-        return "error";
-    }
+//    @GetMapping("/nosotros")
+//    public String nosotros(){
+//        return "nosotros";
+//    }
+//    
+//    @GetMapping("/error")
+//    public String error(){
+//        return "error";
+//    }
 
 }
