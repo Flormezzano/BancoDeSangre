@@ -48,7 +48,7 @@ public class PersonaController {
     }
 
     @PostMapping("/registrar")
-    public String registro(ModelMap model, @ModelAttribute("persona") Persona persona) {
+    public String registro(ModelMap model, @ModelAttribute() Persona persona) {
         try {
             personaServ.Registro(persona);
             return "inicioUsuario";
