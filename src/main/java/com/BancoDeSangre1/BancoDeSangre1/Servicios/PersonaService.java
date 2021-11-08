@@ -8,14 +8,9 @@ import com.BancoDeSangre1.BancoDeSangre1.entidades.Ciudad;
 import com.BancoDeSangre1.BancoDeSangre1.entidades.Persona;
 import com.BancoDeSangre1.BancoDeSangre1.entidades.Provincia;
 import com.BancoDeSangre1.BancoDeSangre1.entidades.TipoDeSangre;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
 import java.util.List;
 import java.util.Optional;
@@ -90,10 +85,10 @@ public class PersonaService implements UserDetailsService {
         persona.setCiudad(ciudad);
 
 //        if (validacioDate(persona) == true) {
-            persona.setDonante(persona.getDonante());
+//            persona.setDonante(persona.getDonante());
 //        } else {
             persona.setDonante(false);
-            System.out.println("Lo sentimos, no cumple con el requisito de edad para donar sangre");
+//            System.out.println("Lo sentimos, no cumple con el requisito de edad para donar sangre");
 //        }
         persona.setAlta(true);
         persona.setRol(Roles.USER);
@@ -135,8 +130,8 @@ public class PersonaService implements UserDetailsService {
 //            if (validacioDate(persona) == true) {
                 persona.setDonante(persona.getDonante());
 //            } else {
-                persona.setDonante(false);
-                System.out.println("Lo sentimos, no cumple con el requisito de edad para donar sangre");
+//                persona.setDonante(false);
+//                System.out.println("Lo sentimos, no cumple con el requisito de edad para donar sangre");
 //            }
 
             personaRepositorio.save(persona);
@@ -227,13 +222,13 @@ public class PersonaService implements UserDetailsService {
         if (persona.getTipo() == null) {
             throw new ExceptionService("Este campo de 'Tipo de Sangre' no puede estar nulo");
         }
-        if (persona.getTipo().getNombre().isEmpty()) {
-            throw new ExceptionService("Este campo de 'Tipo de Sangre' no puede estar vacio");
-        }
-        if (persona.getProvincia() == null || persona.getProvincia().getNombre().isEmpty()) {
+//        if (persona.getTipo().getNombre().isEmpty()) {
+//            throw new ExceptionService("Este campo de 'Tipo de Sangre' no puede estar vacio");
+//        }
+        if (persona.getProvincia() == null) {
             throw new ExceptionService("Este campo de 'Provincia' no puede estar vacio");
         }
-        if (persona.getCiudad() == null || persona.getCiudad().getNombre().isEmpty()) {
+        if (persona.getCiudad() == null) {
             throw new ExceptionService("Este campo de 'Ciudad' no puede estar vacio");
         }
         if (persona.getDonante() == null) {
