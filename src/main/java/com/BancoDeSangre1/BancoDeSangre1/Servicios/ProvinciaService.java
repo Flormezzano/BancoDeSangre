@@ -22,4 +22,8 @@ public class ProvinciaService {
      List<Provincia> provincias = PciaRepo.findAll();
       return provincias;
 }
+    
+    public Provincia traerPorID(String id) {
+        return PciaRepo.getById(id);
+    }
 }

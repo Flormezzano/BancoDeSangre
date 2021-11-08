@@ -3,6 +3,7 @@ package com.BancoDeSangre1.BancoDeSangre1.entidades;
 import com.BancoDeSangre1.BancoDeSangre1.Enums.Roles;
 import com.BancoDeSangre1.BancoDeSangre1.Enums.Sexo;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,7 +11,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -26,7 +30,7 @@ public class Persona implements Serializable{
     private String nombre;
     private String apellido;
 //    @Temporal(TemporalType.DATE)
-//    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String date;
     @Enumerated(EnumType.STRING)
     private Sexo sexo;

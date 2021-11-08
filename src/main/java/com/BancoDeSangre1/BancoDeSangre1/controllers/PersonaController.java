@@ -48,15 +48,12 @@ public class PersonaController {
     }
 
     @PostMapping("/registrar")
-<<<<<<< HEAD
     public String registro(ModelMap model, @ModelAttribute("persona") Persona persona) {
-=======
-    public String registro(ModelMap model, @ModelAttribute Persona persona) {
->>>>>>> ef0a40acc7e516d53e2636a17d738812cad4e1ba
         try {
             personaServ.Registro(persona);
             return "inicioUsuario";
         } catch (Exception e) {
+            e.printStackTrace();
             model.addAttribute("persona", persona);
             model.put("error", e.getMessage());
             return "modelRegistro";

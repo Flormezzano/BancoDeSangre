@@ -11,6 +11,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/css/style.css" type="text/css"/>
+
         <title>Registro</title>
     </head>
     <body>
@@ -18,79 +20,7 @@
             <div class="img-registro">
                 <div class="form-container form-registro">
                     <h3 class="login"> Registro</h3>
-<<<<<<< HEAD
-                    <form action="/persona/registrar" method="POST">
-                        <div class="campo-registro">
-                            <label  class="label-registro">Nombre</label>
-                            <input class="input-registro" type="text" required>
-                        </div>
-                        <div class="campo-registro">
-                            <label  class="label-registro">Apellido</label>
-                            <input class="input-registro" type="text" required>
-                        </div>
-                        <div class="campo-registro">
-                            <label  class="label-registro">Fecha de Nacimiento</label>
-                            <input class="input-registro" type="date" required>
-                        </div>
-                        <div class="campo-registro">
-                            <label class="label-registro">Sexo</label>
-                            <select class="input-registro select-registro" required>
-                                <option disabled selected> Seleccionar</option>
-                                <option></option>
-                                <option>Femenino</option>
-                                <option>Otro</option>
-                            </select>
-                        </div>
 
-                        <div class="campo-registro" >
-                            <!--                            <label  class="label-registro">Tipo de Sangre</label>
-                                                        <select class="input-registro select-registro" required>
-                                                            <option disabled selected>Seleccionar</option>
-                                                            <option th:each="t:${sangre}" th:text="${t.nombre}" th:value="${t.nombre}"></option>-->
-                            <input class="form txt2" list="datalistSangre" id="exampleDataList" placeholder="Insertar Tipo de Sangre" name="sangre">
-                            <datalist id="datalistSangre">
-                                <select>
-                                    <option th:each="t : ${sangre}" th:text="${t.nombre}" th:value="${t.nombre}"></option>
-                                </select>
-                            </datalist>
-                            <!--</select>-->
-                        </div>
-
-                        <div class="campo-registro">
-                            <label  class="label-registro">Provincia</label>
-                            <select class="input-registro select-registro" required>
-                                <option disabled selected>Seleccionar</option>
-                                <option>Santa Fe</option>
-                            </select>
-                        </div>
-
-                        <div class="campo-registro">
-                            <label  class="label-registro">Ciudad</label>
-                            <select class="input-registro select-registro" required>
-                                <option disabled selected >Seleccionar</option>
-                                <option th:each="c : ${ciudades}" th:text="${c.nombre}" th:value="${c.nombre}">
-                            </select>
-                        </div>
-                        <div class="campo-registro">
-                            <label  class="label-registro">Donante</label>
-                            <div class="flex-config">
-                                <span class="span-registro">Si</span><input class="donante-registro" type="radio" name="donar">
-                                <span class="span-registro">No</span><input class="donante-registro" type="radio" name="donar">
-                            </div>
-                        </div>
-                        <div class="campo-registro">
-                            <label  class="label-registro">Mail</label>
-                            <input class="input-registro" type="email" required>
-                        </div>
-                        <div class="campo-registro">
-                            <label class="label-registro">Contraseña</label>
-                            <input class="input-registro" type="password" required>
-                        </div>
-
-                        <div class="campo-registro">
-                            <label  class="label-registro">Repetir Contraseña</label>
-                            <input class="input-registro"type="password" required>
-=======
                     <form action="/persona/registrar" method="POST" th:object="${persona}">
                         <p th:if="${error != null}" th:text="${error}" id="exception"></p>
                         <input hidden th:field="*{id}">
@@ -117,29 +47,24 @@
 
                         <div class="campo-registro" >
                             <label  class="label-registro">Tipo de Sangre</label>
-                            <input class="form txt2 input-registro select-registro" list="datalistTipo" id="exampleDataList" placeholder="Seleccionar" name="tipoSangre" th:field="*{tipo}"  required>
-                            <datalist id="datalistTipo">
-                                <select th:field="*{tipo.nombre}">
-                                <option th:each="t : ${sangre}" th:text="${t.id}" th:value="${t.nombre}">
-                                    </select>
-                            </datalist>
+                            <select th:field="*{tipo.id}" class="form txt2 input-registro select-registro" placeholder="Seleccionar" name="Tipo de Sangre" required>
+                                <option th:each="t : ${sangre}" th:text="${t.nombre}" th:value="${t.id}">
+                            </select>
                         </div>
 
                         <div class="campo-registro">            
                             <label  class="label-registro">Provincia</label>
-                            <input class="form txt2 input-registro select-registro" list="datalistProvincia" id="exampleDataList" placeholder="Seleccionar" name="provincia" th:field="*{provincia}"  required>
-                            <datalist id="datalistProvincia">
-                                <option th:each="p : ${provincias}" th:text="${p.nombre}" th:value="${p.nombre}">
-                            </datalist>
+                            <select th:field="*{provincia.id}" class="form txt2 input-registro select-registro" placeholder="Seleccionar" name="Provincia" required>
+                                <option th:each="p : ${provincias}" th:text="${p.nombre}" th:value="${p.id}">
+                            </select>
                         </div>
 
                         <div class="campo-registro">
 
                             <label  class="label-registro">Ciudad</label>
-                            <input class="form txt2 input-registro select-registro" list="datalistCiudad" id="exampleDataList" placeholder="Seleccionar" name="ciudad" th:field="*{ciudad}"  required>
-                            <datalist id="datalistCiudad">
-                                <option th:each="c : ${ciudades}" th:text="${c.nombre}" th:value="${c.nombre}">
-                            </datalist>
+                            <select th:field="*{ciudad.id}" class="form txt2 input-registro select-registro" placeholder="Seleccionar" name="Ciudad" required>
+                                <option th:each="c : ${ciudades}" th:text="${c.nombre}" th:value="${c.id}">
+                            </select>
                         </div>
                         <div class="campo-registro">
                             <label  class="label-registro">Donante</label>
@@ -160,7 +85,6 @@
                         <div class="campo-registro">
                             <label  class="label-registro">Repetir Contraseña</label>
                             <input class="input-registro"type="password" th:field="*{contrasenia2}" id="input" required>
->>>>>>> ef0a40acc7e516d53e2636a17d738812cad4e1ba
                         </div> 
                         <div class="btn-centrado btn-margen-top">
                             <button type="submit" class="btn btn-success ">Registrarse</button>

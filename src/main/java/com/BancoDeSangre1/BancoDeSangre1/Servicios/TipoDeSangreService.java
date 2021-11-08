@@ -29,4 +29,8 @@ public class TipoDeSangreService {
      List<TipoDeSangre> sangre = TipoDeSangreRepositorio.findAll();
       return sangre;
     }
+    
+    public TipoDeSangre traerPorID(String id) {
+        return TipoDeSangreRepositorio.getById(id);
+    }
 }
