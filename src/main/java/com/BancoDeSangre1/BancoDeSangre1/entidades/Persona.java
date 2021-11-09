@@ -31,10 +31,10 @@ public class Persona implements Serializable{
     private String apellido;
 //    @Temporal(TemporalType.DATE)
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Integer edad;
     private String date;
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
-    private Integer edad;
     private String mail;
     private String contrasenia1;
     private String contrasenia2;
@@ -54,10 +54,13 @@ public class Persona implements Serializable{
     public Persona() {
     }
 
-    public Persona(String id, String nombre, String apellido, String date, Sexo sexo,Integer edad, String mail, String contrasenia1, String contrasenia2, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante, Boolean alta, Roles rol) {
+
+    public Persona(String id, String nombre, String apellido,Integer edad, String date, Sexo sexo, String mail, String contrasenia1, String contrasenia2, TipoDeSangre tipo, Provincia provincia, Ciudad ciudad, Boolean donante, Boolean alta, Roles rol) {
+
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.edad = edad;
         this.date = date;
         this.edad = edad;
         this.sexo = sexo;
@@ -94,6 +97,14 @@ public class Persona implements Serializable{
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
     }
 
     public String getDate() {
@@ -184,12 +195,6 @@ public class Persona implements Serializable{
         this.rol = rol;
     }
 
-    public Integer getEdad() {
-        return edad;
-    }
-
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
+   
     
 } 
