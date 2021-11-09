@@ -10,12 +10,43 @@
   --ColorRojo: #d30e02
   --ColorBackground: rgb(0, 0, 0, 0.65)
 
+<<<<<<< HEAD:src/main/resources/static/css/style.css
   --FuenteMartel: "Martel Sans", sans-serif
   --FuenteCoolvetica: "Coolvetica"
   --FuenteHeaters: "Heaters"
   --FuenteMagra: "Magra", "Regular"
   --FuenteOpenSans: "Open Sans", sans-serif
+=======
+  --FuenteMartel: "Martel Sans", sans-serif
+  --FuenteOpenSans: "Open Sans", sans-serif
+  --FuenteCoolvetica: "Coolvetica"
+  --FuenteHeaters: "Heaters"
+  --FuenteMagra: "Magra", "Regular"
+>>>>>>> d076bfafe670f8bfd9176b13da2b7e0c0490d35c:src/main/static/css/style.css
 }
+
+@font-face {
+  font-family: "Coolvetica";
+  src: url(../fonts/coolvetica\ rg.ttf);
+}
+@font-face {
+  font-family: "Heaters";
+  src: url('../fonts/Heaters.otf');
+}
+@font-face {
+  font-family: "Magra";
+  src: url(../fonts/Magra-Regular.ttf);
+}
+@font-face {
+  font-family: "Homemade Apple";
+  src: url("../fonts/HomemadeApple-Regular.ttf");
+}
+
+html{
+  position: relative;
+  min-height: 100%;
+}
+
 /***Generales**/
 /*botones*/
 .btn-centrado {
@@ -83,22 +114,20 @@ section {
   position: relative;
   height: 100vh;
   width: 100%;
-  background: url("../img/sangre.jpg");
-  background-size: cover;
-  background-position: center center;
 }
 
-/**Formulario**/
-.form-container {
+/*Inicio de Sesión*/
+.form-container-usuario{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6));
-  width: 420px;
-  padding: 40px 30px;
+  width: 620px;
+  padding: 60px 50px;
   box-shadow: 7px 7px 60px #000000;
 }
+
 .login {
   /* text-transform: uppercase; */
   font-family: var(--FuenteOpenSans);
@@ -115,12 +144,21 @@ section {
 .control input {
   width: 100%;
   display: block;
-  padding: 8px;
+  padding: 10px;
   margin-bottom: 20px;
+}
+input[placeholder]{
+  font-size: 18px;
 }
 .checkbox {
   color: var(--ColorBlanco);
+  font-size: 22px;
 }
+.btn-ingresar{
+  font-size: 24px !important;
+}
+
+
 /* informacion */
 .margin-bot {
   margin-bottom: 100px;
@@ -131,7 +169,7 @@ section {
 .titulo-general {
   text-align: center;
   text-transform: uppercase;
-  font-family: var(--FuenteCoolvetica);
+  font-family: "Coolvetica";
   margin: 30px 0px;
   color: var(--ColorVerdePrincipal);
 }
@@ -175,7 +213,7 @@ section {
   color: var(--ColorBlanco);
   font-size: 96px;
   line-height: 80px;
-  font-family: var(--FuenteHeaters);
+  font-family: "Heaters";
   text-align: center;
 }
 .btn-rojo {
@@ -212,10 +250,19 @@ section {
 h4 {
   text-align: center;
 }
+.h4-red{
+  color: var(--ColorVerdePrincipal);
+  font-weight: bold;
+}
+.p-red{
+  color: var(--ColorVerdePrincipal);
+  text-align: left;
+  font-weight: bold;
+}
 /* footer */
 .footer {
   background-color: var(--ColorFooter);
-  padding: 18px;
+  padding: 12px;
 }
 .derechos-footer {
   font-size: 24px;
@@ -234,31 +281,35 @@ h4 {
 }
 
 /*Registro*/
-.bg-registro{
-  background-color:#c0c0c0a4;
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6));
+  width: 470px;
+  padding: 50px 40px;
+  box-shadow: 7px 7px 60px #000000;
 }
-.img-registro{
+.modal-img{
   background-image: url(../img/Superheroe-registro.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100vh;
-  height: 100vh;
   margin-left: auto;
   margin-right: auto;
-
 }
 .form-registro{
-  height:750px;
+  height: 900px;
 }
 .label-registro{
   color: var(--ColorBlanco);
   text-align: left;
   font-family: var(--FuenteOpenSans);
-  font-size: 17px;
+  font-size: 18px;
 }
 .campo-registro{
-  margin: 20px 0px; 
+  margin: 30px 0px; 
 }
 .campo-registro p{
   text-align: center;
@@ -271,7 +322,157 @@ h4 {
 .span-registro{
   color: var(--ColorBlanco);
 }
-.btn-margen-top{
-  margin-top: 50px;
+.btn-registro{
+  padding: 15px !important;
+  font-size: 20px !important;
 }
+.btn-margen-top{
+  margin-top: 60px;
+}
+
+/* USUARIO */
+.margin-bottom30{
+  margin-bottom: 30px;
+}
+.titulo-usuario{
+  font-family: var(--FuenteOpenSans);
+  font-size: 70px;
+  text-align: center;
+  margin-top: 40px;
+}
+.btn-usuario{
+  padding: 20px 30px !important;
+}
+.titulo-requisitos{
+  font-family: var(--FuenteMartel);
+  font-size: 36px;
+  text-align: center;
+  color: var(--ColorVerdePrincipal);
+
+}
+.lista-requisitos{
+  font-family: var(--FuenteOpenSans);
+  font-size: 20px;
+  margin: 5px 0px; 
+  line-height: 3;
+}
+.flex-config2{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.pie-usuario{
+  font-family: var(--FuenteOpenSans);
+  text-align: center;
+  font-size: 30px;
+  color: var(--ColorVerdePrincipal);
+  margin: 60px 0px 20px 0px;
+  font-weight: 700;
+}
+
+/* PAGINA DE LISTA DE DONANTES */
+/* Lista */
+.atributos-lista {
+  font-family: var(--FuenteOpenSans);
+  font-size: 24px;
+}
+.button-contactar {
+  padding: 10px 30px !important;
+  font-size: 24px;
+}
+/* iconos */
+.iconos-lista{
+  margin: 0px 50px;
+}
+.iconos-pag {
+  text-align: center;
+}
+.nav-lista {
+  margin: 30px 15px 15px 0px !important ;
+}
+.footer-bajo{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/*Nosotros*/
+.margen-nosotros{
+  margin: 10px 0px 150px 0px;
+}
+.texto-nosotros{
+  width: 1000px;
+}
+.parrafo-nosotros{
+  text-align: justify;
+  font-family: var(--FuenteMartel);
+  font-size: 20px;
+}
+.grid-4{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  text-align: center;
+  margin: 100px 40px 20px 40px;
+  align-items: center;
+}
+/*Banner- nosotros*/
+.banner-nosotros{
+  margin: 20px 0px;
+  background-color: var(--ColorRojo);
+  padding: 20px;
+}
+.slogan-nosotros{
+  text-align: center;
+  color: var(--ColorBlanco);
+  font-size: 36px;
+  font-family: "Homemade Apple";
+}
+/*Formulario-nosotros*/
+.img-nosotros{
+  background-image: url(../img/contactanos.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:  100vh;
+  width: 100%;
+}
+.form-nosotros{
+  width: 872px;
+  height: 850px;  
+}
+.label-nosotros{
+  color: var(--ColorBlanco);
+  text-align: center;
+  font-family: var(--FuenteOpenSans);
+  font-size: 25px;
+}
+.input-nosotros{
+  width: 100%;
+}
+.mensaje{
+  float: top;
+}
+.btn-nosotros{
+  margin-top: 20px;
+  padding: 15px 45px !important;
+  font-size: 24px !important;
+}
+
+/*Error*/
+.bg-error{
+  background-color: var(--ColorFooter);
+}
+.img-error{
+  text-align: center;
+}
+
+.text-error{
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ColorAmarillo);
+  font-size: 40px;
+}
+
+
 
