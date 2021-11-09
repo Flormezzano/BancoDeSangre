@@ -54,9 +54,8 @@
   text-transform: uppercase;
 }
 .imagen {
-  background-image: url("../img/index.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 500px;
+  width: 430px;
 }
 .logotipo {
   width: 50px;
@@ -77,15 +76,6 @@
 }
 .letras {
   font-size: 24px;
-}
-/*  Slider */
-section {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  background: url("../img/sangre.jpg");
-  background-size: cover;
-  background-position: center center;
 }
 
 /**Formulario**/
@@ -134,32 +124,10 @@ section {
   margin: 30px 0px;
   color: var(--ColorVerdePrincipal);
 }
-.p-informacion {
+.text-tds {
   font-family: var(--FuenteMartel);
-  font-size: 18px;
-  text-align: center;
-  padding: 20px 20px 0px 20px;
-  margin-right: 40px;
 }
-.img-informacion {
-  height: 30%;
-  width: 30%;
-  margin-right: 30px;
-  transform: rotate(10deg);
-}
-/* Mas info */
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 20px;
-  text-align: center;
-}
-.p-info {
-  font-family: var(--FuenteMartel);
-  font-size: 18px;
-  text-align: center;
-  margin: 30px;
-}
+
 /* Banner */
 .banner {
   background-color: var(--ColorRojo);
@@ -172,8 +140,8 @@ section {
 }
 .slogan {
   color: var(--ColorBlanco);
-  font-size: 96px;
-  line-height: 80px;
+  font-size: 56px;
+  line-height: 40px;
   font-family: var(--FuenteHeaters);
   text-align: center;
 }
@@ -187,30 +155,7 @@ section {
   font-size: 25px;
   color: var(--ColorBlanco);
 }
-/* Tipos de sangre */
-.tds-general {
-  margin-bottom: 50px;
-}
-.img-tds {
-  margin: 30px;
-}
-.img-tds2 {
-  margin-left: 60px;
-  margin-top: 20px;
-}
-.text-tds {
-  text-align: center;
-  font-family: var(--FuenteMartel);
-  font-size: 18px;
-  line-height: 2;
-  height: 939px;
-}
-.text-tds h4 {
-  text-transform: uppercase;
-}
-h4 {
-  text-align: center;
-}
+
 /* footer */
 .footer {
   background-color: var(--ColorFooter);
@@ -231,3 +176,4 @@ h4 {
 .iconos {
   margin-top: 45px;
 }
+.grid-3
