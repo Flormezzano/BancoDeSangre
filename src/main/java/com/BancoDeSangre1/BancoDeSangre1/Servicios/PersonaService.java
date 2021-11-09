@@ -58,14 +58,14 @@ public class PersonaService implements UserDetailsService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); //LO Puse general para que Sprint lo trabaje y pueda usarlo en los dos metodos
         persona.setNombre(persona.getNombre());
         persona.setApellido(persona.getApellido());
-        
-//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        persona.setEdad(calcularEdad(persona));
+
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 //        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 //        String fechaString = persona.getDate();
 //        LocalDate fechaNac = LocalDate.parse(fechaString, fmt);
 //        ZoneId defaultZoneId = ZoneId.systemDefault();
 //        Date fechaDate = Date.from(fechaNac.atStartOfDay(defaultZoneId).toInstant());
-
         persona.setDate(persona.getDate());
         persona.setSexo(persona.getSexo());
 
@@ -76,12 +76,13 @@ public class PersonaService implements UserDetailsService {
             throw new ExceptionService("Lo sentimos, este mail está en uso");
         }
 
-        persona.setContrasenia1(encoder.encode(persona.getContrasenia1()));
-//        if (persona.getContrasenia1().equals(persona.getContrasenia2())) {
+        if (persona.getContrasenia1().equals(persona.getContrasenia2())) {
+            persona.setContrasenia1(encoder.encode(persona.getContrasenia1()));
             persona.setContrasenia2(encoder.encode(persona.getContrasenia2()));
-//        } else {
-//            throw new ExceptionService("Las contraseñas no coinciden");
-//        }
+        } else {
+            throw new ExceptionService("Las contraseñas no coinciden");
+        }
+
         TipoDeSangre tipoSangre = tipoSangreServise.traerPorID(persona.getTipo().getId());
         persona.setTipo(tipoSangre);
         Provincia provincia = provinciaServise.traerPorID(persona.getProvincia().getId());
@@ -89,12 +90,12 @@ public class PersonaService implements UserDetailsService {
         Ciudad ciudad = ciudadServise.traerPorID(persona.getCiudad().getId());
         persona.setCiudad(ciudad);
 
-//        if (validacioDate(persona) == true) {
+        if (validacioDate(persona) == true) { //VER ESTO QUE NOS FALTA
             persona.setDonante(persona.getDonante());
-//        } else {
+        } else {
             persona.setDonante(false);
             System.out.println("Lo sentimos, no cumple con el requisito de edad para donar sangre");
-//        }
+        }
         persona.setAlta(true);
         persona.setRol(Roles.USER);
         personaRepositorio.save(persona);
@@ -108,6 +109,7 @@ public class PersonaService implements UserDetailsService {
             persona = respuesta.get();
             persona.setNombre(persona.getNombre());
             persona.setApellido(persona.getApellido());
+            persona.setEdad(calcularEdad(persona));
             persona.setDate(persona.getDate());
             persona.setSexo(persona.getSexo());
 
@@ -118,8 +120,8 @@ public class PersonaService implements UserDetailsService {
                 throw new ExceptionService("Lo sentimos, este mail está en uso");
             }
 
-            persona.setContrasenia1(encoder.encode(persona.getContrasenia1()));
             if (persona.getContrasenia1().equals(persona.getContrasenia2())) {
+                persona.setContrasenia1(encoder.encode(persona.getContrasenia1()));
                 persona.setContrasenia2(encoder.encode(persona.getContrasenia2()));
             } else {
                 throw new ExceptionService("Las contraseñas no coinciden");
@@ -132,13 +134,13 @@ public class PersonaService implements UserDetailsService {
             Ciudad ciudad = ciudadServise.traerPorID(persona.getCiudad().getId());
             persona.setCiudad(ciudad);
 
-//            if (validacioDate(persona) == true) {
+            if (validacioDate(persona) == true) { //VER ESTO QUE NOS FALTA
                 persona.setDonante(persona.getDonante());
-//            } else {
+            } else {
                 persona.setDonante(false);
                 System.out.println("Lo sentimos, no cumple con el requisito de edad para donar sangre");
-//            }
-
+            }
+           
             personaRepositorio.save(persona);
         } else {
             throw new ExceptionService("No se encuentra el usuario");
@@ -167,12 +169,13 @@ public class PersonaService implements UserDetailsService {
 //            throw new ExceptionService("El mail ingresado no se encuentra registrado");
 //        }
 //    }
+    
     public void recuperarContrasenia(Persona persona) throws ExceptionService {
         Persona mail = personaRepositorio.mail(persona.getMail());
         if (mail != null) {
-            mail.setContrasenia1(persona.getContrasenia1());
             if (mail.getContrasenia1().equals(persona.getContrasenia2())) {
-                mail.setContrasenia2(persona.getContrasenia2());
+                mail.setContrasenia1(encoder.encode(persona.getContrasenia1()));
+                mail.setContrasenia2(encoder.encode(persona.getContrasenia2()));
                 personaRepositorio.save(mail);
             } else {
                 throw new ExceptionService("Las contraseñas no coinciden");
@@ -241,42 +244,42 @@ public class PersonaService implements UserDetailsService {
         }
     }
 
-//    private Boolean validacioDate(Persona persona) throws ExceptionService {
-//        Boolean donante = false;
-//
-//        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//        LocalDate fechaNac = LocalDate.parse(persona.getDate(), fmt);
-//        LocalDate ahora = LocalDate.now();
-//        Period periodo = Period.between(fechaNac, ahora);
-//        if (periodo.getYears() > 18 && periodo.getYears() < 65) {
-//            donante = true;
-//        } else {
-//            throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
-//        }
-//        return donante;
-        //    private Boolean validacioDate(Persona persona) throws ExceptionService {
-        //        Boolean donante = false;
-        //        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        //        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        //        String fechaString = sdf.format(persona.getDate());
-        //        LocalDate fechaNac = LocalDate.parse(fechaString, fmt);
-        //        LocalDate ahora = LocalDate.now();
-        //        Period periodo = Period.between(fechaNac, ahora);
-        //        if (periodo.getYears() > 18 && periodo.getYears() < 65) {
-        //            donante = true;
-        //        } else {
-        //            throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
-        //        }
-        //        return donante;
-//    }
+    private Integer calcularEdad(Persona persona) {
 
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate fechaNac = LocalDate.parse(persona.getDate(), fmt);
+        LocalDate ahora = LocalDate.now();
+
+        Period periodo = Period.between(fechaNac, ahora);
+
+        return periodo.getYears();
+    }
+
+    private Boolean validacioDate(Persona persona) throws ExceptionService { //VER QUE TODAVIA NOS FALTA
+        Boolean donante = false;
+
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate fechaNac = LocalDate.parse("1999/06/02", fmt);
+        LocalDate ahora = LocalDate.now();
+
+        Period periodo = Period.between(fechaNac, ahora);
+
+        if (periodo.getYears() > 18 && periodo.getYears() < 65) {
+            donante = true;
+        } else {
+            throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
+        }
+        return donante;
+    }
+    
     public List<Sexo> sexo() {
         List<Sexo> sexos = Arrays.asList(Sexo.values());
         return sexos;
     }
 
+    
     @Override
-    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException { // VERIFICAR SI ESTA BIEN TERMINADO
         try {
             Persona persona = personaRepositorio.mail(mail);
             UserBuilder user;
@@ -286,6 +289,7 @@ public class PersonaService implements UserDetailsService {
         } catch (Exception e) {
             throw new UsernameNotFoundException("El mail no existe");
         }
+        
         //             if(persona != null){
         //                 user = User.withUsername(mail);
         //                 user.disabled(false);
