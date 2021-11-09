@@ -33,6 +33,7 @@
   font-family: "Homemade Apple";
   src: url("../fonts/HomemadeApple-Regular.ttf");
 }
+
 html {
   position: relative;
   min-height: 100%;
@@ -105,22 +106,20 @@ section {
   position: relative;
   height: 100vh;
   width: 100%;
-  background: url("../img/sangre.jpg");
-  background-size: cover;
-  background-position: center center;
 }
 
-/**Formulario**/
-.form-container {
+/*Inicio de Sesión*/
+.form-container-usuario {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6));
-  width: 420px;
-  padding: 40px 30px;
+  width: 620px;
+  padding: 60px 50px;
   box-shadow: 7px 7px 60px #000000;
 }
+
 .login {
   /* text-transform: uppercase; */
   font-family: var(--FuenteOpenSans);
@@ -137,12 +136,20 @@ section {
 .control input {
   width: 100%;
   display: block;
-  padding: 8px;
+  padding: 10px;
   margin-bottom: 20px;
+}
+input[placeholder] {
+  font-size: 18px;
 }
 .checkbox {
   color: var(--ColorBlanco);
+  font-size: 22px;
 }
+.btn-ingresar {
+  font-size: 24px !important;
+}
+
 /* informacion */
 .margin-bot {
   margin-bottom: 100px;
@@ -234,6 +241,15 @@ section {
 h4 {
   text-align: center;
 }
+.h4-red {
+  color: var(--ColorVerdePrincipal);
+  font-weight: bold;
+}
+.p-red {
+  color: var(--ColorVerdePrincipal);
+  text-align: left;
+  font-weight: bold;
+}
 /* footer */
 .footer {
   background-color: var(--ColorFooter);
@@ -256,6 +272,19 @@ h4 {
 }
 
 /*Registro*/
+
+.modal-img {
+}
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6));
+  width: 470px;
+  padding: 50px 40px;
+  box-shadow: 7px 7px 60px #000000;
+}
 .modal-img {
   background-image: url(../img/Superheroe-registro.jpg);
   background-position: center center;
@@ -264,6 +293,7 @@ h4 {
   margin-left: auto;
   margin-right: auto;
 }
+
 .form-registro {
   height: 750px;
 }
@@ -271,8 +301,9 @@ h4 {
   color: var(--ColorBlanco);
   text-align: left;
   font-family: var(--FuenteOpenSans);
-  font-size: 17px;
+  font-size: 18px;
 }
+
 .campo-registro {
   margin: 20px 0px;
 }
@@ -290,6 +321,13 @@ h4 {
 .btn-margen-top {
   margin-top: 50px;
 }
+.btn-registro {
+  padding: 15px !important;
+  font-size: 20px !important;
+}
+.btn-margen-top {
+  margin-top: 60px;
+}
 
 /* USUARIO */
 .margin-bottom30 {
@@ -299,7 +337,7 @@ h4 {
   font-family: var(--FuenteOpenSans);
   font-size: 70px;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 .btn-usuario {
   padding: 20px 30px !important;
@@ -312,8 +350,10 @@ h4 {
 }
 .lista-requisitos {
   font-family: var(--FuenteOpenSans);
-  font-size: 18px;
+
+  font-size: 20px;
   margin: 5px 0px;
+
   line-height: 3;
 }
 .flex-config2 {
@@ -324,16 +364,16 @@ h4 {
 .pie-usuario {
   font-family: var(--FuenteOpenSans);
   text-align: center;
-  font-size: 24px;
+  font-size: 30px;
   color: var(--ColorVerdePrincipal);
-  margin-bottom: 20px;
+  margin: 60px 0px 20px 0px;
   font-weight: 700;
 }
 
 /* PAGINA DE LISTA DE DONANTES */
 /*Filtros*/
-.filtros{
-   align-items: center !important;
+.filtros {
+  align-items: center !important;
 }
 /* Lista */
 .atributos-lista {
@@ -358,4 +398,82 @@ h4 {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+/*Nosotros*/
+.margen-nosotros {
+  margin: 10px 0px 150px 0px;
+}
+.texto-nosotros {
+  width: 1000px;
+}
+.parrafo-nosotros {
+  text-align: justify;
+  font-family: var(--FuenteMartel);
+  font-size: 20px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  text-align: center;
+  margin: 100px 40px 20px 40px;
+  align-items: center;
+}
+/*Banner- nosotros*/
+.banner-nosotros {
+  margin: 20px 0px;
+  background-color: var(--ColorRojo);
+  padding: 20px;
+}
+.slogan-nosotros {
+  text-align: center;
+  color: var(--ColorBlanco);
+  font-size: 36px;
+  font-family: "Homemade Apple";
+}
+/*Formulario-nosotros*/
+.img-nosotros {
+  background-image: url(../img/contactanos.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+.form-nosotros {
+  width: 872px;
+  height: 850px;
+}
+.label-nosotros {
+  color: var(--ColorBlanco);
+  text-align: center;
+  font-family: var(--FuenteOpenSans);
+  font-size: 25px;
+}
+.input-nosotros {
+  width: 100%;
+}
+.mensaje {
+  float: top;
+}
+.btn-nosotros {
+  margin-top: 20px;
+  padding: 15px 45px !important;
+  font-size: 24px !important;
+}
+
+/*Error*/
+.bg-error {
+  background-color: var(--ColorFooter);
+}
+.img-error {
+  text-align: center;
+}
+
+.text-error {
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ColorAmarillo);
+  font-size: 40px;
 }
