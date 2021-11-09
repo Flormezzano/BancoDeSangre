@@ -27,4 +27,13 @@ public class CiudadService {
     public List<Ciudad> listaProvinciaPorNombre(String nombre){
         return ciudadReposiotrio.listaProvinciaPorNombre("%"+nombre+"%");
     }
+    
+    public List<Ciudad> listar(){
+     List<Ciudad> ciudades = ciudadReposiotrio.findAll();
+      return ciudades;
+    }
+    
+    public Ciudad traerPorID(String id) {
+        return ciudadReposiotrio.getById(id);
+    }
 }
