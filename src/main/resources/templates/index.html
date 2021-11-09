@@ -7,131 +7,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
   <link rel="stylesheet" href="/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <title>Factor Vida</title>
 </head>
 
-<body> 
-  <!-- Navegador -->
+<body>
   <header class="navigator flex">
     <div class="logo-flex">
-      <img class="logotipo" src="img/testcorazonverde1.png">
+      <img class="logotipo" src="/img/testcorazonverde1.png">
+
       <h1 class="titulo">Factor <span class="vida">Vida</span></h1>
+
     </div>
     <nav>
+
       <button type="button" class="btn btn-outline-success button-index"><span class="letras">Nosotros</span></button>
-      <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-outline-success button-index"><span class="letras">Registro</span></button>
+      <button type="button" class="btn btn-outline-success button-index"><span class="letras">Registro</span></button>
     </nav>
   </header>
 
-<!-- ModalRegistro  -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-img">
-    <div class="modal-content modal-img ">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        
-        <!-- formularioRegistro -->
-        <section>
-          <div>
-              <div class="form-container form-registro">
-                  <h3 class="login"> Registro</h3>
-                  <form action="#">
-                      <div class="campo-registro">
-                          <label  class="label-registro">Nombre</label>
-                          <input class="input-registro" type="text" required>
-                      </div>
-                      <div class="campo-registro">
-                          <label  class="label-registro">Apellido</label>
-                          <input class="input-registro" type="text" required>
-                      </div>
-                      <div class="campo-registro">
-                          <label  class="label-registro">Fecha de Nacimiento</label>
-                          <input class="input-registro" type="date" required>
-                      </div>
-                      <div class="campo-registro">
-                          <label class="label-registro">Sexo</label>
-                          <select class="input-registro select-registro" required>
-                              <option disabled selected> Seleccionar</option>
-                              <option>Masculino</option>
-                              <option>Femenino</option>
-                              <option>Otro</option>
-                          </select>
-                      </div>
-  
-                      <div class="campo-registro" >
-                          <label  class="label-registro">Tipo de Sangre</label>
-                          <select class="input-registro select-registro" required>
-                              <option disabled selected>Seleccionar</option>
-                              <option>O (Positivo)</option>
-                          </select>
-                      </div>
-  
-                      <div class="campo-registro">
-                          <label  class="label-registro">Provincia</label>
-                          <select class="input-registro select-registro" required>
-                              <option disabled selected>Seleccionar</option>
-                              <option>Santa Fe</option>
-                          </select>
-                      </div>
-  
-                      <div class="campo-registro">
-                          <label  class="label-registro">Ciudad</label>
-                          <select class="input-registro select-registro" required>
-                              <option disabled selected >Seleccionar</option>
-                              <option>Rosario</option>
-                          </select>
-                      </div>
-                      <div class="campo-registro">
-                          <label  class="label-registro">Donante</label>
-                          <div class="flex-config">
-                              <span class="span-registro">Si</span><input class="donante-registro" type="radio" name="donar">
-                              <span class="span-registro">No</span><input class="donante-registro" type="radio" name="donar">
-                          </div>
-                      </div>
-                      <div class="campo-registro">
-                          <label  class="label-registro">Mail</label>
-                          <input class="input-registro" type="email" required>
-                      </div>
-                      <div class="campo-registro">
-                          <label class="label-registro">Contraseña</label>
-                          <input class="input-registro" type="password" required>
-                      </div>
-  
-                      <div class="campo-registro">
-                          <label  class="label-registro">Repetir Contraseña</label>
-                          <input class="input-registro" type="password" required>
-                      </div> 
-                      <div class="btn-centrado btn-margen-top">
-                          <button type="submit" class="btn btn-success btn-registro ">Registrarse</button>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </section>
-      </div>
-    </div>
-  </div>
-</div>
-
   <section>
     <div class="container-slider">
-      <!--Slider -->
+      <!-- Aca va el slider -->
       <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="4000">
-            <img src="/img/slider01.png" class="d-block w-100" alt="slider01">
+            <img src="/img/csm_AdobeStock_langstrup_a76f28be26.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item" data-bs-interval="4000">
-            <img src="/img/slider02.png"class="d-block w-100" alt="slider02">
+            <img src="/img/csm_AdobeStock_langstrup_a76f28be26.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="/img/slider03.png" class="d-block w-100" alt="slider03">
+            <img src="/img/csm_AdobeStock_langstrup_a76f28be26.jpg" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
@@ -147,7 +58,7 @@
       </div>
     </div>
     <!-- Formulario de usuario -->
-    <div class="form-container-usuario">
+    <div class="form-container">
       <h3 class="login">Iniciar Sesión</h3>
       <form action="#">
         <div class="control">
@@ -158,7 +69,7 @@
         </div>
         <span class="checkbox subrayado"><input type="checkbox"> Recordar mail</span>
         <div class="btn-centrado">
-          <button type="button" class="btn btn-success btn-ingresar">Ingresar</button>
+          <button type="button" class="btn btn-success ">Ingresar</button>
         </div>
       </form>
     </div>
@@ -168,44 +79,48 @@
     <h2 class="titulo-general"><span class="subrayado">Información</span></h2>
     <div class="flex container-info">
       <div>
-        <p class="p-informacion">Donar sangre es un acto desinteresado, que contribuye a salvar vidas y a mejorar la salud. Toda comunidad necesita de donaciones regulares, ya que la sangre sólo se puede conservar durante un tiempo limitado. Las donaciones son imprescindibles para garantizar la disponibilidad de sangre segura en el momento y el lugar en que se precise.
+        <p class="p-informacion">Donar sangre es un acto desinteresado, que contribuye a salvar vidas y a mejorar la
+          salud. Toda comunidad
+          necesita de donaciones regulares, ya que la sangre sólo se puede conservar durante un tiempo limitado. Las
+          donaciones son
+          imprescindibles para garantizar la disponibilidad de sangre segura en el momento y el lugar en que se precise.
         </p>
-        <p class="p-informacion"> No hay riesgos de adquirir infecciones por la donación ya que el material que se usa es descartable y manipulado por especialistas.</p>
-        <p class="p-informacion"> Sólo algunas personas presentan malestares luego de la donación, pero, de todos modos la recuperación es generalmente rápida y se puede retomar las tareas diarias inmediatamente.</p>
-        <p class="p-informacion">Antes de la donación, un médico te hará una breve entrevista para determinar que la donación de sangre no pueda afectarte como donante y sea segura para el receptor.</p>
-        <p class="p-informacion">La sangre y los productos sanguíneos seguros, así como su transfusión, son un aspecto fundamental de la atención y la salud pública. 
-        Cada día permiten salvar millones de vidas y mejorar la salud y la calidad de vida de muchos pacientes. 
-        La necesidad de sangre es universal, pero el acceso de todos los que la necesitan no lo es. La escasez de sangre es particularmente aguda en los países en desarrollo.</p>
-        <p class="p-informacion">El Plasma: para plasmaféresis y déficit de factores de coagulación.
-          Las Plaquetas: para leucemias, quimioterapia y grandes hemorragias.
-          Los Glóbulos Rojos: para cirugías, accidentes, hemorragias, trasplante y anemias.
-          El crioprecipitado: para coagulopatías.
-          El Plasma de tu sangre se puede usar para plasmaféresis y déficit de factores de coagulación.
-          Las Plaquetas de tu sangre se pueden usar para leucemias, quimioterapia y grandes hemorragias.</p>
-        <p class="p-informacion">Los Glóbulos Rojos de tu sangre se usan para cirugías, accidentes, hemorragias, trasplante y anemias.
-          El crioprecipitado en tu sangre se utiliza para coagulopatías.</p>
-
+        <p class="p-informacion"> No hay riesgos de adquirir infecciones por la donación ya que el material que se usa
+          es descartable y manipulado por especialistas.</p>
+        <p class="p-informacion"> Sólo algunas personas presentan malestares luego de la donación, pero, de todos modos
+          la recuperación es generalmente rápida y se puede retomar las tareas diarias inmediatamente.</p>
+        <p class="p-informacion">Antes de la donación, un médico te hará una breve entrevista para determinar que la
+          donación de sangre no
+          pueda afectarte como donante y sea segura para el receptor.</p>
       </div>
-      <img class="img-informacion" src="img/DonateEditada.jpg" alt="info-donante">
+      <img class="img-informacion" src="/img/DonateEditada.jpg">
 
     </div>
   </div>
   <!-- + info -->
   <div class="grid-3 ">
     <div>
-      <img class="icono-info" src="img/regalos-solidarios.png">
-      <p class="p-info">Es algo que no se puede fabricar, por eso fomentamos la donación voluntaria. Uno puede salvar hasta 3 personas donando sangre ya que ésta se separa en glóbulos rojos, plaquetas y plasma.</p>
+      <img class="icono-info" src="/img/regalos-solidarios.png">
+      <p class="p-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+        the industry's
+        standard
+        dummy</p>
     </div>
 
     <div>
-      <img class="icono-info" src="img/legados-solidarios.png">
-      <p class="p-info">La Donación Voluntaria de Sangre es una modalidad de donación que involucra, por parte de las personas que donan, un gesto voluntario, anónimo y altruista.</p>
+      <img class="icono-info" src="/img/legados-solidarios.png">
+      <p class="p-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+        the industry's
+        standard
+        dummy</p>
     </div>
 
     <div>
-      <img class="icono-info" src="img/cooperacion.png">
-      <p class="p-info">
-      Por parte del Estado, que promueve esta política, es reconocer el derecho al acceso a sangre (y sus derivados) segura para quienes lo necesitan y el deber del Estado de garantizar ese derecho.</p>
+      <img class="icono-info" src="/img/cooperacion.png">
+      <p class="p-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+        the industry's
+        standard
+        dummy</p>
     </div>
 
   </div>
@@ -228,9 +143,9 @@
 
     <div class="flex-config">
       <div class="img">
-        <img class="img-tds" src="img/tipos-de-sangre.jpg">
+        <img class="img-tds" src="/img/tipos-de-sangre.jpg">
         <h4>En esta tabla te mostramos qué grupos y factores son compatibles</h4>
-        <img class="img-tds2" src="img/tabla-donar.png">
+        <img class="img-tds2" src="/img/Screenshot 2021-10-28 at 17-55-56 Quiénes pueden donar.png">
       </div>
 
       <div class="text-tds">
@@ -253,19 +168,13 @@
           recibir este tipo de sangre.</p>
         <br>
         <h4>Factor Rhesus</h4>
-        <p>Algunos glóbulos rojos tienen factor Rh, también conocido como antígeno RhD. La agrupación Rhesus agrega otra dimensión.
-        Si los glóbulos rojos contienen el antígeno RhD, son RhD positivos. Si no es así, son RhD negativos.</p>
-        <br>
-        <div>
-          <h4 class="h4-red">¿Por qué donar Sangre?</h4>
-          <p class="p-red"> - Porque aún en el siglo XXI la única fuente proveedora de sangre en el mundo es el ser humano. No existe adelanto científico capaz de reemplazarla. <br>
-          - Porque todos los países necesitan un número elevado de unidades de sangre cada día, para atender las necesidades de sus pacientes. En Argentina se requieren 5.000 donantes de sangre por día. <br>
-          - Porque el 90% de las personas necesitaremos, en el transcurso de nuestra vida, sangre para nosotrxs mismxs o para nuestro entorno cercano. <br>
-          - Porque ayuda al abastecimiento permanente de hemocomponentes, ya que la sangre no se puede almacenar por mucho tiempo y se necesitan donantes todos los días y no muchos, una sola vez. <br>
-          - Porque la necesidad de sangre es universal: atraviesa todas las naciones, sexos, culturas, religiones, edades y estratos sociales. <br>
-          - Porque de ese modo, la familia del/la paciente no tiene que ocuparse de conseguirla.</p>
-        </div>
+        <p>Algunos glóbulos rojos tienen factor Rh, también conocido como antígeno RhD. La agrupación Rhesus agrega otra
+          dimensión.
+          Si los glóbulos rojos contienen el antígeno RhD, son RhD positivos. Si no es así, son RhD negativos.</p>
+
       </div>
+
+
     </div>
   </div>
   <!--footer-->

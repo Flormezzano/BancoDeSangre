@@ -10,11 +10,12 @@
   --ColorRojo: #d30e02;
   --ColorBackground: rgb(0, 0, 0, 0.65);
 
-  --FuenteMartel: "Martel Sans", sans-serif;
-  --FuenteOpenSans: "Open Sans", sans-serif;
-  --FuenteCoolvetica: "Coolvetica";
-  --FuenteHeaters: "Heaters";
-  --FuenteMagra: "Magra", "Regular";
+  --FuenteMartel: "Martel Sans", sans-serif
+  --FuenteOpenSans: "Open Sans", sans-serif
+  --FuenteCoolvetica: "Coolvetica"
+  --FuenteHeaters: "Heaters"
+  --FuenteMagra: "Magra", "Regular"
+>>>>>>> 3e904bdcb9716ad684f0c79c52d0489232ff0507
 }
 
 @font-face {
@@ -57,7 +58,7 @@ html {
   justify-content: space-between;
 }
 .subrayado {
-  border-bottom: 2px solid var(--ColorAmarillo);
+  border-bottom: 2px solid var (--ColorAmarillo);
 }
 /* navegacion */
 .navigator {
