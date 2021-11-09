@@ -6,7 +6,6 @@ import com.BancoDeSangre1.BancoDeSangre1.Servicios.ProvinciaService;
 import com.BancoDeSangre1.BancoDeSangre1.Servicios.TipoDeSangreService;
 import com.BancoDeSangre1.BancoDeSangre1.entidades.Persona;
 import com.BancoDeSangre1.BancoDeSangre1.exception.ExceptionService;
-import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,7 +55,7 @@ public class PersonaController {
             e.printStackTrace();
             model.addAttribute("persona", persona);
             model.put("error", e.getMessage());
-            return "modelRegistro";
+            return "redirect:/persona/registrar";
         }
     }
     

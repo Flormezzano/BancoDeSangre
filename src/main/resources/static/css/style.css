@@ -10,19 +10,12 @@
   --ColorRojo: #d30e02
   --ColorBackground: rgb(0, 0, 0, 0.65)
 
-<<<<<<< HEAD:src/main/resources/static/css/style.css
-  --FuenteMartel: "Martel Sans", sans-serif
-  --FuenteCoolvetica: "Coolvetica"
-  --FuenteHeaters: "Heaters"
-  --FuenteMagra: "Magra", "Regular"
-  --FuenteOpenSans: "Open Sans", sans-serif
-=======
+
   --FuenteMartel: "Martel Sans", sans-serif
   --FuenteOpenSans: "Open Sans", sans-serif
   --FuenteCoolvetica: "Coolvetica"
   --FuenteHeaters: "Heaters"
   --FuenteMagra: "Magra", "Regular"
->>>>>>> d076bfafe670f8bfd9176b13da2b7e0c0490d35c:src/main/static/css/style.css
 }
 
 @font-face {
