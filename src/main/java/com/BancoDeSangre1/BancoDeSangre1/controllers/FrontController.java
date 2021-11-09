@@ -32,10 +32,19 @@ public class FrontController {
     return "listaDonantes";
  }
  
-  @GetMapping("/nosotros")
+ @GetMapping("/nosotros")
  public String nosotros(){
     return "nosotros";
  }
  
+ @GetMapping("/modelUsuario")
+ public String modelUsuario(){
+    return "modelUsuario";
+ }
+ 
+  @GetMapping("/error")
+ public String error(){
+    return "error";
+ }
  
 }
