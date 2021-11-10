@@ -56,7 +56,7 @@ public class PersonaController {
             e.printStackTrace();
             model.addAttribute("persona", persona);
             model.put("error", e.getMessage());
-            return "modelRegistro";
+            return "redirect:/persona/registrar";
         }
     }
     
