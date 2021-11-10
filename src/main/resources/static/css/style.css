@@ -1,20 +1,21 @@
 :root {
-  --ColorFooter: #406661;
-  --ColorVerdePrincipal: #0eb29a;
-  --ColorVerdeBtn: #198754;
-  --ColorBlanco: #ffffff;
-  --ColorNegro: #000000;
-  --ColorGrisClaro: #f5f5f5;
-  --ColorGrisOscuro: #c4c4c4;
-  --ColorAmarillo: #face14;
-  --ColorRojo: #d30e02;
-  --ColorBackground: rgb(0, 0, 0, 0.65);
+  --ColorFooter: #406661
+  --ColorVerdePrincipal: #0eb29a
+  --ColorVerdeBtn: #198754
+  --ColorBlanco: #ffffff
+  --ColorNegro: #000000
+  --ColorGrisClaro: #f5f5f5
+  --ColorGrisOscuro: #c4c4c4
+  --ColorAmarillo: #face14
+  --ColorRojo: #d30e02
+  --ColorBackground: rgb(0, 0, 0, 0.65)
 
-  --FuenteMartel: "Martel Sans", sans-serif;
-  --FuenteOpenSans: "Open Sans", sans-serif;
-  --FuenteCoolvetica: "Coolvetica";
-  --FuenteHeaters: "Heaters";
-  --FuenteMagra: "Magra", "Regular";
+
+  --FuenteMartel: "Martel Sans", sans-serif
+  --FuenteOpenSans: "Open Sans", sans-serif
+  --FuenteCoolvetica: "Coolvetica"
+  --FuenteHeaters: "Heaters"
+  --FuenteMagra: "Magra", "Regular"
 }
 
 @font-face {
@@ -60,7 +61,7 @@ html{
   justify-content: space-between;
 }
 .subrayado {
-  border-bottom: 2px solid var(--ColorAmarillo);
+  border-bottom: 2px solid var (--ColorAmarillo);
 }
 /* navegacion */
 .navigator {

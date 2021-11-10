@@ -6,6 +6,7 @@ import com.BancoDeSangre1.BancoDeSangre1.entidades.Provincia;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 @Service
 public class ProvinciaService {
     
@@ -21,4 +22,8 @@ public class ProvinciaService {
      List<Provincia> provincias = PciaRepo.findAll();
       return provincias;
 }
+    
+    public Provincia traerPorID(String id) {
+        return PciaRepo.getById(id);
+    }
 }

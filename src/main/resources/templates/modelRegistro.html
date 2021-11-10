@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,71 +17,69 @@
         <div class="img-registro">
             <div class="form-container form-registro">
                 <h3 class="login"> Registro</h3>
-                <form action="#">
+                <form th:action="@{/persona/registrar}" th:object=${persona} method="POST">
+                    <p th:if="${error != null}" th:text="${error}" id="exception"></p> 
+                    
+                    <input hidden th:field="*{id}">
+                    
                     <div class="campo-registro">
                         <label  class="label-registro">Nombre</label>
-                        <input class="input-registro" type="text" required>
+                        <input class="input-registro" type="text" th:field="*{nombre}" required >
                     </div>
                     <div class="campo-registro">
                         <label  class="label-registro">Apellido</label>
-                        <input class="input-registro" type="text" required>
+                        <input class="input-registro" type="text" th:field="*{apellido}" required>
                     </div>
                     <div class="campo-registro">
                         <label  class="label-registro">Fecha de Nacimiento</label>
-                        <input class="input-registro" type="date" required>
+                        <input class="input-registro" type="date" th:field="*{date}" required>
                     </div>
                     <div class="campo-registro">
                         <label class="label-registro">Sexo</label>
-                        <select class="input-registro select-registro" required>
-                            <option disabled selected> Seleccionar</option>
-                            <option>Masculino</option>
-                            <option>Femenino</option>
-                            <option>Otro</option>
+                        <select class="input-registro select-registro" th:field="*{sexo}" placeholder="Seleccionar" required>
+                            <option th:each="s : ${T(com.BancoDeSangre1.BancoDeSangre1.Enums.Sexo).values()}" th:text="${s}" th:value="${s}">Seleccionar</option>
                         </select>
                     </div>
 
                     <div class="campo-registro" >
                         <label  class="label-registro">Tipo de Sangre</label>
-                        <select class="input-registro select-registro" required>
-                            <option disabled selected>Seleccionar</option>
-                            <option>O (Positivo)</option>
+                        <select class="input-registro select-registro" th:field="*{tipo}"  placeholder="Seleccionar" required>
+                            <option th:each="t : ${sangre}" th:text="${t.nombre}" th:value="${t.id}">Seleccionar</option>
                         </select>
                     </div>
 
                     <div class="campo-registro">
                         <label  class="label-registro">Provincia</label>
-                        <select class="input-registro select-registro" required>
-                            <option disabled selected>Seleccionar</option>
-                            <option>Santa Fe</option>
+                        <select class="input-registro select-registro" th:field="*{provincia}" placeholder="Seleccionar" required>
+                            <option th:each="p : ${provincias}" th:text="${p.nombre}" th:value="${p.id}">Seleccionar</option>
                         </select>
                     </div>
 
                     <div class="campo-registro">
                         <label  class="label-registro">Ciudad</label>
-                        <select class="input-registro select-registro" required>
-                            <option disabled selected >Seleccionar</option>
-                            <option>Rosario</option>
+                        <select class="input-registro select-registro" th:field="*{ciudad}" placeholder="Seleccionar" required>
+                            <option th:each="c : ${ciudades}" th:text="${c.nombre}" th:value="${c.id}">Seleccionar</option>
                         </select>
                     </div>
                     <div class="campo-registro">
                         <label  class="label-registro">Donante</label>
                         <div class="flex-config">
-                            <span class="span-registro">Si</span><input class="donante-registro" type="radio" name="donar">
-                            <span class="span-registro">No</span><input class="donante-registro" type="radio" name="donar">
+                            <span class="span-registro" th:field="*{donante}">Si</span><input class="donante-registro" type="radio" name="donar">
+                            <span class="span-registro" th:field="*{donante}">No</span><input class="donante-registro" type="radio" name="donar">
                         </div>
                     </div>
                     <div class="campo-registro">
                         <label  class="label-registro">Mail</label>
-                        <input class="input-registro" type="email" required>
+                        <input class="input-registro" type="email" th:field="*{mail}" required>
                     </div>
                     <div class="campo-registro">
                         <label class="label-registro">Contraseña</label>
-                        <input class="input-registro" type="password" required>
+                        <input class="input-registro" type="password" th:field="*{contrasenia1}" required>
                     </div>
 
                     <div class="campo-registro">
                         <label  class="label-registro">Repetir Contraseña</label>
-                        <input class="input-registro" type="password" required>
+                        <input class="input-registro" type="password" th:field="*{contrasenia2}" required>
                     </div> 
                     <div class="btn-centrado btn-margen-top">
                         <button type="submit" class="btn btn-success ">Registrarse</button>
