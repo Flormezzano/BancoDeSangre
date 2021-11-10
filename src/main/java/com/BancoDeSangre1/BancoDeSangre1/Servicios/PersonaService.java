@@ -11,15 +11,13 @@ import com.BancoDeSangre1.BancoDeSangre1.entidades.TipoDeSangre;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
@@ -28,6 +26,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  *
@@ -57,13 +57,6 @@ public class PersonaService implements UserDetailsService {
         persona.setNombre(persona.getNombre());
         persona.setApellido(persona.getApellido());
         persona.setEdad(calcularEdad(persona));
-
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-//        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-//        String fechaString = persona.getDate();
-//        LocalDate fechaNac = LocalDate.parse(fechaString, fmt);
-//        ZoneId defaultZoneId = ZoneId.systemDefault();
-//        Date fechaDate = Date.from(fechaNac.atStartOfDay(defaultZoneId).toInstant());
         persona.setDate(persona.getDate());
         persona.setSexo(persona.getSexo());
         
@@ -87,11 +80,10 @@ public class PersonaService implements UserDetailsService {
         persona.setProvincia(provincia);
         Ciudad ciudad = ciudadServise.traerPorID(persona.getCiudad().getId());
         persona.setCiudad(ciudad);
-        if (validacioDate(persona) == true) { //VER ESTO QUE NOS FALTA
+        if (validacioDate(persona) == true) {
             persona.setDonante(persona.getDonante());
         } else {
-            persona.setDonante(false);
-            System.out.println("Lo sentimos, no cumple con el requisito de edad para donar sangre");
+            throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
         }
         persona.setAlta(true);
         persona.setRol(Roles.USER);
@@ -130,11 +122,10 @@ public class PersonaService implements UserDetailsService {
             Ciudad ciudad = ciudadServise.traerPorID(persona.getCiudad().getId());
             persona.setCiudad(ciudad);
 
-            if (validacioDate(persona) == true) { //VER ESTO QUE NOS FALTA
+            if (validacioDate(persona) == true) {
                 persona.setDonante(persona.getDonante());
             } else {
-                persona.setDonante(false);
-                System.out.println("Lo sentimos, no cumple con el requisito de edad para donar sangre");
+                throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
             }
            
             personaRepositorio.save(persona);
@@ -262,11 +253,11 @@ public class PersonaService implements UserDetailsService {
         return periodo.getYears();
     }
 
-    private Boolean validacioDate(Persona persona) throws ExceptionService { //VER QUE TODAVIA NOS FALTA
+    private Boolean validacioDate(Persona persona) throws ExceptionService { 
         Boolean donante = false;
 
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate fechaNac = LocalDate.parse("1999/06/02", fmt);
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate fechaNac = LocalDate.parse(persona.getDate(), fmt);
         LocalDate ahora = LocalDate.now();
 
         Period periodo = Period.between(fechaNac, ahora);
@@ -290,23 +281,18 @@ public class PersonaService implements UserDetailsService {
         try {
             Persona persona = personaRepositorio.mail(mail);
             UserBuilder user;
+            
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(true);
+            session.setAttribute("persona", persona);
+
             List<GrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority("ROLES_" + persona.getRol()));
+            
             return new User(mail, persona.getContrasenia1(), authorities);
         } catch (Exception e) {
             throw new UsernameNotFoundException("El mail no existe");
         }
-        
-        //             if(persona != null){
-        //                 user = User.withUsername(mail);
-        //                 user.disabled(false);
-        //                 user.password(persona.getContrasenia1());
-        //                 user.authorities(new SimpleGrantedAuthority("ROL_USER"));
-        //             }else{
-        //                 throw new UsernameNotFoundException("Mail no existente");
-        //             }
-        //              return user.build();
-
     }
     
 }

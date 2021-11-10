@@ -6,7 +6,6 @@ import com.BancoDeSangre1.BancoDeSangre1.Servicios.ProvinciaService;
 import com.BancoDeSangre1.BancoDeSangre1.Servicios.TipoDeSangreService;
 import com.BancoDeSangre1.BancoDeSangre1.entidades.Persona;
 import com.BancoDeSangre1.BancoDeSangre1.exception.ExceptionService;
-import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/persona")
@@ -48,14 +47,14 @@ public class PersonaController {
     }
 
     @PostMapping("/registrar")
-    public String registro(ModelMap model, @ModelAttribute() Persona persona) {
+    public String registro(ModelMap model, @ModelAttribute() Persona persona, RedirectAttributes redirectAttributes) {
         try {
             personaServ.Registro(persona);
             return "inicioUsuario";
         } catch (Exception e) {
             e.printStackTrace();
-            model.addAttribute("persona", persona);
-            model.put("error", e.getMessage());
+            redirectAttributes.addFlashAttribute("persona", persona); // se usa para pasar los datos al otro controller/Metodo
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
             return "redirect:/persona/registrar";
         }
     }
@@ -73,24 +72,25 @@ public class PersonaController {
         }
     }
     
-    @GetMapping("/login")
-    public String login(Model model, @RequestParam Persona persona, @RequestParam(required = false) String error,@RequestParam(required = false) String mail,@RequestParam(required = false) String logout){
-        if (error!=null) {
-            model.addAttribute("persona", persona);
-            model.addAttribute("error", "El usuario ingresado o la contraseña son incorrectas");
-        }
-        if (mail!=null) {
-            model.addAttribute("mail", mail);
-        }
-        return "index";
-    }
+//    @GetMapping("/login")
+//    public String login(Model model, @RequestParam(required = false) String error, @RequestParam(required = false) String mail,@RequestParam(required = false) String logout){
+//        if (error != null) {
+//            model.addAttribute("error", "El usuario ingresado o la contraseña son incorrectas");
+//        }
+//        if (mail != null) {
+//            model.addAttribute("mail", mail);
+//        }
+//        return "inicioUsuario";
+//    }
     
 //    @PostMapping("/iniciarSesion")
-//    public String iniciar(ModelMap model, @RequestParam Persona persona) {
+//    public String iniciar(ModelMap model, @ModelAttribute() Persona persona) {
 //        try {
+//            System.out.println("+++++++++++++++++++++++++++++++++++++" + persona.getMail());
 //            personaServ.iniciarSesion(persona);
 //            return "inicioUsuario";
 //        } catch (Exception e) {
+//            e.printStackTrace();
 //            model.addAttribute("persona", persona);
 //            model.put("error", e.getMessage());
 //            return "index";

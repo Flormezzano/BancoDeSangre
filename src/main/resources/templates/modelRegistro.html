@@ -18,7 +18,8 @@
                 <div class="form-container form-registro">
                     <h3 class="login"> Registro</h3>
                     <form th:action="@{/persona/registrar}" th:object=${persona} method="POST">
-                        <p th:if="${error != null}" th:text="${error}" id="exception"></p>
+
+                        <p th:if="${error != null}" th:text="${error}" id="exception"></p> 
 
                         <input hidden th:field="*{id}">
 
@@ -62,12 +63,11 @@
                             </select>
                         </div>
                         <div class="campo-registro">
-                            <label  class="label-registro">Donante</label>
+                            <label class="label-registro">Donante</label>
                             <div class="flex-config">
                                 <input class="donante-registro" type="radio" name="donar" th:field="*{donante}" th:text="'Si'" th:value="true">
                                 <input class="donante-registro" type="radio" name="donar" th:field="*{donante}" th:text="'No'" th:value="false">
                             </div>
-
                         </div>
                         <div class="campo-registro">
                             <label  class="label-registro">Mail</label>
