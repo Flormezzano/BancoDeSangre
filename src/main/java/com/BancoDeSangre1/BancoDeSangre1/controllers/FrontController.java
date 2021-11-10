@@ -42,7 +42,7 @@ public class FrontController {
     return "modelUsuario";
  }
  
-  @GetMapping("/error")
+ @GetMapping("/error")
  public String error(){
     return "error";
  }
