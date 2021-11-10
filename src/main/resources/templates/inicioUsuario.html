@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio Usuario</title>
 </head>
+
 <body>
-    
+    <!-- header y botones de arriba -->
+    <header class="navigator flex">
+        <div class="logo-flex">
+            <a href="/"><img class="logotipo" src="/img/testcorazonverde1.png"></a>
+            <a href="/" class="a"><h1 class="titulo">Factor <span class="vida">Vida</span></h1></a>
+
+        </div>
+        <nav>
+            <button type="button" class="btn btn-outline-success button-index"><span class="letras">Mi perfil</span></button>
+            <a href="front/nosotros"><button type="button" class="btn btn-outline-success button-index"><span class="letras">Nosotros</span></button></a>
+            <a href="/"><button type="button" class="btn btn-outline-success button-index"><span class="letras">Cerrar Sesión</span></button></a>
+        </nav>
+    </header>
+
+    <div>
+        <h2 class="titulo-usuario margin-bottom30">¡Bienvenido {nombre}!</h2>
+    </div>
+    <!-- Contenido del centro -->
+    <div class="flex-config2 ">
+        <!-- Botones del centro -->
+        <div>
+            <div class="margin-bot">
+                <button type="button" class="btn btn-success btn-usuario"> ¡Veni a Donar, y salvá cuatro vidas!</button>
+            </div>
+            <div>
+                <a href="donantes"><button type="button" class="btn btn-success btn-usuario">Comenzar busqueda de donadores</button></a>
+            </div>
+        </div>
+
+        <!-- texto del centro -->
+        <div class="margin-bottom30">
+            <h2 class="titulo-requisitos">Requisitos para ser donante</h2>
+            <ul class="lista-requisitos">
+                <li>
+                    Tener entre 18 y 65 años de edad (los menores entre 16 y 18 años, <br> lo pueden hacer con autorización de los padres o tutores y los mayores de 65 años con autorización médica).
+                </li>
+                <li>
+                    Pesar como mínimo 50 kg.
+                </li>
+                <li>
+                    No padecer enfermedades infectocontagiosas.
+                </li>
+                <li>
+                    En lo posible hipertensión controlada, problemas tiroideos, problemas alérgicos sin manifestación en ese momento.
+                </li>
+                <li>
+                    Desayunar antes de donar. Es conveniente no tener un ayuno prolongado.
+                <li>
+                    No haber sido intervenido quirúrgicamente, recibido tratamiento de acupuntura,tatuaje o piercing en el último año.
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!--  texto de abajo  -->
+    <div>
+        <h3 class="pie-usuario">En caso de estar tomando alguna medicación, o si tenés dudas sobre tu salud, consultalo con el médico previo a la donación.</h3>
+    </div>
+
+
+    <!--  footer  -->
+    <footer class="footer footer-bajo">
+        <div class="grid-3">
+            <h3 class="derechos-footer">Todos los derechos reservados &copy; </h3>
+            <div>
+                <p>Teléfonos:</p>
+                <p>(0341)3234235</p>
+                <p>(0341)3222335</p>
+            </div>
+            <div class="iconos">
+                <a href="https://www.facebook.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="44" height="44"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                  </svg></a>
+          
+                  <a href="https://www.instagram.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="44" height="44"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="4" y="4" width="16" height="16" rx="4" />
+                    <circle cx="12" cy="12" r="3" />
+                    <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+                  </svg></a>
+          
+                  <a href="http://twitter.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="44" height="44"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+                  </svg></a>
+                  <a href="nosotros/#contacto" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="44" height="44"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <polyline points="3 7 12 13 21 7" />
+                  </svg></a>
+
+            </div>
+        </div>
+
+    </footer>
 </body>
 </html>
