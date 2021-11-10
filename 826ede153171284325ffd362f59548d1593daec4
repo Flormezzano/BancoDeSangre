@@ -1,0 +1,296 @@
+[33mcommit 70ec637d05d318cd8a269e84848b915bfffd73b0[m[33m ([m[1;36mHEAD -> [m[1;32mRamaAgustin[m[33m)[m
+Merge: 826ede1 3e904bd
+Author: = <=>
+Date:   Tue Nov 9 20:03:14 2021 -0300
+
+    pull rama flor
+
+[33mcommit 826ede153171284325ffd362f59548d1593daec4[m[33m ([m[1;31morigin/RamaAgustin[m[33m)[m
+Merge: fd73018 d076bfa
+Author: = <=>
+Date:   Tue Nov 9 19:47:33 2021 -0300
+
+    cambios del pull RamaGisela
+
+[33mcommit fd73018e950db7bd37d5c519d9adb0d290c48ce1[m
+Merge: 5bd742b 3ae06bf
+Author: = <=>
+Date:   Tue Nov 9 18:25:17 2021 -0300
+
+    09/11
+
+[33mcommit 3e904bdcb9716ad684f0c79c52d0489232ff0507[m[33m ([m[1;31morigin/main[m[33m)[m
+Merge: 19dde61 4d15565
+Author: GastonA99 <soycanalla_gaston@hotmail.com>
+Date:   Tue Nov 9 18:12:43 2021 -0300
+
+    Main Actualizado 09/11
+
+[33mcommit 4d15565de958eedcf5db49567cce40c5376efb4a[m
+Author: GastonA99 <soycanalla_gaston@hotmail.com>
+Date:   Tue Nov 9 18:11:01 2021 -0300
+
+    Actualizar Main
+
+[33mcommit 0908c64e4cb168e0b42758d21732f42568d68d54[m
+Merge: 640ac21 d076bfa
+Author: GastonA99 <soycanalla_gaston@hotmail.com>
+Date:   Mon Nov 8 21:20:02 2021 -0300
+
+    Pull RamaGisela
+
+[33mcommit d076bfafe670f8bfd9176b13da2b7e0c0490d35c[m[33m ([m[1;31morigin/RamaGisela[m[33m)[m
+Author: Gisela Suárez <gisela.suarez@hotmail.es>
+Date:   Mon Nov 8 21:13:09 2021 -0300
+
+    Actualización front
+
+[33mcommit 2cd4a3fd02e30888d3ef2914d25248429357c740[m
+Author: Gisela Suárez <gisela.suarez@hotmail.es>
+Date:   Mon Nov 8 21:10:30 2021 -0300
+
+    Actulización templates
+
+[33mcommit 640ac21a1b5b74fe653e95570a5490468e6784f0[m
+Author: GastonA99 <soycanalla_gaston@hotmail.com>
+Date:   Mon Nov 8 21:02:36 2021 -0300
+
+    Registro Funcionable
+
+[33mcommit 7a220b72e6cacf8ccdbb67f6eaafcf4027fd00a4[m
+Author: GastonA99 <soycanalla_gaston@hotmail.com>
+Date:   Mon Nov 8 19:30:34 2021 -0300
+
+    Tranquila Flor
+
+[33mcommit 4a18526e361c22b41172e10cec9b72eb9db0ee4f[m
+Author: GastonA99 <soycanalla_gaston@hotmail.com>
+Date:   Mon Nov 8 18:27:08 2021 -0300
+
+    Usuario
+
+[33mcommit 349564b00044d9d3684bdfd7524117bb21df61ea[m
+Merge: a3cb679 ef0a40a
+Author: GastonA99 <soycanalla_gaston@hotmail.com>
+Date:   Thu Nov 4 21:52:22 2021 -0300
+
+    RamaConProblemas
+
+[33mcommit a3cb67968704fc6af920598077717b0a098594d8[m
+Author: GastonA99 <soycanalla_gaston@hotmail.com>
+Date:   Thu Nov 4 21:51:19 2021 -0300
+
+    Nada
+
+[33mcommit ef0a40acc7e516d53e2636a17d738812cad4e1ba[m
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Thu Nov 4 21:49:44 2021 -0300
+
+    no anda nada
+
+[33mcommit 5bd742b2db71f6eb75a5acc90f5ab9f3169fe0c2[m
+Author: = <=>
+Date:   Thu Nov 4 17:18:34 2021 -0300
+
+    modificaciones listaDonantes
+
+[33mcommit 3ae06bf0d69f23c30091f6edde5e7fab99de41ba[m
+Author: Gisela Suárez <gisela.suarez@hotmail.es>
+Date:   Wed Nov 3 22:32:11 2021 -0300
+
+    Actualización footer
+
+[33mcommit 29d0ac2e61bfa84d2be56d42ca61cbff6233cc5e[m
+Author: Gisela Suárez <gisela.suarez@hotmail.es>
+Date:   Wed Nov 3 21:34:11 2021 -0300
+
+    actualización templates
+
+[33mcommit 7d249d0580a157d52b9a32084788835878c0a28e[m
+Author: Gisela Suárez <gisela.suarez@hotmail.es>
+Date:   Wed Nov 3 19:04:03 2021 -0300
+
+    controller del front
+
+[33mcommit 9171e43df2716fd9d246d787e291eb0f2e37d8c3[m
+Author: = <=>
+Date:   Wed Nov 3 18:55:36 2021 -0300
+
+    fonts y adaptacion a netbeans
+
+[33mcommit 58a4f956fed716bac60c75520ec5598728f5eb67[m
+Merge: e9bd1e4 63bde5f
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Wed Nov 3 18:07:29 2021 -0300
+
+    ramaGaston security
+
+[33mcommit e9bd1e468c2cdbe86b2556685ea437673377fdae[m
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Wed Nov 3 18:06:49 2021 -0300
+
+    cambios
+
+[33mcommit 63bde5f7962d181fc855330f7bfe5dc5387896e7[m
+Author: GastonA99 <soycanalla_gaston@hotmail.com>
+Date:   Wed Nov 3 18:05:21 2021 -0300
+
+    Security
+
+[33mcommit d9b19df780d755cd57470a90dbf1c715c853d8b5[m
+Merge: 08423a6 772676a
+Author: = <=>
+Date:   Tue Nov 2 21:49:40 2021 -0300
+
+    ramaflor
+
+[33mcommit 08423a6cdacf5fdf83de0496a884275151a96e1e[m
+Author: = <=>
+Date:   Tue Nov 2 21:48:28 2021 -0300
+
+    Lista-donantes
+
+[33mcommit 772676a6958fd43ccba94379c2151b87d56436b4[m[33m ([m[1;31morigin/RamaFlor[m[33m)[m
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Tue Nov 2 21:34:20 2021 -0300
+
+    cambios de package
+
+[33mcommit b64afc53137c2baae81e776719cf1e177f8a9d29[m
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Tue Nov 2 21:33:23 2021 -0300
+
+    cambios de package
+
+[33mcommit 68fcfdf9a81cfb1ec830b238707f46ca052a2201[m
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Tue Nov 2 20:55:25 2021 -0300
+
+    acomodado
+
+[33mcommit 0a732f26752985f63fb8b563cc1d5ef1e23d32b4[m
+Merge: e987058 4847d15
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Tue Nov 2 20:44:50 2021 -0300
+
+    conflicto
+
+[33mcommit e987058539c935209b5b806ce8c72a6d43cea6f0[m
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Tue Nov 2 20:40:01 2021 -0300
+
+    security
+
+[33mcommit 4847d155a0fe89c99e5eb7c62ffd81406b96f80c[m
+Author: Gisela Suárez <gisela.suarez@hotmail.es>
+Date:   Tue Nov 2 20:30:56 2021 -0300
+
+    model registro
+
+[33mcommit d680bb8f4b8cd4a36008ac9b83cc6128efcf60a2[m
+Merge: 2301baf 76329de
+Author: Gisela Suárez <gisela.suarez@hotmail.es>
+Date:   Tue Nov 2 18:51:01 2021 -0300
+
+    mergin conflict
+
+[33mcommit 2301bafd7f8218fa4e8a0d08b11763dff2191916[m
+Author: Gisela Suárez <gisela.suarez@hotmail.es>
+Date:   Tue Nov 2 18:41:12 2021 -0300
+
+    Corrección
+
+[33mcommit 5f8d68e4faa54ad2fc52b516e9972cb89a46e8fb[m
+Author: Gisela Suárez <gisela.suarez@hotmail.es>
+Date:   Tue Nov 2 18:29:34 2021 -0300
+
+    Corrección
+
+[33mcommit 76329dec7fc768c4150030179bcb9940752f3a42[m
+Merge: 83b2793 7de8ff4
+Author: Agustín Fleitas <75871517+AgustinFleitas19@users.noreply.github.com>
+Date:   Tue Nov 2 18:17:54 2021 -0300
+
+    Merge pull request #4 from Flormezzano/RamaAgustin
+    
+    Creacion del index
+
+[33mcommit 7de8ff483fd31a06deae65cd3a4276ef2ffba565[m
+Author: = <=>
+Date:   Tue Nov 2 18:12:25 2021 -0300
+
+    index
+
+[33mcommit 95fa8366e276e118a30634bc7fa6181803de46a7[m
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Mon Nov 1 20:58:20 2021 -0300
+
+    lios
+
+[33mcommit 8a0a18d6807411dccf85f17536eb8476ba20224d[m
+Merge: 1ebc5dd 63803b5
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Mon Nov 1 20:46:35 2021 -0300
+
+    Merge branch 'RamaGaston' of https://github.com/Flormezzano/BancoDeSangre into RamaFlor
+
+[33mcommit 1ebc5dd98d39c53b2c058810e8f6aff3f9a631de[m
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Mon Nov 1 20:32:16 2021 -0300
+
+    Cambios Lunes
+
+[33mcommit 63803b5b78ea83c9f6449af4720dffb54792fc88[m
+Author: GastonA99 <soycanalla_gaston@hotmail.com>
+Date:   Mon Nov 1 20:28:36 2021 -0300
+
+    Controladores
+
+[33mcommit c59c13648e8e8d90663e72e3025b855f151ad266[m
+Merge: e5674df 76e1da6
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Mon Nov 1 17:33:18 2021 -0300
+
+    Tipo de sangre
+
+[33mcommit d8aed8d9a9c0d90c4faef1c433b8606f139fb597[m
+Author: = <=>
+Date:   Mon Nov 1 17:10:33 2021 -0300
+
+    slider
+
+[33mcommit 76e1da6d168831ce7c8d5ca4e15d8fa13a1a5919[m
+Author: Martin <martinefraile@gmail.com>
+Date:   Mon Nov 1 14:30:18 2021 -0300
+
+    ServCtrlRepo TipoSangre
+
+[33mcommit e1b02e4eb3e1f5ee1b1c7339055184da71aaedca[m
+Merge: 15c1967 2a878cb
+Author: Martin <martinefraile@gmail.com>
+Date:   Mon Nov 1 13:53:37 2021 -0300
+
+    Merge branch 'RamaGaston' of https://github.com/Flormezzano/BancoDeSangre into RamaMartin
+
+[33mcommit 15c19678f72aa53bd4acc7055c9b7ef45e8f6a1b[m
+Author: Martin <martinefraile@gmail.com>
+Date:   Mon Nov 1 13:52:08 2021 -0300
+
+    cambios
+
+[33mcommit 2a878cbf9975c83a3bf5f9d4805825ae045b27c5[m
+Merge: c57f8cc b61aae6
+Author: GastonA99 <soycanalla_gaston@hotmail.com>
+Date:   Thu Oct 28 19:59:17 2021 -0300
+
+    Proyecto 28/10
+
+[33mcommit e5674dfa7f6f573572441ccae140fc22ce3fa80b[m
+Merge: 5c4df4d c57f8cc
+Author: Flormezzano <mezzanoflorencia0@gmail.com>
+Date:   Thu Oct 28 19:58:00 2021 -0300
+
+    cambiosPersonas
+
+[33mcommit c57f8cc45f316fe43d925355a0ae39aba38af4f5[m
+Author: GastonA99 <soycanalla_gasto
