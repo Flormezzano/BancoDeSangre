@@ -13,38 +13,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/front")
 public class FrontController {
     
- @GetMapping("/")
- public String index(){
-    return "index";
- } 
- @GetMapping("/registrarse")
- public String modelRegistro(){
-    return "modelRegistro";
- } 
- 
- @GetMapping("/inicioUsuario")
- public String inicioUsuario(){
-    return "inicioUsuario";
- } 
- 
- @GetMapping("/donantes")
- public String listaDonantes(){
-    return "listaDonantes";
- }
- 
- @GetMapping("/nosotros")
- public String nosotros(){
-    return "nosotros";
- }
- 
- @GetMapping("/modelUsuario")
- public String modelUsuario(){
-    return "modelUsuario";
- }
- 
-  @GetMapping("/error")
- public String error(){
-    return "error";
- }
- 
+// @GetMapping("/")
+// public String index(){
+//    return "index";
+// } 
+// @GetMapping("/registrarse")
+// public String modelRegistro(){
+//    return "modelRegistro";
+// } 
+// 
+// @GetMapping("/inicioUsuario")
+// public String inicioUsuario(){
+//    return "inicioUsuario";
+// } 
+// 
+// @GetMapping("/donantes")
+// public String listaDonantes(){
+//    return "listaDonantes";
+// }
+// 
+// @GetMapping("/nosotros")
+// public String nosotros(){
+//    return "nosotros";
+// }
+// 
+// @GetMapping("/modelUsuario")
+// public String modelUsuario(){
+//    return "modelUsuario";
+// }
+// 
+//  @GetMapping("/error")
+// public String error(){
+//    return "error";
+// }
+// 
 }

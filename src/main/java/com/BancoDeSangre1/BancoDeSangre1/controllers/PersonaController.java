@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -31,6 +30,8 @@ public class PersonaController {
     @Autowired
     TipoDeSangreService tipoServ;
     
+    
+    
     @GetMapping("/lista")
     public String lista(Model model){
         model.addAttribute("persona", personaServ.listaPersona());
@@ -44,7 +45,7 @@ public class PersonaController {
         model.addAttribute("ciudades", ciudadServ.listar());
         model.addAttribute("sangre", tipoServ.listar());
         model.addAttribute("sexos", personaServ.sexo());
-        return "modelRegistro";
+        return "index";
     }
 
     @PostMapping("/registrar")
@@ -65,7 +66,7 @@ public class PersonaController {
         try {
             Persona pers = personaServ.personaPorId(persona);
             personaServ.modificar(pers);
-            model.addAttribute("libro", pers);
+            model.addAttribute("persona", pers);
             return "modelUsuario";
         } catch (ExceptionService ex) {
             model.put("error", ex.getMessage());
