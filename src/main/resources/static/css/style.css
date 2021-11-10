@@ -245,11 +245,11 @@ input[placeholder] {
 h4 {
   text-align: center;
 }
-.h4-red {
+.h4-info {
   color: var(--ColorVerdePrincipal);
   font-weight: bold;
 }
-.p-red {
+.p-info2{
   color: var(--ColorVerdePrincipal);
   text-align: left;
   font-weight: bold;
