@@ -7,11 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 3e904bdcb9716ad684f0c79c52d0489232ff0507
 @Service
 public class ProvinciaService {
     

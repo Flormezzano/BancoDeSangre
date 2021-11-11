@@ -31,8 +31,8 @@ public class FrontController {
  public String listaDonantes(){
     return "listaDonantes";
  }
- 
  @GetMapping("/nosotros")
+ 
  public String nosotros(){
     return "nosotros";
  }
