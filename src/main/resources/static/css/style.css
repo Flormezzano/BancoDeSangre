@@ -370,6 +370,42 @@ h4 {
   margin: 60px 0px 20px 0px;
   font-weight: 700;
 }
+.btn-editar{
+  background-color: var(--ColorBlanco);
+  border: none;
+  float: right;
+}
+.campo-usuario{
+  display: flex;
+  margin-bottom: 20px;
+}
+.label-usuario{
+  text-align: right;
+  padding: 5px;
+  font-size: 20px;
+  font-family: var(--FuenteOpenSans);
+}
+.input-usuario{
+  padding: auto;
+  background-color: var(--ColorGrisClaro);
+  flex: 1;
+  border: none;
+}
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+}
+.flex-usuario{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+.btn-rojo-usuario{
+  background-color: var(--ColorRojo) !important;
+  border-color: var(--ColorRojo) !important;
+}
 
 /* PAGINA DE LISTA DE DONANTES */
 /*Filtros*/
