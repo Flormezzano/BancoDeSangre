@@ -84,7 +84,7 @@ public class PersonaService implements UserDetailsService {
         if (validacioDate(persona) == true) {
             persona.setDonante(persona.getDonante());
         } else {
-            throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
+            persona.setDonante(false);
         }
         persona.setAlta(true);
         persona.setRol(Roles.USER);
@@ -127,6 +127,7 @@ public class PersonaService implements UserDetailsService {
             if (validacioDate(persona) == true) {
                 persona.setDonante(persona.getDonante());
             } else {
+                persona.setDonante(false);
                 throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
             }
            
@@ -255,8 +256,6 @@ public class PersonaService implements UserDetailsService {
 
         if (periodo.getYears() > 18 && periodo.getYears() < 65) {
             donante = true;
-        } else {
-            throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
         }
         return donante;
     }
@@ -275,7 +274,7 @@ public class PersonaService implements UserDetailsService {
             
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession(true);
-            session.setAttribute("persona", persona);
+            session.setAttribute("personasession", persona);
 
             List<GrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority("ROLES_" + persona.getRol()));

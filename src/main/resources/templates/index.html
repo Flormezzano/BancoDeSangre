@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,7 +13,7 @@
         <title>Factor Vida</title>
     </head>
 
-    <body>
+    <body> 
         <!-- Navegador -->
         <header class="navigator flex">
             <div class="logo-flex">
@@ -29,330 +26,304 @@
             </nav>
 
         </header>
-
         <!-- ModalRegistro  -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-img">
-                <div class="modal-content modal-img ">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
+        <div id="registro-modal">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-img">
+                    <div class="modal-content modal-img ">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
 
-                        <!-- formularioRegistro -->
-                        <section>
-                            <div>
-                                <div class="form-container form-registro">
-                                    <h3 class="login"> Registro</h3>
-                                    <form th:action="@{/persona/registrar}" th:object="${persona}" method="POST">
-                                        <p th:if="${error != null}" th:text="${error}" id="exception"></p> 
+                            <!-- formularioRegistro -->
+                            <section>
+                                <div>
+                                    <div class="form-container form-registro">
+                                        <h3 class="login"> Registro</h3>
+                                        <form th:action="@{/}" th:object="${persona}" method="POST">
+                                            <p th:if="${error != null}" th:text="${error}" style="color: white"></p> 
 
-                                        <input hidden th:field="*{id}">
+                                            <input hidden th:field="*{id}">
 
-                                        <div class="campo-registro">
-                                            <label  class="label-registro">Nombre</label>
-                                            <input class="input-registro" type="text" th:field="*{nombre}" required >
-                                        </div>
-                                        <div class="campo-registro">
-                                            <label  class="label-registro">Apellido</label>
-                                            <input class="input-registro" type="text" th:field="*{apellido}" required>
-                                        </div>
-                                        <div class="campo-registro">
-                                            <label  class="label-registro">Fecha de Nacimiento</label>
-                                            <input class="input-registro" type="date" th:field="*{date}" required>
-                                        </div>
-                                        <div class="campo-registro">
-                                            <label class="label-registro">Sexo</label>
-                                            <select class="input-registro select-registro" th:field="*{sexo}" placeholder="Seleccionar" required>
-                                                <option th:each="s : ${T(com.BancoDeSangre1.BancoDeSangre1.Enums.Sexo).values()}" th:text="${s}" th:value="${s}">Seleccionar</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="campo-registro" >
-                                            <label  class="label-registro">Tipo de Sangre</label>
-                                            <select class="input-registro select-registro" th:field="*{tipo}"  placeholder="Seleccionar" required>
-                                                <option th:each="t : ${sangre}" th:text="${t.nombre}" th:value="${t.id}">Seleccionar</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="campo-registro">
-                                            <label  class="label-registro">Provincia</label>
-                                            <select class="input-registro select-registro" th:field="*{provincia}" placeholder="Seleccionar" required>
-                                                <option th:each="p : ${provincias}" th:text="${p.nombre}" th:value="${p.id}">Seleccionar</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="campo-registro">
-                                            <label  class="label-registro">Ciudad</label>
-                                            <select class="input-registro select-registro" th:field="*{ciudad}" placeholder="Seleccionar" required>
-                                                <option th:each="c : ${ciudades}" th:text="${c.nombre}" th:value="${c.id}">Seleccionar</option>
-                                            </select>
-                                        </div>
-                                        <div class="campo-registro">
-                                            <label class="label-registro">Donante</label>
-                                            <div class="flex-config">
-                                                <input class="donante-registro" type="radio" name="donar" th:field="*{donante}" th:text="'Si'" th:value="true">
-                                                <input class="donante-registro" type="radio" name="donar" th:field="*{donante}" th:text="'No'" th:value="false">
+                                            <div class="campo-registro">
+                                                <label  class="label-registro">Nombre</label>
+                                                <input class="input-registro" type="text" th:field="*{nombre}" required >
                                             </div>
-                                        </div>
-                                        <div class="campo-registro">
-                                            <label  class="label-registro">Mail</label>
-                                            <input class="input-registro" type="email" th:field="*{mail}" required>
-                                        </div>
-                                        <div class="campo-registro">
-                                            <label class="label-registro">Contraseña</label>
-                                            <input class="input-registro" type="password" th:field="*{contrasenia1}" required>
-                                        </div>
+                                            <div class="campo-registro">
+                                                <label  class="label-registro">Apellido</label>
+                                                <input class="input-registro" type="text" th:field="*{apellido}" required>
+                                            </div>
+                                            <div class="campo-registro">
+                                                <label  class="label-registro">Fecha de Nacimiento</label>
+                                                <input class="input-registro" type="date" th:field="*{date}" required>
+                                            </div>
+                                            <div class="campo-registro">
+                                                <label class="label-registro">Sexo</label>
+                                                <select class="input-registro select-registro" th:field="*{sexo}" placeholder="Seleccionar" required>
+                                                    <option th:each="s : ${T(com.BancoDeSangre1.BancoDeSangre1.Enums.Sexo).values()}" th:text="${s}" th:value="${s}">Seleccionar</option>
+                                                </select>
+                                            </div>
 
-                                        <div class="campo-registro">
-                                            <label  class="label-registro">Repetir Contraseña</label>
-                                            <input class="input-registro" type="password" th:field="*{contrasenia2}" required>
-                                        </div> 
-                                        <div class="btn-centrado btn-margen-top">
-                                            <button type="submit" class="btn btn-success ">Registrarse</button>
-                                        </div>
-                                    </form>
+                                            <div class="campo-registro" >
+                                                <label  class="label-registro">Tipo de Sangre</label>
+                                                <select class="input-registro select-registro" th:field="*{tipo}"  placeholder="Seleccionar" required>
+                                                    <option th:each="t : ${sangre}" th:text="${t.nombre}" th:value="${t.id}">Seleccionar</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="campo-registro">
+                                                <label  class="label-registro">Provincia</label>
+                                                <select class="input-registro select-registro" th:field="*{provincia}" placeholder="Seleccionar" required>
+                                                    <option th:each="p : ${provincias}" th:text="${p.nombre}" th:value="${p.id}">Seleccionar</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="campo-registro">
+                                                <label  class="label-registro">Ciudad</label>
+                                                <select class="input-registro select-registro" th:field="*{ciudad}" placeholder="Seleccionar" required>
+                                                    <option th:each="c : ${ciudades}" th:text="${c.nombre}" th:value="${c.id}">Seleccionar</option>
+                                                </select>
+                                            </div>
+                                            <div class="campo-registro">
+                                                <label class="label-registro">Donante</label>
+                                                <div class="flex-config">
+                                                    <input class="donante-registro" type="radio" name="donar" th:field="*{donante}" th:text="'Si'" th:value="true">
+                                                    <input class="donante-registro" type="radio" name="donar" th:field="*{donante}" th:text="'No'" th:value="false">
+                                                </div>
+                                            </div>
+                                            <div class="campo-registro">
+                                                <label  class="label-registro">Mail</label>
+                                                <input class="input-registro" type="email" th:field="*{mail}" required>
+                                            </div>
+                                            <div class="campo-registro">
+                                                <label class="label-registro">Contraseña</label>
+                                                <input class="input-registro" type="password" th:field="*{contrasenia1}" required>
+                                            </div>
+
+                                            <div class="campo-registro">
+                                                <label  class="label-registro">Repetir Contraseña</label>
+                                                <input class="input-registro" type="password" th:field="*{contrasenia2}" required>
+                                            </div> 
+                                            <div class="btn-centrado btn-margen-top">
+                                                <a href="/#registro-modal"><button type="submit" class="btn btn-success">Registrarse</button></a>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <section>
             <div class="container-slider">
-                 <!--Aca va el slider--> 
+                <!--Slider -->
                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="4000">
-                            <img src="/img/slider01.png" class="d-block w-100" alt="...">
+                            <img src="/img/slider01.png" class="d-block w-100" alt="slider01">
                         </div>
                         <div class="carousel-item" data-bs-interval="4000">
-                            <img src="/img/slider02png" class="d-block w-100" alt="...">
+                            <img src="/img/slider02.png"class="d-block w-100" alt="slider02">
                         </div>
                         <div class="carousel-item">
-                            <img src="/img/slider03.png" class="d-block w-100" alt="...">
+                            <img src="/img/slider03.png" class="d-block w-100" alt="slider03">
                         </div>
-                        
-                        
-                        
                     </div>
-                    <!-- + info -->
-<!--                    <div class="grid-3 ">
-                        <div>
-                            <img class="icono-info" src="/img/regalos-solidarios.png">
-                            <p class="p-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                the industry's
-                                standard
-                                dummy</p>
-                        </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Formulario de usuario -->
+            <div class="form-container">
+                <h3 class="login">Iniciar Sesión</h3>
+                <form th:action="@{/logincheck}" method="POST">
 
-                        <div>
-                            <img class="icono-info" src="/img/legados-solidarios.png">
-                            <p class="p-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                the industry's
-                                standard
-                                dummy</p>
-                        </div>
+                    <p th:if="${error != null}" th:text="${error}" id="exception"></p> 
 
-                        <div>
-                            <img class="icono-info" src="/img/cooperacion.png">
-                            <p class="p-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                the industry's
-                                standard
-                                dummy</p>
-                        </div>
 
-                    </div>-->
-
-                    <!-- banner -->
-<!--                    <div class="banner">
-                        <div class="flex-config">
-                            <p class="slogan">Donar sangre, <br> es donar vida.</p>
-                            <div>
-                                <button type="button" class="btn  btn-rojo"><span class="btn-slogan">Quiero Donar</span></button>
-                            </div>
-
-                        </div>
-
+                    <div class="control">
+                        <input type="email" th:value="${mail}" name="mail" placeholder="Mail" required>
                     </div>
-                </div>-->
-                <!-- Formulario de usuario -->
-                <div class="form-container">
-                    <h3 class="login">Iniciar Sesión</h3>
-                    <form th:action="@{/logincheck}" method="POST">
-
-                        <p th:if="${error != null}" th:text="${error}" id="exception"></p> 
-
-
-                        <div class="control">
-                            <input type="email" th:value="${mail}" name="mail" placeholder="Mail" required>
-                        </div>
-                        <div class="control">
-                            <input type="password" name="password" placeholder="Contraseña" required>
-                        </div>
-                        <span class="checkbox subrayado"><input type="checkbox"> Recordar mail</span>
-                        <div class="btn-centrado">
-                            <button type="submit" class="btn btn-success ">Ingresar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-        <!-- Informacion -->
-        <div class="margin-bot">
-            <h2 class="titulo-general"><span class="subrayado">Información</span></h2>
-            <div class="flex container-info">
-                <div>
-                    <p class="p-informacion">Donar sangre es un acto desinteresado, que contribuye a salvar vidas y a mejorar la
-                        salud. Toda comunidad
-                        necesita de donaciones regulares, ya que la sangre sólo se puede conservar durante un tiempo limitado. Las
-                        donaciones son
-                        imprescindibles para garantizar la disponibilidad de sangre segura en el momento y el lugar en que se precise.
-                    </p>
-                    <p class="p-informacion"> No hay riesgos de adquirir infecciones por la donación ya que el material que se usa
-                        es descartable y manipulado por especialistas.</p>
-                    <p class="p-informacion"> Sólo algunas personas presentan malestares luego de la donación, pero, de todos modos
-                        la recuperación es generalmente rápida y se puede retomar las tareas diarias inmediatamente.</p>
-                    <p class="p-informacion">Antes de la donación, un médico te hará una breve entrevista para determinar que la
-                        donación de sangre no
-                        pueda afectarte como donante y sea segura para el receptor.</p>
-                </div>
-                <img class="img-informacion" src="/img/DonateEditada.jpg">
-
+                    <div class="control">
+                        <input type="password" name="password" placeholder="Contraseña" required>
+                    </div>
+                    <span class="checkbox subrayado"><input type="checkbox"> Recordar mail</span>
+                    <div class="btn-centrado">
+                        <button type="submit" class="btn btn-success ">Ingresar</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <!-- + info -->
-        <div class="grid-3 ">
+    </section>
+    <!-- Informacion -->
+    <div class="margin-bot">
+        <h2 class="titulo-general"><span class="subrayado">Información</span></h2>
+        <div class="flex container-info">
             <div>
-                <img class="icono-info" src="/img/regalos-solidarios.png">
-                <p class="p-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's
-                    standard
-                    dummy</p>
-            </div>
+                <p class="p-informacion">Donar sangre es un acto desinteresado, que contribuye a salvar vidas y a mejorar la salud. Toda comunidad necesita de donaciones regulares, ya que la sangre sólo se puede conservar durante un tiempo limitado. Las donaciones son imprescindibles para garantizar la disponibilidad de sangre segura en el momento y el lugar en que se precise.
+                </p>
+                <p class="p-informacion"> No hay riesgos de adquirir infecciones por la donación ya que el material que se usa es descartable y manipulado por especialistas.</p>
+                <p class="p-informacion"> Sólo algunas personas presentan malestares luego de la donación, pero, de todos modos la recuperación es generalmente rápida y se puede retomar las tareas diarias inmediatamente.</p>
+                <p class="p-informacion">Antes de la donación, un médico te hará una breve entrevista para determinar que la donación de sangre no pueda afectarte como donante y sea segura para el receptor.</p>
+                <p class="p-informacion">La sangre y los productos sanguíneos seguros, así como su transfusión, son un aspecto fundamental de la atención y la salud pública. 
+                    Cada día permiten salvar millones de vidas y mejorar la salud y la calidad de vida de muchos pacientes. 
+                    La necesidad de sangre es universal, pero el acceso de todos los que la necesitan no lo es. La escasez de sangre es particularmente aguda en los países en desarrollo.</p>
+                <p class="p-informacion">El Plasma: para plasmaféresis y déficit de factores de coagulación.
+                    Las Plaquetas: para leucemias, quimioterapia y grandes hemorragias.
+                    Los Glóbulos Rojos: para cirugías, accidentes, hemorragias, trasplante y anemias.
+                    El crioprecipitado: para coagulopatías.
+                    El Plasma de tu sangre se puede usar para plasmaféresis y déficit de factores de coagulación.
+                    Las Plaquetas de tu sangre se pueden usar para leucemias, quimioterapia y grandes hemorragias.</p>
+                <p class="p-informacion">Los Glóbulos Rojos de tu sangre se usan para cirugías, accidentes, hemorragias, trasplante y anemias.
+                    El crioprecipitado en tu sangre se utiliza para coagulopatías.</p>
 
+            </div>
+            <img class="img-informacion" src="img/DonateEditada.jpg" alt="info-donante">
+
+        </div>
+    </div>
+    <!-- + info -->
+    <div class="grid-3 ">
+        <div>
+            <img class="icono-info" src="img/regalos-solidarios.png">
+            <p class="p-info">Es algo que no se puede fabricar, por eso fomentamos la donación voluntaria. Uno puede salvar hasta 3 personas donando sangre ya que ésta se separa en glóbulos rojos, plaquetas y plasma.</p>
+        </div>
+
+        <div>
+            <img class="icono-info" src="img/legados-solidarios.png">
+            <p class="p-info">La Donación Voluntaria de Sangre es una modalidad de donación que involucra, por parte de las personas que donan, un gesto voluntario, anónimo y altruista.</p>
+        </div>
+
+        <div>
+            <img class="icono-info" src="img/cooperacion.png">
+            <p class="p-info">
+                Por parte del Estado, que promueve esta política, es reconocer el derecho al acceso a sangre (y sus derivados) segura para quienes lo necesitan y el deber del Estado de garantizar ese derecho.</p>
+        </div>
+
+    </div>
+
+    <!-- banner -->
+    <div class="banner">
+        <div class="flex-config">
+            <p class="slogan">Donar sangre, <br> es donar vida.</p>
             <div>
-                <img class="icono-info" src="/img/legados-solidarios.png">
-                <p class="p-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's
-                    standard
-                    dummy</p>
+                <button type="button" class="btn  btn-rojo"><span class="btn-slogan">Quiero Donar</span></button>
             </div>
 
+        </div>
+
+    </div>
+    <!-- Tipos de sangre -->
+    <div class="margin-bot">
+
+        <h2 class="titulo-general"><span class="subrayado">Tipos de sangre</span></h2>
+
+        <div class="flex-config">
+            <div class="img">
+                <img class="img-tds" src="img/tipos-de-sangre.jpg">
+                <h4>En esta tabla te mostramos qué grupos y factores son compatibles</h4>
+                <img class="img-tds2" src="img/tabla-donar.png">
+            </div>
+
+            <div class="text-tds">
+                <h4>Grupo A</h4>
+                <p>La superficie de los glóbulos rojos contiene antígeno A y el plasma tiene anticuerpos anti-B. El anticuerpo
+                    anti-B atacaría las células sanguíneas que contienen antígeno B</p>
+                <br>
+                <h4>Grupo B</h4>
+                <p>La superficie de los glóbulos rojos contiene antígeno A y el plasma tiene anticuerpos anti-B. El anticuerpo
+                    anti-A atacaría las células sanguíneas que contienen antígeno A.</p>
+                <br>
+                <h4>Grupo AB</h4>
+                <p>Los glóbulos rojos tienen antígenos A y B, pero el plasma no contiene anticuerpos anti-A ni anti-B. Las
+                    personas con el tipo AB pueden recibir cualquier tipo de sangre ABO.</p>
+                <br>
+                <h4>Grupo O</h4>
+                <p>El plasma contiene anticuerpos anti-A y anti-B, pero la superficie de los glóbulos rojos no contiene
+                    antígenos A o B.
+                    Dado que estos antígenos no están presentes, una persona con cualquier tipo de sangre del sistema ABO puede
+                    recibir este tipo de sangre.</p>
+                <br>
+                <h4>Factor Rhesus</h4>
+                <p>Algunos glóbulos rojos tienen factor Rh, también conocido como antígeno RhD. La agrupación Rhesus agrega otra dimensión.
+                    Si los glóbulos rojos contienen el antígeno RhD, son RhD positivos. Si no es así, son RhD negativos.</p>
+                <br>
+                <div>
+                    <h4 class="h4-red">¿Por qué donar Sangre?</h4>
+                    <p class="p-red"> - Porque aún en el siglo XXI la única fuente proveedora de sangre en el mundo es el ser humano. No existe adelanto científico capaz de reemplazarla. <br>
+                        - Porque todos los países necesitan un número elevado de unidades de sangre cada día, para atender las necesidades de sus pacientes. En Argentina se requieren 5.000 donantes de sangre por día. <br>
+                        - Porque el 90% de las personas necesitaremos, en el transcurso de nuestra vida, sangre para nosotrxs mismxs o para nuestro entorno cercano. <br>
+                        - Porque ayuda al abastecimiento permanente de hemocomponentes, ya que la sangre no se puede almacenar por mucho tiempo y se necesitan donantes todos los días y no muchos, una sola vez. <br>
+                        - Porque la necesidad de sangre es universal: atraviesa todas las naciones, sexos, culturas, religiones, edades y estratos sociales. <br>
+                        - Porque de ese modo, la familia del/la paciente no tiene que ocuparse de conseguirla.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <footer class="footer">
+        <div class="grid-3">
+            <h3 class="derechos-footer">Todos los derechos reservados &copy; </h3>
             <div>
-                <img class="icono-info" src="/img/cooperacion.png">
-                <p class="p-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's
-                    standard
-                    dummy</p>
+                <p>Teléfonos:</p>
+                <p>(0341)3234235</p>
+                <p>(0341)3222335</p>
             </div>
+            <div class="iconos">
+                <a href="https://www.facebook.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="44" height="44"
+                                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                    </svg></a>
 
-        </div>
+                <a href="https://www.instagram.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="44" height="44"
+                                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="4" y="4" width="16" height="16" rx="4" />
+                    <circle cx="12" cy="12" r="3" />
+                    <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+                    </svg></a>
 
-        <!-- banner -->
-        <div class="banner">
-            <div class="flex-config">
-                <p class="slogan">Donar sangre, <br> es donar vida.</p>
-                <div>
-                    <button type="button" class="btn  btn-rojo"><span class="btn-slogan">Quiero Donar</span></button>
-                </div>
-
-            </div>
-
-        </div>
-        <!-- Tipos de sangre -->
-        <div class="margin-bot">
-
-            <h2 class="titulo-general"><span class="subrayado">Tipos de sangre</span></h2>
-
-            <div class="flex-config">
-                <div class="img">
-                    <img class="img-tds" src="/img/tipos-de-sangre.jpg">
-                    <h4>En esta tabla te mostramos qué grupos y factores son compatibles</h4>
-                    <img class="img-tds2" src="/img/tabla-donar.png">
-                </div>
-
-                <div class="text-tds">
-                    <h4>Grupo A</h4>
-                    <p>La superficie de los glóbulos rojos contiene antígeno A y el plasma tiene anticuerpos anti-B. El anticuerpo
-                        anti-B atacaría las células sanguíneas que contienen antígeno B</p>
-                    <br>
-                    <h4>Grupo B</h4>
-                    <p>La superficie de los glóbulos rojos contiene antígeno A y el plasma tiene anticuerpos anti-B. El anticuerpo
-                        anti-A atacaría las células sanguíneas que contienen antígeno A.</p>
-                    <br>
-                    <h4>Grupo AB</h4>
-                    <p>Los glóbulos rojos tienen antígenos A y B, pero el plasma no contiene anticuerpos anti-A ni anti-B. Las
-                        personas con el tipo AB pueden recibir cualquier tipo de sangre ABO.</p>
-                    <br>
-                    <h4>Grupo O</h4>
-                    <p>El plasma contiene anticuerpos anti-A y anti-B, pero la superficie de los glóbulos rojos no contiene
-                        antígenos A o B.
-                        Dado que estos antígenos no están presentes, una persona con cualquier tipo de sangre del sistema ABO puede
-                        recibir este tipo de sangre.</p>
-                    <br>
-                    <h4>Factor Rhesus</h4>
-                    <p>Algunos glóbulos rojos tienen factor Rh, también conocido como antígeno RhD. La agrupación Rhesus agrega otra
-                        dimensión.
-                        Si los glóbulos rojos contienen el antígeno RhD, son RhD positivos. Si no es así, son RhD negativos.</p>
-
-                </div>
-
+                <a href="http://twitter.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="44" height="44"
+                                                                  viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+                    </svg></a>
+                <a href="front/nosotros/#contacto" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="44" height="44"
+                                                                       viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <polyline points="3 7 12 13 21 7" />
+                    </svg></a>
 
             </div>
         </div>
-        <!--footer-->
-        <footer class="footer">
-            <div class="grid-3">
-                <h3 class="derechos-footer">Todos los derechos reservados &copy; </h3>
-                <div>
-                    <p>Teléfonos:</p>
-                    <p>(0341)3234235</p>
-                    <p>(0341)3222335</p>
-                </div>
-                <div class="iconos">
-                    <a href="https://www.facebook.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="44" height="44"
-                                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-                        </svg></a>
 
-                    <a href="https://www.instagram.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="44" height="44"
-                                                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <rect x="4" y="4" width="16" height="16" rx="4" />
-                        <circle cx="12" cy="12" r="3" />
-                        <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
-                        </svg></a>
+    </footer>
+    <!-- <script src="../static/js/index.js" type="text/javascript"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+</body>
 
-                    <a href="http://twitter.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="44" height="44"
-                                                                      viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
-                        </svg></a>
-                    <a href="front/nosotros/#contacto" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="44" height="44"
-                                                                           viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <rect x="3" y="5" width="18" height="14" rx="2" />
-                        <polyline points="3 7 12 13 21 7" />
-                        </svg></a>
-
-                </div>
-            </div>
-
-        </footer>
-        <!-- <script src="../static/js/index.js" type="text/javascript"></script> -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-                integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-        crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-                integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-        crossorigin="anonymous"></script>
-    </body>
 </html>

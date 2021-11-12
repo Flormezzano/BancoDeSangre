@@ -1,19 +1,21 @@
 :root {
-  --ColorFooter: #406661
-  --ColorVerdePrincipal: #0eb29a
-  --ColorVerdeBtn: #198754
-  --ColorBlanco: #ffffff
-  --ColorNegro: #000000
-  --ColorGrisClaro: #f5f5f5
-  --ColorGrisOscuro: #c4c4c4
-  --ColorAmarillo: #face14
-  --ColorRojo: #d30e02
-  --ColorBackground: rgb(0, 0, 0, 0.65)
+  --ColorFooter: #406661;
+  --ColorVerdePrincipal: #0eb29a;
+  --ColorVerdeBtn: #198754;
+  --ColorBlanco: #ffffff;
+  --ColorNegro: #000000;
+  --ColorGrisClaro: #f5f5f5;
+  --ColorGrisOscuro: #c4c4c4;
+  --ColorAmarillo: #face14;
+  --ColorRojo: #d30e02;
+  --ColorBackground: rgb(0, 0, 0, 0.65);
+
   --FuenteMartel: "Martel Sans", sans-serif
   --FuenteOpenSans: "Open Sans", sans-serif
   --FuenteCoolvetica: "Coolvetica"
   --FuenteHeaters: "Heaters"
   --FuenteMagra: "Magra", "Regular"
+
 }
 
 @font-face {
@@ -59,7 +61,7 @@ html {
   justify-content: space-between;
 }
 .subrayado {
-  border-bottom: 2px solid var (--ColorAmarillo);
+  border-bottom: 2px solid var(--ColorAmarillo);
 }
 /* navegacion */
 .navigator {
@@ -154,7 +156,7 @@ input[placeholder] {
 
 /* informacion */
 .margin-bot {
-  margin-bottom: 100px;
+  margin-bottom: 90px;
 }
 .container-info {
   margin: 50px;
@@ -200,7 +202,6 @@ input[placeholder] {
 .flex-config {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
 }
 .slogan {
   color: var(--ColorBlanco);
@@ -214,6 +215,7 @@ input[placeholder] {
   border-color: var(--ColorBlanco) !important;
   width: 230px;
   height: 50px;
+  margin-top: 55px;
 }
 .btn-slogan {
   font-size: 25px;
@@ -236,6 +238,7 @@ input[placeholder] {
   font-size: 18px;
   line-height: 2;
   height: 939px;
+  margin-top: 20px;
 }
 .text-tds h4 {
   text-transform: uppercase;
@@ -243,11 +246,11 @@ input[placeholder] {
 h4 {
   text-align: center;
 }
-.h4-red {
+.h4-info {
   color: var(--ColorVerdePrincipal);
   font-weight: bold;
 }
-.p-red {
+.p-info2{
   color: var(--ColorVerdePrincipal);
   text-align: left;
   font-weight: bold;
@@ -368,6 +371,42 @@ h4 {
   margin: 60px 0px 20px 0px;
   font-weight: 700;
 }
+.btn-editar{
+  background-color: var(--ColorBlanco);
+  border: none;
+  float: right;
+}
+.campo-usuario{
+  display: flex;
+  margin-bottom: 20px;
+}
+.label-usuario{
+  text-align: right;
+  padding: 5px;
+  font-size: 20px;
+  font-family: var(--FuenteOpenSans);
+}
+.input-usuario{
+  padding: auto;
+  background-color: var(--ColorGrisClaro);
+  flex: 1;
+  border: none;
+}
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+}
+.flex-usuario{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+.btn-rojo-usuario{
+  background-color: var(--ColorRojo) !important;
+  border-color: var(--ColorRojo) !important;
+}
 
 /* PAGINA DE LISTA DE DONANTES */
 /*Filtros*/
@@ -420,16 +459,39 @@ h4 {
   align-items: center;
 }
 /*Banner- nosotros*/
+.cont-banner-nosotros{
+ display: table;
+ margin: auto;
+}
 .banner-nosotros {
   margin: 20px 0px;
   background-color: var(--ColorRojo);
   padding: 20px;
 }
 .slogan-nosotros {
+  position: relative;
   text-align: center;
   color: var(--ColorBlanco);
   font-size: 36px;
   font-family: "Homemade Apple";
+  float: left;
+}
+.barra-nosotros{
+  position: absolute;
+  right: 0;
+  width: 0px;
+  height: 70px;
+  background-color: var(--ColorRojo);
+  border-left: 2px solid #ffffff;
+  animation: maquina 6s infinite alternate steps(49);
+}
+@keyframes maquina{
+  from{
+    width: 100%;
+  }
+  to{
+    width: 0;
+  }
 }
 /*Formulario-nosotros*/
 .img-nosotros {
@@ -463,16 +525,57 @@ h4 {
 }
 
 /*Error*/
-.bg-error {
-  background-color: var(--ColorFooter);
-}
-.img-error {
-  text-align: center;
-}
-
 .text-error {
   text-align: center;
   text-transform: uppercase;
-  color: var(--ColorAmarillo);
+  color: var(--ColorBlanco);
   font-size: 40px;
+  position: relative;
+  left: -40%;
+  margin-top: 40px;
+}
+
+.pagina-error {
+  background-color:#740505;
+}
+
+.container-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -6.5px;
+  margin-top: -75.5px;
+}
+
+.ghost {
+  animation: float 3s ease-out infinite;
+}
+
+@keyframes float {
+  50% {
+     transform: translate(0, 20px);
+  }
+}
+.shadowFrame {
+  width: 140px;
+  margin-top: 15px;
+}
+.shadow {
+  animation: shrink 3s ease-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes shrink {
+  0% {
+    width: 90%;
+    margin: 0 5%;
+  }
+  50% {
+    width: 60%;
+    margin: 0 18%;
+  }
+  100% {
+    width: 90%;
+    margin: 0 5%;
+  }
 }

@@ -1,115 +1,253 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Inicio Usuario</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap"
+            rel="stylesheet">
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+        <link rel="stylesheet" href="/css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <title>Factor Vida</title>
+    </head>
 
-<body>
-    <!-- header y botones de arriba -->
-    <header class="navigator flex">
-        <div class="logo-flex">
-            <a href="/"><img class="logotipo" src="/img/testcorazonverde1.png"></a>
-            <a href="/" class="a"><h1 class="titulo">Factor <span class="vida">Vida</span></h1></a>
+    <body>
+        <!-- header y botones de arriba -->
+        <header class="navigator flex">
+            <div class="logo-flex">
+                <a href="/"><img class="logotipo" src="/img/testcorazonverde1.png"></a>
+                <a href="/" class="a">
+                    <h1 class="titulo">Factor <span class="vida">Vida</span></h1>
+                </a>
+            </div>
+            <nav>
+                <button type="button" class="btn btn-outline-success button-index" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        ><span class="letras">Mi perfil</span></button>
+                <a href="nosotros"><button type="button" class="btn btn-outline-success button-index"><span
+                            class="letras">Nosotros</span></button></a>
+                <a href="/logout"><button type="button" class="btn btn-outline-success button-index"><span class="letras">Cerrar
+                            Sesión</span></button></a>
+            </nav>
+        </header>
+        <!-- model usuario -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
+                    <div class="modal-body">
+                        <button class="btn-editar" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44" height="44"
+                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="#FACE14" fill="none" stroke-linecap="round"
+                                 stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                            <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                            <line x1="16" y1="5" x2="19" y2="8" />
+                            </svg>
+                        </button>
+                        <h2 class="titulo-general"><span class="subrayado">Datos Personales</span></h2>
+
+                        <form>
+
+                            <div class="campo-usuario">
+                                <label class="label-usuario">Nombre</label>
+                                <input class="input-usuario" type="text" required>
+                            </div>
+                            <div class="campo-usuario">
+                                <label class="label-usuario">Apellido</label>
+                                <input class="input-usuario" type="text" required>
+                            </div>
+                            <div class="campo-usuario">
+                                <label class="label-usuario">Fecha de nacimiento</label>
+                                <input class="input-usuario" type="date" required>
+                            </div>
+                            <div class="campo-usuario">
+                                <label class="label-usuario">Tipo de Sangre</label>
+                                <select class="input-usuario select-registro" placeholder="Seleccionar" required>
+                                    <option disabled selected>Seleccionar</option>
+                                    <option>A+</option>
+                                    <option>A-</option>
+                                    <option>B+</option>
+                                    <option>B-</option>
+
+                                </select>
+                            </div>
+                            <div class="campo-usuario">
+                                <label class="label-usuario">Sexo</label>
+                                <select class="input-usuario select-registro" placeholder="Seleccionar" required>
+                                    <option disabled selected>Seleccionar</option>
+                                    <option>M</option>
+                                    <option>F</option>
+                                    <option>O</option>
+                                </select>
+                            </div>
+                            <div class="campo-usuario">
+                                <label class="label-usuario">Provincia</label>
+                                <select class="input-usuario select-registro" placeholder="Seleccionar" required>
+                                    <option disabled selected>Seleccionar</option>
+                                    <option>Santa Fe</option>
+                                    <option>Buenos Aires</option>
+                                </select>
+                            </div>
+                            <div class="campo-usuario">
+                                <label class="label-usuario">Ciudad</label>
+                                <select class="input-usuario select-registro" placeholder="Seleccionar" required>
+                                    <option disabled selected>Seleccionar</option>
+                                    <option>Rosario</option>
+                                    <option>Granadero Baigorria</option>
+                                </select>
+                            </div>
+                            <div class="campo-usuario">
+                                <label class="label-usuario">Mail</label>
+                                <input class="input-usuario" type="email" required>
+                            </div>
+                        </form>
+
+                        <h2 class="titulo-general"><span class="subrayado">Sumate a ser donante</span></h2>
+                        <div class="flex-usuario">
+                            <div>
+                                <span class="label-usuario">Si</span>
+                                <input class="donante-registro" type="radio" name="donar">
+                            </div>
+                            <div>
+                                <span class="label-usuario">No</span><input class="donante-registro" type="radio" name="donar">
+                            </div>
+                        </div>
+
+
+                        <h2 class="titulo-general"><span class="subrayado">Cambio de contraseña</span></h2>
+                        <div class="campo-usuario">
+                            <label class="label-usuario">Nuevo contraseña</label>
+                            <input class="input-usuario" type="password" required>
+                        </div>
+                        <div class="campo-usuario">
+                            <label class="label-usuario">Repetir contraseña</label>
+                            <input class="input-usuario" type="password" required>
+                        </div>
+
+                        <div class="flex-config">
+                            <div class="btn-centrado btn-margen-top">
+                                <a href="inicioUsuario"><button type="submit" class="btn btn-success btn-registro btn-rojo-usuario">Darse de baja</button></a>
+                            </div>
+                            <div class="btn-centrado btn-margen-top">
+                                <a href="inicioUsuario"><button type="submit" class="btn btn-success btn-registro ">Guardar cambios</button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <nav>
-            <button type="button" class="btn btn-outline-success button-index"><span class="letras">Mi perfil</span></button>
-            <a href="front/nosotros"><button type="button" class="btn btn-outline-success button-index"><span class="letras">Nosotros</span></button></a>
-            <a href="/"><button type="button" class="btn btn-outline-success button-index"><span class="letras">Cerrar Sesión</span></button></a>
-        </nav>
-    </header>
-
-    <div>
-        <h2 class="titulo-usuario margin-bottom30">¡Bienvenido {nombre}!</h2>
-    </div>
-    <!-- Contenido del centro -->
-    <div class="flex-config2 ">
-        <!-- Botones del centro -->
+        <!-- Bienvenida usuario -->
         <div>
-            <div class="margin-bot">
-                <button type="button" class="btn btn-success btn-usuario"> ¡Veni a Donar, y salvá cuatro vidas!</button>
-            </div>
+            <h2 class="titulo-usuario margin-bottom30" style="color: black">¡Bienvenido <a style="text-decoration: none; color: black" class="titulo-usuario margin-bottom30" th:if="${session.personasession != null}" th:text="${session.personasession.nombre}"></a>!</h2>
+        </div>
+        <!-- Contenido del centro -->
+        <div class="flex-config2 ">
+            <!-- Botones del centro -->
             <div>
-                <a href="donantes"><button type="button" class="btn btn-success btn-usuario">Comenzar busqueda de donadores</button></a>
+                <div class="margin-bot">
+                    <button type="button" class="btn btn-success btn-usuario" data-bs-toggle="modal" data-bs-target="#exampleModal"> ¡Veni a Donar, y salvá cuatro vidas!</button>
+                </div>
+                <div>
+                    <a href="donantes"><button type="button" class="btn btn-success btn-usuario">Comenzar busqueda de
+                            donadores</button></a>
+                </div>
+            </div>
+
+            <!-- texto del centro -->
+            <div class="margin-bottom30">
+                <h2 class="titulo-requisitos">Requisitos para ser donante</h2>
+                <ul class="lista-requisitos">
+                    <li>
+                        Tener entre 18 y 65 años de edad (los menores entre 16 y 18 años, <br> lo pueden hacer con autorización de
+                        lospadres o tutores y los mayores de 65 años con autorización médica).
+                    </li>
+                    <li>
+                        Pesar como mínimo 50 kg.
+                    </li>
+                    <li>
+                        No padecer enfermedades infectocontagiosas.
+                    </li>
+                    <li>
+                        En lo posible hipertensión controlada, problemas tiroideos, problemas alérgicos sin manifestación en ese
+                        momento.
+                    </li>
+                    <li>
+                        Desayunar antes de donar. Es conveniente no tener un ayuno prolongado.
+                    <li>
+                        No haber sido intervenido quirúrgicamente, recibido tratamiento de acupuntura,tatuaje o piercing en el último
+                        año.
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <!-- texto del centro -->
-        <div class="margin-bottom30">
-            <h2 class="titulo-requisitos">Requisitos para ser donante</h2>
-            <ul class="lista-requisitos">
-                <li>
-                    Tener entre 18 y 65 años de edad (los menores entre 16 y 18 años, <br> lo pueden hacer con autorización de los padres o tutores y los mayores de 65 años con autorización médica).
-                </li>
-                <li>
-                    Pesar como mínimo 50 kg.
-                </li>
-                <li>
-                    No padecer enfermedades infectocontagiosas.
-                </li>
-                <li>
-                    En lo posible hipertensión controlada, problemas tiroideos, problemas alérgicos sin manifestación en ese momento.
-                </li>
-                <li>
-                    Desayunar antes de donar. Es conveniente no tener un ayuno prolongado.
-                <li>
-                    No haber sido intervenido quirúrgicamente, recibido tratamiento de acupuntura,tatuaje o piercing en el último año.
-                </li>
-            </ul>
+        <!--  texto de abajo  -->
+        <div>
+            <h3 class="pie-usuario">En caso de estar tomando alguna medicación, o si tenés dudas sobre tu salud, consultalo con
+                el médico previo a la donación.</h3>
         </div>
 
-    </div>
-    <!--  texto de abajo  -->
-    <div>
-        <h3 class="pie-usuario">En caso de estar tomando alguna medicación, o si tenés dudas sobre tu salud, consultalo con el médico previo a la donación.</h3>
-    </div>
 
+        <!--  footer  -->
+        <footer class="footer footer-bajo">
+            <div class="grid-3">
+                <h3 class="derechos-footer">Todos los derechos reservados &copy; </h3>
+                <div>
+                    <p>Teléfonos:</p>
+                    <p>(0341)3234235</p>
+                    <p>(0341)3222335</p>
+                </div>
+                <div class="iconos">
+                    <a href="https://www.facebook.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                            class="icon icon-tabler icon-tabler-brand-facebook" width="44" height="44" viewBox="0 0 24 24"
+                                                                            stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                        </svg></a>
 
-    <!--  footer  -->
-    <footer class="footer footer-bajo">
-        <div class="grid-3">
-            <h3 class="derechos-footer">Todos los derechos reservados &copy; </h3>
-            <div>
-                <p>Teléfonos:</p>
-                <p>(0341)3234235</p>
-                <p>(0341)3222335</p>
+                    <a href="https://www.instagram.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                             class="icon icon-tabler icon-tabler-brand-instagram" width="44" height="44" viewBox="0 0 24 24"
+                                                                             stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <rect x="4" y="4" width="16" height="16" rx="4" />
+                        <circle cx="12" cy="12" r="3" />
+                        <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+                        </svg></a>
+
+                    <a href="http://twitter.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                      class="icon icon-tabler icon-tabler-brand-twitter" width="44" height="44" viewBox="0 0 24 24"
+                                                                      stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+                        </svg></a>
+                    <a href="nosotros/#contacto" target="blank"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                     class="icon icon-tabler icon-tabler-mail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5"
+                                                                     stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                        <polyline points="3 7 12 13 21 7" />
+                        </svg></a>
+                </div>
             </div>
-            <div class="iconos">
-                <a href="https://www.facebook.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="44" height="44"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-                  </svg></a>
-          
-                  <a href="https://www.instagram.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="44" height="44"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <rect x="4" y="4" width="16" height="16" rx="4" />
-                    <circle cx="12" cy="12" r="3" />
-                    <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
-                  </svg></a>
-          
-                  <a href="http://twitter.com/" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="44" height="44"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path
-                      d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
-                  </svg></a>
-                  <a href="nosotros/#contacto" target="blank"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="44" height="44"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <rect x="3" y="5" width="18" height="14" rx="2" />
-                    <polyline points="3 7 12 13 21 7" />
-                  </svg></a>
 
-            </div>
-        </div>
+        </footer>
 
-    </footer>
-</body>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    </body>
 </html>
