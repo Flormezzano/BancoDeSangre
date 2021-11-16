@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,9 +24,9 @@
             <a href="/" class="a"><h1 class="titulo">Factor <span class="vida">Vida</span></h1></a>
         </div>
         <nav>
-            <button type="button" class="btn btn-outline-success button-index"><span class="letras">Mi perfil</span></button>
-            <a href="/"><button type="button" class="btn btn-outline-success button-index"><span class="letras">Iniciar sesión</span></button></a>
-            <a href="/"><button type="button" class="btn btn-outline-success button-index"><span class="letras">Cerrar sesión</span></button></a>
+            <button sec:authorize="isAuthenticated()" th:href="@{/nosotros}" type="button" class="btn btn-outline-success button-index"><span class="letras">Mi perfil</span></button>
+            <a href="/"><button sec:authorize="!isAuthenticated()" th:href="@{/nosotros}" type="button" class="btn btn-outline-success button-index"><span class="letras">Iniciar sesión</span></button></a>
+            <a href="/"><button  sec:authorize="isAuthenticated()" th:href="@{/nosotros}" type="button" class="btn btn-outline-success button-index"><span class="letras">Cerrar sesión</span></button></a>
         </nav>
     </header>
     <!-- Título -->
@@ -73,7 +73,9 @@
 
     <!-- Banner -->
     <div class="banner-nosotros">
-        <p class="slogan-nosotros">Sumate como donador, con tu apoyo salvamos vidas</p>
+        <div class="cont-banner-nosotros">
+            <p class="slogan-nosotros">Sumate como donador, con tu apoyo salvamos vidas..<span class="barra-nosotros">&#160;</span></p>
+        </div>
     </div>
 
     <!--formulario Contactanos -->

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -27,11 +27,11 @@
       </a>
     </div>
     <nav>
-      <button type="button" class="btn btn-outline-success button-index" data-bs-toggle="modal" data-bs-target="#exampleModal"
+      <button sec:authorize="isAuthenticated()" th:href="@{/inicioUsuario}" type="button" class="btn btn-outline-success button-index" data-bs-toggle="modal" data-bs-target="#exampleModal"
 ><span class="letras">Mi perfil</span></button>
       <a href="nosotros"><button type="button" class="btn btn-outline-success button-index"><span
             class="letras">Nosotros</span></button></a>
-      <a href="/"><button type="button" class="btn btn-outline-success button-index"><span class="letras">Cerrar
+      <a href="/"><button sec:authorize="isAuthenticated()" th:href="@{/inicioUsuario}" type="button" class="btn btn-outline-success button-index"><span class="letras">Cerrar
             Sesión</span></button></a>
     </nav>
   </header>
@@ -149,7 +149,7 @@
 </div>
 <!-- Bienvenida usuario -->
   <div>
-    <h2 class="titulo-usuario margin-bottom30">¡Bienvenido {nombre}!</h2>
+    <h2 class="titulo-usuario margin-bottom30">¡Bienvenido <a class="titulo-usuario margin-bottom30" th:if="${session.personasession != null}" th:text="${session.personasession.nombre}"></a>!</h2>
   </div>
   <!-- Contenido del centro -->
   <div class="flex-config2 ">

@@ -1,7 +1,7 @@
-package com.BancoDeSangre1.BancoDeSangre1.servicios;
+package com.BancoDeSangre1.BancoDeSangre1.Servicios;
 
+import com.BancoDeSangre1.BancoDeSangre1.Repositorios.CiudadRepositorio1;
 import com.BancoDeSangre1.BancoDeSangre1.entidades.Ciudad;
-import com.BancoDeSangre1.BancoDeSangre1.repositorios.CiudadRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
  * @author Gastón
  */
 @Service
-public class CiudadServicio {
+public class CiudadService {
     
     @Autowired
-    private CiudadRepositorio ciudadReposiotrio;
+    private CiudadRepositorio1 ciudadReposiotrio;
     
     public List<Ciudad> listaCiudad(){
         return ciudadReposiotrio.listaCiudad();
@@ -26,5 +26,14 @@ public class CiudadServicio {
     
     public List<Ciudad> listaProvinciaPorNombre(String nombre){
         return ciudadReposiotrio.listaProvinciaPorNombre("%"+nombre+"%");
+    }
+    
+    public List<Ciudad> listar(){
+     List<Ciudad> ciudades = ciudadReposiotrio.findAll();
+      return ciudades;
+    }
+    
+    public Ciudad traerPorID(String id) {
+        return ciudadReposiotrio.getById(id);
     }
 }
