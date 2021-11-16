@@ -32,14 +32,14 @@ public class PersonaController {
     TipoDeSangreService tipoServ;
     
     
-//    @PreAuthorize("hasAnyRole('ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @GetMapping("/lista")
     public String lista(Model model){
         model.addAttribute("persona", personaServ.listaPersona());
         return"listaDonantes";
     }
     
-//    @GetMapping("/registrar") // NO FUNCIONA - ANDA EK DE CIBTROLLERGRAL
+//    @GetMapping("/registrar") // NO FUNCIONA - ANDA EL DE CONTROLLERGRAL
 //    public String registrar(ModelMap model) {
 //        model.addAttribute("persona", new Persona());
 //        model.addAttribute("provincias", provinciaServ.listar());
@@ -50,8 +50,8 @@ public class PersonaController {
 //    }
 //
 //    @PostMapping("/registrar")
-//    public String registro(ModelMap model, @ModelAttribute() Persona persona, RedirectAttributes redirectAttributes) {
 //        try {
+//    public String registro(ModelMap model, @ModelAttribute() Persona persona, RedirectAttributes redirectAttributes) {
 //            personaServ.Registro(persona);
 //            return "inicioUsuario";
 //        } catch (Exception e) {
@@ -62,7 +62,7 @@ public class PersonaController {
 //        }
 //    }
     
-//    @PreAuthorize("hasAnyRole('ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable String id, ModelMap model, Persona persona) {
         try {

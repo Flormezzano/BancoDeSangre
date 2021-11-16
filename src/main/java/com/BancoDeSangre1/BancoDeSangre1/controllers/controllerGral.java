@@ -77,18 +77,18 @@ public class controllerGral {
         return "nosotros";
     }
 
-    @GetMapping("/error")
-    public String error() {
-        return "error";
-    }
+//    @GetMapping("/error")
+//    public String error() {
+//        return "error";
+//    }
 
-//    @PreAuthorize("hasAnyRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/inicioUsuario")
     public String inicioUsuario() {
         return "inicioUsuario";
     }
     
-//    @PreAuthorize("hasAnyRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/listaDonantes")
     public String listaDonantes() {
         return "listaDonantes";

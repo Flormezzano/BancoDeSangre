@@ -18,21 +18,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private PersonaService ps;
-
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    
+//ERROR 
+//    @Bean
+//    public BCryptPasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     @Autowired
     private void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(ps).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(ps).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     //Para q no pida la contraseña para entrar todo el tiempo
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/*").permitAll()
+        http.authorizeRequests().antMatchers("/css/*", "/fonts/*", "/img/*", "/js/*").permitAll()
                 .and().formLogin()
                 .loginPage("/login")
                 .usernameParameter("mail")
