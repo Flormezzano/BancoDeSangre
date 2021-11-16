@@ -47,10 +47,9 @@ public class PersonaService implements UserDetailsService {
     
     @Autowired
     private ProvinciaService provinciaServise;
-    
-    @Autowired
-    private BCryptPasswordEncoder encoder;
-    
+
+//    @Autowired(required=true)
+//    private BCryptPasswordEncoder encoder;
     public Persona Registro(Persona persona) throws ExceptionService {
         validacion(persona);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); //LO Puse general para que Sprint lo trabaje y pueda usarlo en los dos metodos
@@ -67,11 +66,15 @@ public class PersonaService implements UserDetailsService {
             throw new ExceptionService("Lo sentimos, este mail está en uso");
         }
 
-        if (persona.getContrasenia1().equals(persona.getContrasenia2())) {
-            persona.setContrasenia1(encoder.encode(persona.getContrasenia1()));
-            persona.setContrasenia2(encoder.encode(persona.getContrasenia2()));
+        if (validacionPassword(persona)) {
+            if (persona.getContrasenia1().equals(persona.getContrasenia2())) {
+                persona.setContrasenia1(encoder.encode(persona.getContrasenia1()));
+                persona.setContrasenia2(encoder.encode(persona.getContrasenia2()));
+            } else {
+                throw new ExceptionService("Las contraseñas no coinciden");
+            }
         } else {
-            throw new ExceptionService("Las contraseñas no coinciden");
+            throw new ExceptionService("La contraseña tiene que tener al menos 6 caracteres");
         }
 
         TipoDeSangre tipoSangre = tipoSangreServise.traerPorID(persona.getTipo().getId());
@@ -83,7 +86,7 @@ public class PersonaService implements UserDetailsService {
         if (validacioDate(persona) == true) {
             persona.setDonante(persona.getDonante());
         } else {
-            throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
+            persona.setDonante(false);
         }
         persona.setAlta(true);
         persona.setRol(Roles.USER);
@@ -92,7 +95,10 @@ public class PersonaService implements UserDetailsService {
     }
     
     public Persona modificar(Persona persona) throws ExceptionService {
-        
+
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
         Optional<Persona> respuesta = personaRepositorio.findById(persona.getId());
         if (respuesta.isPresent()) {
             persona = respuesta.get();
@@ -108,11 +114,17 @@ public class PersonaService implements UserDetailsService {
             } else {
                 throw new ExceptionService("Lo sentimos, este mail está en uso");
             }
-            if (persona.getContrasenia1().equals(persona.getContrasenia2())) {
-                persona.setContrasenia1(encoder.encode(persona.getContrasenia1()));
-                persona.setContrasenia2(encoder.encode(persona.getContrasenia2()));
+
+
+            if (validacionPassword(persona)) {
+                if (persona.getContrasenia1().equals(persona.getContrasenia2())) {
+                    persona.setContrasenia1(encoder.encode(persona.getContrasenia1()));
+                    persona.setContrasenia2(encoder.encode(persona.getContrasenia2()));
+                } else {
+                    throw new ExceptionService("Las contraseñas no coinciden");
+                }
             } else {
-                throw new ExceptionService("Las contraseñas no coinciden");
+                throw new ExceptionService("La contraseña tiene que tener al menos 6 caracteres");
             }
             
             TipoDeSangre tipoSangre = tipoSangreServise.traerPorID(persona.getTipo().getId());
@@ -125,9 +137,10 @@ public class PersonaService implements UserDetailsService {
             if (validacioDate(persona) == true) {
                 persona.setDonante(persona.getDonante());
             } else {
+                persona.setDonante(false);
                 throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
             }
-           
+
             personaRepositorio.save(persona);
         } else {
             throw new ExceptionService("No se encuentra el usuario");
@@ -155,21 +168,9 @@ public class PersonaService implements UserDetailsService {
 //        return periodo.getYears();
 //    }
 
-    //VALIDACION MAIL - CONTROLLER LIA 89
-//    public void iniciarSesion(Persona persona) throws ExceptionService {
-//        Persona mail = personaRepositorio.mail(persona.getMail());
-//        String contraseña = mail.getContrasenia1();
-//        if (mail != null) {
-//            if (!persona.getContrasenia1().equals(contraseña)) {
-//                throw new ExceptionService("Contraseña invalida");
-//            }
-//        } else {
-//            throw new ExceptionService("El mail ingresado no se encuentra registrado");
-//        }
-//    }
-    
     public void recuperarContrasenia(Persona persona) throws ExceptionService {
         Persona mail = personaRepositorio.mail(persona.getMail());
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (mail != null) {
             if (mail.getContrasenia1().equals(persona.getContrasenia2())) {
                 mail.setContrasenia1(encoder.encode(persona.getContrasenia1()));
@@ -253,7 +254,15 @@ public class PersonaService implements UserDetailsService {
         return periodo.getYears();
     }
 
-    private Boolean validacioDate(Persona persona) throws ExceptionService { 
+    private Boolean validacionPassword(Persona persona) {
+        Boolean aprobada = false;
+        if (persona.getContrasenia1().length() >= 6) {
+            aprobada = true;
+        }
+        return aprobada;
+    }
+
+    private Boolean validacioDate(Persona persona) throws ExceptionService {
         Boolean donante = false;
 
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -264,37 +273,33 @@ public class PersonaService implements UserDetailsService {
 
         if (periodo.getYears() > 18 && periodo.getYears() < 65) {
             donante = true;
-        } else {
-            throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
         }
         return donante;
     }
-    
+
     public List<Sexo> sexo() {
         List<Sexo> sexos = Arrays.asList(Sexo.values());
         return sexos;
     }
 
-    
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException { // VERIFICAR SI ESTA BIEN TERMINADO
         try {
             Persona persona = personaRepositorio.mail(mail);
-            UserBuilder user;
+//            UserBuilder user;
             
+            List<GrantedAuthority> authorities = new ArrayList<>();
+            authorities.add(new SimpleGrantedAuthority("ROLES_" + persona.getRol()));
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession(true);
             session.setAttribute("personasession", persona);
 
-            List<GrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority("ROLES_" + persona.getRol()));
-           
-            
-            
-            return new User(mail, persona.getContrasenia1(), authorities);
+
+            User user = new User(persona.getMail(), persona.getContrasenia1(), authorities);
+            return user;
         } catch (Exception e) {
             throw new UsernameNotFoundException("El mail no existe");
         }
     }
-    
+
 }

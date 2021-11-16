@@ -5,6 +5,7 @@
  */
 package com.BancoDeSangre1.BancoDeSangre1.controllers;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,34 +18,36 @@ public class FrontController {
 // public String index(){
 //    return "index";
 // } 
- @GetMapping("/registrarse")
- public String modelRegistro(){
-    return "modelRegistro";
- } 
- 
- @GetMapping("/inicioUsuario")
- public String inicioUsuario(){
-    return "inicioUsuario";
- } 
- 
- @GetMapping("/donantes")
- public String listaDonantes(){
-    return "listaDonantes";
- }
- 
- @GetMapping("/nosotros")
- public String nosotros(){
-    return "nosotros";
- }
- 
- @GetMapping("/modelUsuario")
- public String modelUsuario(){
-    return "modelUsuario";
- }
- 
-  @GetMapping("/error")
- public String error(){
-    return "error";
- }
- 
+
+// @GetMapping("/registrarse")
+// public String modelRegistro(){
+//    return "modelRegistro";
+// } 
+//// @PreAuthorize("hasAnyRole('ROLE_USER')")
+// @GetMapping("/inicioUsuario")
+// public String inicioUsuario(){
+//    return "inicioUsuario";
+// } 
+// 
+//// @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+// @GetMapping("/donantes")
+// public String listaDonantes(){
+//    return "listaDonantes";
+// }
+// 
+// @GetMapping("/nosotros")
+// public String nosotros(){
+//    return "nosotros";
+// }
+// 
+// @GetMapping("/modelUsuario")
+// public String modelUsuario(){
+//    return "modelUsuario";
+// }
+// 
+//  @GetMapping("/error")
+// public String error(){
+//    return "error";
+// }
+// 
 }

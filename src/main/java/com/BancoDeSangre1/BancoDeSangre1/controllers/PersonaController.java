@@ -32,42 +32,38 @@ public class PersonaController {
     CiudadService ciudadServ;
     @Autowired
     TipoDeSangreService tipoServ;
-
+   
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @GetMapping("/lista")
     public String lista(Model model) {
         model.addAttribute("persona", personaServ.listaPersona());
         return "listaDonantes";
     }
-
-    @GetMapping("/registrar")
-    public String registrar(ModelMap model) {
-        model.addAttribute("persona", new Persona());
-        model.addAttribute("provincias", provinciaServ.listar());
-        model.addAttribute("ciudades", ciudadServ.listar());
-        model.addAttribute("sangre", tipoServ.listar());
-        model.addAttribute("sexos", personaServ.sexo());
-        return "index";
-    }
-
-    @PostMapping("/registrar")
-    public String registro(ModelMap model, @ModelAttribute() Persona persona, RedirectAttributes redirectAttributes, BindingResult bindingResult) {
-        try {
-            if (bindingResult.hasErrors()) {
-                personaServ.Registro(persona);
-                return "inicioUsuario";
-            }
-            personaServ.Registro(persona);
-            return "inicioUsuario";
-        } catch (Exception e) {
-            e.printStackTrace();
-            redirectAttributes.addFlashAttribute("persona", persona); // se usa para pasar los datos al otro controller/Metodo
-            // se usa para pasar los datos al otro controller/Metodo
-            redirectAttributes.addFlashAttribute("error", e.getMessage());
-            return "redirect:/persona/registrar";
-        }
-    }
-
-    @PreAuthorize("hasAnyRole('ROLES_USER')")
+    
+//    @GetMapping("/registrar") // NO FUNCIONA - ANDA EL DE CONTROLLERGRAL
+//    public String registrar(ModelMap model) {
+//        model.addAttribute("persona", new Persona());
+//        model.addAttribute("provincias", provinciaServ.listar());
+//        model.addAttribute("ciudades", ciudadServ.listar());
+//        model.addAttribute("sangre", tipoServ.listar());
+//        model.addAttribute("sexos", personaServ.sexo());
+//        return "index";
+//    }
+//
+//    @PostMapping("/registrar")
+//        try {
+//    public String registro(ModelMap model, @ModelAttribute() Persona persona, RedirectAttributes redirectAttributes) {
+//            personaServ.Registro(persona);
+//            return "inicioUsuario";
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            redirectAttributes.addFlashAttribute("persona", persona); // se usa para pasar los datos al otro controller/Metodo
+//            redirectAttributes.addFlashAttribute("error", e.getMessage());
+//            return "redirect:/error";
+//        }
+//    }
+    
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @GetMapping("/editar/{id}")
     public String editar(HttpSession session ,@PathVariable String id, ModelMap model, Persona persona) {
         Persona login = (Persona) session.getAttribute("personasession");
