@@ -16,4 +16,5 @@ public interface ProvinciaRepo extends JpaRepository<Provincia, String> {
     @Query("SELECT c FROM Provincia c WHERE c.nombre LIKE :name")
     public List<Provincia> findByName(@Param("name") String name);
     
+    
 }

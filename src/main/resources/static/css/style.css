@@ -1,21 +1,21 @@
 :root {
-  --ColorFooter: #406661
-  --ColorVerdePrincipal: #0eb29a
-  --ColorVerdeBtn: #198754
-  --ColorBlanco: #ffffff
-  --ColorNegro: #000000
-  --ColorGrisClaro: #f5f5f5
-  --ColorGrisOscuro: #c4c4c4
-  --ColorAmarillo: #face14
-  --ColorRojo: #d30e02
-  --ColorBackground: rgb(0, 0, 0, 0.65)
-
+  --ColorFooter: #406661;
+  --ColorVerdePrincipal: #0eb29a;
+  --ColorVerdeBtn: #198754;
+  --ColorBlanco: #ffffff;
+  --ColorNegro: #000000;
+  --ColorGrisClaro: #f5f5f5;
+  --ColorGrisOscuro: #c4c4c4;
+  --ColorAmarillo: #face14;
+  --ColorRojo: #d30e02;
+  --ColorBackground: rgb(0, 0, 0, 0.65);
 
   --FuenteMartel: "Martel Sans", sans-serif
   --FuenteOpenSans: "Open Sans", sans-serif
   --FuenteCoolvetica: "Coolvetica"
   --FuenteHeaters: "Heaters"
   --FuenteMagra: "Magra", "Regular"
+
 }
 
 @font-face {
@@ -24,7 +24,7 @@
 }
 @font-face {
   font-family: "Heaters";
-  src: url('../fonts/Heaters.otf');
+  src: url("../fonts/Heaters.otf");
 }
 @font-face {
   font-family: "Magra";
@@ -35,9 +35,12 @@
   src: url("../fonts/HomemadeApple-Regular.ttf");
 }
 
-html{
+html {
   position: relative;
   min-height: 100%;
+}
+.a{
+  text-decoration: none;
 }
 
 /***Generales**/
@@ -58,7 +61,7 @@ html{
   justify-content: space-between;
 }
 .subrayado {
-  border-bottom: 2px solid var (--ColorAmarillo);
+  border-bottom: 2px solid var(--ColorAmarillo);
 }
 /* navegacion */
 .navigator {
@@ -110,7 +113,7 @@ section {
 }
 
 /*Inicio de Sesión*/
-.form-container-usuario{
+.form-container-usuario {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -140,17 +143,16 @@ section {
   padding: 10px;
   margin-bottom: 20px;
 }
-input[placeholder]{
+input[placeholder] {
   font-size: 18px;
 }
 .checkbox {
   color: var(--ColorBlanco);
   font-size: 22px;
 }
-.btn-ingresar{
+.btn-ingresar {
   font-size: 24px !important;
 }
-
 
 /* informacion */
 .margin-bot {
@@ -243,11 +245,11 @@ input[placeholder]{
 h4 {
   text-align: center;
 }
-.h4-red{
+.h4-red {
   color: var(--ColorVerdePrincipal);
   font-weight: bold;
 }
-.p-red{
+.p-red {
   color: var(--ColorVerdePrincipal);
   text-align: left;
   font-weight: bold;
@@ -284,7 +286,7 @@ h4 {
   padding: 50px 40px;
   box-shadow: 7px 7px 60px #000000;
 }
-.modal-img{
+.modal-img {
   background-image: url(../img/Superheroe-registro.jpg);
   background-position: center center;
   background-repeat: no-repeat;
@@ -292,69 +294,75 @@ h4 {
   margin-left: auto;
   margin-right: auto;
 }
-.form-registro{
-  height: 900px;
+
+.form-registro {
+  height: 750px;
 }
-.label-registro{
+.label-registro {
   color: var(--ColorBlanco);
   text-align: left;
   font-family: var(--FuenteOpenSans);
   font-size: 18px;
 }
-.campo-registro{
-  margin: 30px 0px; 
+
+.campo-registro {
+  margin: 20px 0px;
 }
-.campo-registro p{
+.campo-registro p {
   text-align: center;
   color: var(--ColorBlanco);
 }
-.input-registro{
-  float:right;
+.input-registro {
+  float: right;
   padding: 0px 8px;
 }
-.span-registro{
+.span-registro {
   color: var(--ColorBlanco);
 }
-.btn-registro{
+.btn-margen-top {
+  margin-top: 50px;
+}
+.btn-registro {
   padding: 15px !important;
   font-size: 20px !important;
 }
-.btn-margen-top{
+.btn-margen-top {
   margin-top: 60px;
 }
 
 /* USUARIO */
-.margin-bottom30{
+.margin-bottom30 {
   margin-bottom: 30px;
 }
-.titulo-usuario{
+.titulo-usuario {
   font-family: var(--FuenteOpenSans);
   font-size: 70px;
   text-align: center;
   margin-top: 40px;
 }
-.btn-usuario{
+.btn-usuario {
   padding: 20px 30px !important;
 }
-.titulo-requisitos{
+.titulo-requisitos {
   font-family: var(--FuenteMartel);
   font-size: 36px;
   text-align: center;
   color: var(--ColorVerdePrincipal);
-
 }
-.lista-requisitos{
+.lista-requisitos {
   font-family: var(--FuenteOpenSans);
+
   font-size: 20px;
-  margin: 5px 0px; 
+  margin: 5px 0px;
+
   line-height: 3;
 }
-.flex-config2{
+.flex-config2 {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.pie-usuario{
+.pie-usuario {
   font-family: var(--FuenteOpenSans);
   text-align: center;
   font-size: 30px;
@@ -364,17 +372,21 @@ h4 {
 }
 
 /* PAGINA DE LISTA DE DONANTES */
+/*Filtros*/
+.filtros {
+  align-items: center !important;
+}
 /* Lista */
 .atributos-lista {
   font-family: var(--FuenteOpenSans);
-  font-size: 24px;
+  font-size: 18px;
 }
 .button-contactar {
   padding: 10px 30px !important;
   font-size: 24px;
 }
 /* iconos */
-.iconos-lista{
+.iconos-lista {
   margin: 0px 50px;
 }
 .iconos-pag {
@@ -383,25 +395,25 @@ h4 {
 .nav-lista {
   margin: 30px 15px 15px 0px !important ;
 }
-.footer-bajo{
+.footer-bajo {
   position: absolute;
   bottom: 0;
   width: 100%;
 }
 
 /*Nosotros*/
-.margen-nosotros{
+.margen-nosotros {
   margin: 10px 0px 150px 0px;
 }
-.texto-nosotros{
+.texto-nosotros {
   width: 1000px;
 }
-.parrafo-nosotros{
+.parrafo-nosotros {
   text-align: justify;
   font-family: var(--FuenteMartel);
   font-size: 20px;
 }
-.grid-4{
+.grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
@@ -410,57 +422,57 @@ h4 {
   align-items: center;
 }
 /*Banner- nosotros*/
-.banner-nosotros{
+.banner-nosotros {
   margin: 20px 0px;
   background-color: var(--ColorRojo);
   padding: 20px;
 }
-.slogan-nosotros{
+.slogan-nosotros {
   text-align: center;
   color: var(--ColorBlanco);
   font-size: 36px;
   font-family: "Homemade Apple";
 }
 /*Formulario-nosotros*/
-.img-nosotros{
+.img-nosotros {
   background-image: url(../img/contactanos.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height:  100vh;
+  height: 100vh;
   width: 100%;
 }
-.form-nosotros{
+.form-nosotros {
   width: 872px;
-  height: 850px;  
+  height: 850px;
 }
-.label-nosotros{
+.label-nosotros {
   color: var(--ColorBlanco);
   text-align: center;
   font-family: var(--FuenteOpenSans);
   font-size: 25px;
 }
-.input-nosotros{
+.input-nosotros {
   width: 100%;
 }
-.mensaje{
+.mensaje {
   float: top;
 }
-.btn-nosotros{
+.btn-nosotros {
   margin-top: 20px;
   padding: 15px 45px !important;
   font-size: 24px !important;
 }
 
 /*Error*/
-.bg-error{
+.bg-error {
   background-color: var(--ColorFooter);
 }
-.img-error{
+.img-error {
   text-align: center;
 }
 
-.text-error{
+.text-error {
   text-align: center;
   text-transform: uppercase;
   color: var(--ColorAmarillo);

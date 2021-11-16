@@ -284,10 +284,12 @@ public class PersonaService implements UserDetailsService {
             
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession(true);
-            session.setAttribute("persona", persona);
+            session.setAttribute("personasession", persona);
 
             List<GrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority("ROLES_" + persona.getRol()));
+           
+            
             
             return new User(mail, persona.getContrasenia1(), authorities);
         } catch (Exception e) {

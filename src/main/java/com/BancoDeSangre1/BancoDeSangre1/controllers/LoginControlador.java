@@ -17,11 +17,14 @@ public class LoginControlador {
 
     @GetMapping("")
     public String login(Model model, @RequestParam(required = false) String error, @RequestParam(required = false) String mail, @RequestParam(required = false) String logout){
-        if (error != null) {
+        if (error != null) {             
             model.addAttribute("error", "El usuario ingresado o la contraseña son incorrectas");
         }
         if (mail != null) {
             model.addAttribute("mail", mail);
+        }
+        if (logout != null) {
+            model.addAttribute("logout", "Ha finalizado sesión");
         }
         return "index";
     }

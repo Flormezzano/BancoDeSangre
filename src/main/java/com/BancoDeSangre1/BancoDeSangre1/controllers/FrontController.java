@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/front")
 public class FrontController {
     
- @GetMapping("/")
- public String index(){
-    return "index";
- } 
+// @GetMapping("/")
+// public String index(){
+//    return "index";
+// } 
  @GetMapping("/registrarse")
  public String modelRegistro(){
     return "modelRegistro";
