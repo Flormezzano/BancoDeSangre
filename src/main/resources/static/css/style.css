@@ -44,6 +44,15 @@ html {
 }
 
 /***Generales**/
+/*Texto error*/
+.texto-error{
+  margin-top: 10px;
+  color: var(--ColorBlanco);
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+
+}
 /*botones*/
 .btn-centrado {
   margin-top: 30px;
@@ -55,7 +64,7 @@ html {
   background-color: var(--ColorVerdePrincipal) !important;
   border-color: var(--ColorVerdePrincipal) !important;
 }
-
+/*flex y subrayado*/
 .flex {
   display: flex;
   justify-content: space-between;
@@ -63,7 +72,13 @@ html {
 .subrayado {
   border-bottom: 2px solid var(--ColorAmarillo);
 }
-/* navegacion */
+.flex-center{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/** Navegación **/
 .navigator {
   background-color: var(--ColorGrisClaro);
   width: 100%;
@@ -151,7 +166,8 @@ input[placeholder] {
   font-size: 22px;
 }
 .btn-ingresar {
-  font-size: 24px !important;
+  font-size: 22px !important;
+  padding: 13px !important;
 }
 
 /* informacion */
@@ -174,6 +190,7 @@ input[placeholder] {
   text-align: center;
   padding: 20px 20px 0px 20px;
   margin-right: 40px;
+  margin-bottom: 0;
 }
 .img-informacion {
   height: 30%;
@@ -210,12 +227,19 @@ input[placeholder] {
   font-family: "Heaters";
   text-align: center;
 }
+/*Boton Quiero Donar*/
+
 .btn-rojo {
-  background-color: var(--ColorRojo) !important;
-  border-color: var(--ColorBlanco) !important;
-  width: 230px;
-  height: 50px;
+  background-color: var(--ColorRojo);
+  border-radius: 10px;
+  border: 5px double var(--ColorBlanco);
+  width: 250px;
+  height: 70px;
   margin-top: 55px;
+}
+.btn-rojo:hover{
+  width: 260px;
+  height: 80px;
 }
 .btn-slogan {
   font-size: 25px;
@@ -297,7 +321,7 @@ h4 {
 }
 
 .form-registro {
-  height: 750px;
+  height: 770px;
 }
 .label-registro {
   color: var(--ColorBlanco);
@@ -393,9 +417,11 @@ h4 {
   border: none;
 }
 input[type=radio] {
+  margin-top: 3px;
   width: 20px;
   height: 20px;
 }
+
 .flex-usuario{
   display: flex;
   align-items: center;
