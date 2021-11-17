@@ -59,7 +59,8 @@ public class controllerGral {
     public String registro(ModelMap model, @ModelAttribute() Persona persona, RedirectAttributes redirectAttributes) {
         try {
             personaServ.Registro(persona);
-            return "inicioUsuario";
+            redirectAttributes.addFlashAttribute("ok", "Se ha registrado con éxito");
+            return "redirect:/";
         } catch (Exception e) {
             e.printStackTrace();
             redirectAttributes.addFlashAttribute("persona", persona); // se usa para pasar los datos al otro controller/Metodo
@@ -68,7 +69,7 @@ public class controllerGral {
         }
     }
     
-        @GetMapping("/index")
+    @GetMapping("/index")
     public String index() {
         return "index";
     }

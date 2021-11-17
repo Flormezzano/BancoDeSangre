@@ -17,12 +17,8 @@
             <div class="img-registro">
                 <div class="form-container form-registro">
                     <h3 class="login"> Registro</h3>
-<<<<<<< HEAD
-                    <form th:action="@{/persona/registrar}" th:object=${persona} method="POST">
 
-=======
                     <form th:action="@{/persona/registrar}" th:object="${persona}" method="POST">
->>>>>>> 38d115cd5c3bc82d86cba8b46095f82b004952be
                         <p th:if="${error != null}" th:text="${error}" id="exception"></p> 
 
                         <input hidden th:field="*{id}">

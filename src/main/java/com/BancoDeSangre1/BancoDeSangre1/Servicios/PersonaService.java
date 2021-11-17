@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -50,7 +51,7 @@ public class PersonaService implements UserDetailsService {
     
     @Autowired
     private Filtro filtro;
-    
+
 
 //    @Autowired(required=true)
 //    private BCryptPasswordEncoder encoder;
@@ -97,7 +98,9 @@ public class PersonaService implements UserDetailsService {
         personaRepositorio.save(persona);
         return persona;
     }
-    
+
+
+    @Transactional
     public Persona modificar(Persona persona) throws ExceptionService {
 
 
@@ -281,15 +284,18 @@ public class PersonaService implements UserDetailsService {
         return donante;
     }
 
+    public List<Persona> filtrar (String provincia, String ciudad, String tipodesangre){
+       List<Persona> persona= filtro.filtro(provincia,ciudad,tipodesangre);
+       return persona;
+    }
+
     public List<Sexo> sexo() {
         List<Sexo> sexos = Arrays.asList(Sexo.values());
         return sexos;
     }
 
-    public List<Persona> filtrar (String provincia, String ciudad, String tipodesangre){
-       List<Persona> persona= filtro.filtro(provincia,ciudad,tipodesangre);
-       return persona;
-    }
+    
+
 
     
     @Override

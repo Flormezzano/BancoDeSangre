@@ -20,6 +20,6 @@ public interface CiudadRepositorio1 extends JpaRepository<Ciudad, String>{
     @Query("Select c from Ciudad c where c.nombre like :nombre")
     public List<Ciudad> listaCiudadPorNombre(@Param("nombre") String nombre);
     
-    @Query("Select c from Ciudad c where c.provincia.nombre like :nombre")
-    public List<Ciudad> listaProvinciaPorNombre(@Param("nombre") String nombre);
+    @Query("Select c from Ciudad c where c.provincia.id = :id")
+    public List<Ciudad> listaCiudadPorProvincia(@Param("id") String nombre);
 }

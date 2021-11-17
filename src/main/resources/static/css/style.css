@@ -46,7 +46,8 @@ html {
 /***Generales**/
 /*Texto error*/
 .texto-error{
-  color: var(--ColorVerdePrincipal);
+  margin-top: 10px;
+  color: var(--ColorBlanco);
   font-weight: bold;
   text-align: center;
   font-size: 20px;
@@ -70,6 +71,12 @@ html {
 }
 .subrayado {
   border-bottom: 2px solid var(--ColorAmarillo);
+}
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 /** Navegación **/
@@ -411,9 +418,11 @@ h4 {
   border: none;
 }
 input[type=radio] {
+  margin-top: 3px;
   width: 20px;
   height: 20px;
 }
+
 .flex-usuario{
   display: flex;
   align-items: center;
