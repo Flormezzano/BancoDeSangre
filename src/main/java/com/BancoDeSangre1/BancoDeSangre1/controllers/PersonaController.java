@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -62,21 +63,33 @@ public class PersonaController {
 //            return "redirect:/error";
 //        }
 //    }
-    
-    @PreAuthorize("hasAnyRole('ROLE_USER')")
-    @GetMapping("/editar/{id}")
-    public String editar(HttpSession session ,@PathVariable String id, ModelMap model, Persona persona) {
-        Persona login = (Persona) session.getAttribute("personasession");
-        if (login == null || login.getId().equals(id)) {
-            return "redirect:/index";
-        }
+   @GetMapping("/editar")
+    public String editar(@RequestParam(required = true) String id, ModelMap model) {
+        model.addAttribute("provincias", provinciaServ.listar());
+        model.addAttribute("ciudades", ciudadServ.listar());
+        model.addAttribute("sangre", tipoServ.listar());
+            Persona persona = personaServ.personaPorId(id);
+            if(id.equals(persona.getId())){
+                model.addAttribute("persona", persona);
+                return "modelUsuario";
+            }
+        return "inicioUsuaruio";
+    }
+
+    @PostMapping("/actualizar")
+    public String iniciar(ModelMap model, HttpSession session, @RequestParam() String id, @ModelAttribute() Persona persona) {
         try {
-            Persona pers = personaServ.personaPorId(persona);
+            Persona pers = personaServ.personaPorId(id);
             personaServ.modificar(pers);
-            model.addAttribute("persona", pers);
-            return "modelUsuario";
-        } catch (ExceptionService ex) {
-            model.put("error", ex.getMessage());
+            session.setAttribute("personasession", pers);
+            return "inicioUsuario";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("provincias", provinciaServ.listar());
+            model.addAttribute("ciudades", ciudadServ.listar());
+            model.addAttribute("sangre", tipoServ.listar());
+            model.addAttribute("perfil", persona);
+            model.put("error", e.getMessage());
             return "modelUsuario";
         }
     }

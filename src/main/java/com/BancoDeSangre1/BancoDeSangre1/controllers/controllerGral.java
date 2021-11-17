@@ -83,13 +83,13 @@ public class controllerGral {
 //        return "error";
 //    }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+//    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/inicioUsuario")
     public String inicioUsuario() {
         return "inicioUsuario";
     }
     
-    @PreAuthorize("hasRole('ROLE_USER')")
+//    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/listaDonantes")
     public String listaDonantes() {
         return "listaDonantes";

@@ -2,6 +2,7 @@ package com.BancoDeSangre1.BancoDeSangre1.Servicios;
 
 import com.BancoDeSangre1.BancoDeSangre1.Enums.Roles;
 import com.BancoDeSangre1.BancoDeSangre1.Enums.Sexo;
+import com.BancoDeSangre1.BancoDeSangre1.Repositorios.Filtro;
 import com.BancoDeSangre1.BancoDeSangre1.exception.ExceptionService;
 import com.BancoDeSangre1.BancoDeSangre1.Repositorios.PersonaRepositorio;
 import com.BancoDeSangre1.BancoDeSangre1.entidades.Ciudad;
@@ -20,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -47,6 +47,10 @@ public class PersonaService implements UserDetailsService {
     
     @Autowired
     private ProvinciaService provinciaServise;
+    
+    @Autowired
+    private Filtro filtro;
+    
 
 //    @Autowired(required=true)
 //    private BCryptPasswordEncoder encoder;
@@ -200,8 +204,8 @@ public class PersonaService implements UserDetailsService {
         return personaRepositorio.findAll();
     }
     
-    public Persona personaPorId(Persona persona) {
-        return personaRepositorio.getById(persona.getId());
+    public Persona personaPorId(String id) {
+        return personaRepositorio.getById(id);
     }
     
     private void validacion(Persona persona) throws ExceptionService {
@@ -282,6 +286,12 @@ public class PersonaService implements UserDetailsService {
         return sexos;
     }
 
+    public List<Persona> filtrar (String provincia, String ciudad, String tipodesangre){
+       List<Persona> persona= filtro.filtro(provincia,ciudad,tipodesangre);
+       return persona;
+    }
+
+    
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException { // VERIFICAR SI ESTA BIEN TERMINADO
         try {

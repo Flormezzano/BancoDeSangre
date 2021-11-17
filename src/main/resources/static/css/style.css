@@ -44,6 +44,14 @@ html {
 }
 
 /***Generales**/
+/*Texto error*/
+.texto-error{
+  color: var(--ColorVerdePrincipal);
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+
+}
 /*botones*/
 .btn-centrado {
   margin-top: 30px;
@@ -55,7 +63,7 @@ html {
   background-color: var(--ColorVerdePrincipal) !important;
   border-color: var(--ColorVerdePrincipal) !important;
 }
-
+/*flex y subrayado*/
 .flex {
   display: flex;
   justify-content: space-between;
@@ -63,7 +71,8 @@ html {
 .subrayado {
   border-bottom: 2px solid var(--ColorAmarillo);
 }
-/* navegacion */
+
+/** Navegación **/
 .navigator {
   background-color: var(--ColorGrisClaro);
   width: 100%;
@@ -151,7 +160,8 @@ input[placeholder] {
   font-size: 22px;
 }
 .btn-ingresar {
-  font-size: 24px !important;
+  font-size: 22px !important;
+  padding: 13px !important;
 }
 
 /* informacion */
@@ -174,6 +184,7 @@ input[placeholder] {
   text-align: center;
   padding: 20px 20px 0px 20px;
   margin-right: 40px;
+  margin-bottom: 0;
 }
 .img-informacion {
   height: 30%;
@@ -210,12 +221,19 @@ input[placeholder] {
   font-family: "Heaters";
   text-align: center;
 }
+/*Boton Quiero Donar*/
+
 .btn-rojo {
-  background-color: var(--ColorRojo) !important;
-  border-color: var(--ColorBlanco) !important;
-  width: 230px;
-  height: 50px;
+  background-color: var(--ColorRojo);
+  border-radius: 10px;
+  border: 5px double var(--ColorBlanco);
+  width: 250px;
+  height: 70px;
   margin-top: 55px;
+}
+.btn-rojo:hover{
+  width: 260px;
+  height: 80px;
 }
 .btn-slogan {
   font-size: 25px;
@@ -246,19 +264,11 @@ input[placeholder] {
 h4 {
   text-align: center;
 }
-<<<<<<< HEAD
-.h4-red {
-  color: var(--ColorVerdePrincipal);
-  font-weight: bold;
-}
-.p-red {
-=======
 .h4-info {
   color: var(--ColorVerdePrincipal);
   font-weight: bold;
 }
 .p-info2{
->>>>>>> 38d115cd5c3bc82d86cba8b46095f82b004952be
   color: var(--ColorVerdePrincipal);
   text-align: left;
   font-weight: bold;
@@ -305,7 +315,7 @@ h4 {
 }
 
 .form-registro {
-  height: 750px;
+  height: 770px;
 }
 .label-registro {
   color: var(--ColorBlanco);
@@ -467,23 +477,17 @@ input[type=radio] {
   align-items: center;
 }
 /*Banner- nosotros*/
-<<<<<<< HEAD
-=======
 .cont-banner-nosotros{
  display: table;
  margin: auto;
 }
->>>>>>> 38d115cd5c3bc82d86cba8b46095f82b004952be
 .banner-nosotros {
   margin: 20px 0px;
   background-color: var(--ColorRojo);
   padding: 20px;
 }
 .slogan-nosotros {
-<<<<<<< HEAD
-=======
   position: relative;
->>>>>>> 38d115cd5c3bc82d86cba8b46095f82b004952be
   text-align: center;
   color: var(--ColorBlanco);
   font-size: 36px;
@@ -539,16 +543,6 @@ input[type=radio] {
 }
 
 /*Error*/
-<<<<<<< HEAD
-.bg-error {
-  background-color: var(--ColorFooter);
-}
-.img-error {
-  text-align: center;
-}
-
-=======
->>>>>>> 38d115cd5c3bc82d86cba8b46095f82b004952be
 .text-error {
   text-align: center;
   text-transform: uppercase;
