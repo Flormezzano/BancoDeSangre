@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/doc/articles/springsecurity.html">
 
 <head>
   <meta charset="UTF-8">
@@ -7,13 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
   <link rel="stylesheet" href="/css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <title>Factor Vida</title>
 </head>
 
@@ -27,25 +24,22 @@
       </a>
     </div>
     <nav>
-      <button sec:authorize="isAuthenticated()" th:href="@{/inicioUsuario}" type="button" class="btn btn-outline-success button-index" data-bs-toggle="modal" data-bs-target="#exampleModal"
-><span class="letras">Mi perfil</span></button>
-      <a href="nosotros"><button type="button" class="btn btn-outline-success button-index"><span
-            class="letras">Nosotros</span></button></a>
-      <a href="/"><button sec:authorize="isAuthenticated()" th:href="@{/inicioUsuario}" type="button" class="btn btn-outline-success button-index"><span class="letras">Cerrar
-            Sesión</span></button></a>
-    </nav>
+      <button id="miPerfil" sec:authorize="isAuthenticated()" th:href="@{/persona/editar(id=__${session.personasession.id}__)}" type="button" class="btn btn-outline-success button-index" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="letras">Mis Datos</span></button>
+      <a href="/logout"><button sec:authorize="isAuthenticated()" th:href="@{/inicioUsuario}" type="button" class="btn btn-outline-success button-index"><span class="letras">Cerrar Sesión</span></button></a>
+      <a href="nosotros"><button type="button" class="btn btn-outline-success button-index"><span class="letras">Nosotros</span></button></a>
+  </nav>
   </header>
+
   <!-- model usuario -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content ">
       <div class="modal-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
       <div class="modal-body">
         <button class="btn-editar" type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44" height="44"
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit icono-editar" width="44" height="44"
             viewBox="0 0 24 24" stroke-width="1.5" stroke="#FACE14" fill="none" stroke-linecap="round"
             stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -54,102 +48,84 @@
             <line x1="16" y1="5" x2="19" y2="8" />
           </svg>
         </button>
+
         <h2 class="titulo-general"><span class="subrayado">Datos Personales</span></h2>
+        <form th:action="@{/persona/actualizar}" method="POST" th:object="${persona}">
+          <input hidden th:field="*{id}">
+          <div class="campo-usuario">
+            <label class="label-usuario" for="nombre">Nombre</label>
+            <input class="input-usuario" type="text" name="nombre" th:field="*{nombre}" required/>
+            </div>
 
-        <form>
+            <div class="campo-usuario">
+                <label class="label-usuario" for="apellido" >Apellido</label>
+                <input class="input-usuario" type="text" name="apellido" th:field="*{apellido}" required>
+            </div>
+
+            <div class="campo-usuario">
+                <label class="label-usuario" for="date">Fecha de nacimiento</label>
+                <input class="input-usuario" type="date"  th:field="*{date}"  required>
+            </div>
+
+            <div class="campo-usuario">
+              <label class="label-usuario" for="tipo" >Tipo de Sangre</label>
+              <select class="input-usuario select-registro" name="tipo" th:field="*{tipo}"  required>
+                  <option disabled selected th:value="null">Seleccionar</option>
+                  <option th:each="t : ${sangre}" th:text="${t.nombre}" th:value="${t.id}"></option>
+              </select>
+          </div>
 
           <div class="campo-usuario">
-            <label class="label-usuario">Nombre</label>
-            <input class="input-usuario" type="text" required>
+            <label class="label-usuario" for="sexo" >Sexo</label>
+            <select class="input-usuario select-registro"  th:field="*{sexo}" name="sexo" required>
+                <option disabled selected th:value="null">Seleccionar</option>
+                <option th:each="s : ${T(com.BancoDeSangre1.BancoDeSangre1.Enums.Sexo).values()}" th:text="${s}" th:value="${s}"></option>
+            </select>
           </div>
-          <div class="campo-usuario">
-            <label class="label-usuario">Apellido</label>
-            <input class="input-usuario" type="text" required>
-          </div>
-          <div class="campo-usuario">
-            <label class="label-usuario">Fecha de nacimiento</label>
-            <input class="input-usuario" type="date" required>
-          </div>
-          <div class="campo-usuario">
-            <label class="label-usuario">Tipo de Sangre</label>
-            <select class="input-usuario select-registro" placeholder="Seleccionar" required>
-              <option disabled selected>Seleccionar</option>
-              <option>A+</option>
-              <option>A-</option>
-              <option>B+</option>
-              <option>B-</option>
 
-            </select>
-          </div>
           <div class="campo-usuario">
-            <label class="label-usuario">Sexo</label>
-            <select class="input-usuario select-registro" placeholder="Seleccionar" required>
-              <option disabled selected>Seleccionar</option>
-              <option>M</option>
-              <option>F</option>
-              <option>O</option>
-            </select>
+              <label class="label-usuario" for="provincia">Provincia</label>
+              <select class="input-usuario select-registro" name="provincia" th:field="*{provincia}" required>
+                  <option disabled selected th:value="null">Seleccionar</option>
+                  <option th:each="p : ${provincias}" th:text="${p.nombre}" th:value="${p.id}"></option>
+              </select>
           </div>
+
           <div class="campo-usuario">
-            <label class="label-usuario">Provincia</label>
-            <select class="input-usuario select-registro" placeholder="Seleccionar" required>
-              <option disabled selected>Seleccionar</option>
-              <option>Santa Fe</option>
-              <option>Buenos Aires</option>
-            </select>
-          </div>
-          <div class="campo-usuario">
-            <label class="label-usuario">Ciudad</label>
-            <select class="input-usuario select-registro" placeholder="Seleccionar" required>
-              <option disabled selected>Seleccionar</option>
-              <option>Rosario</option>
-              <option>Granadero Baigorria</option>
-            </select>
-          </div>
-          <div class="campo-usuario">
-            <label class="label-usuario">Mail</label>
-            <input class="input-usuario" type="email" required>
+              <label class="label-usuario" for="ciudad">Ciudad</label>
+              <select class="input-usuario select-registro" name="ciudad" th:field="*{ciudad}" required>
+                  <option disabled selected th:value="*{null}">Seleccionar</option>
+                  <option th:each="c : ${ciudades}" th:text="${c.nombre}" th:value="${c.id}"></option>
+              </select>
           </div>
         </form>
 
         <h2 class="titulo-general"><span class="subrayado">Sumate a ser donante</span></h2>
           <div class="flex-usuario">
             <div>
-              <span class="label-usuario">Si</span>
+              <span class="label-usuario">SI</span>
               <input class="donante-registro" type="radio" name="donar">
             </div>
             <div>
-              <span class="label-usuario">No</span><input class="donante-registro" type="radio" name="donar">
+              <span class="label-usuario">NO</span><input class="donante-registro" type="radio" name="donar">
             </div>
           </div>
-
-
-        <h2 class="titulo-general"><span class="subrayado">Cambio de contraseña</span></h2>
-        <div class="campo-usuario">
-          <label class="label-usuario">Nuevo contraseña</label>
-          <input class="input-usuario" type="password" required>
-        </div>
-        <div class="campo-usuario">
-          <label class="label-usuario">Repetir contraseña</label>
-          <input class="input-usuario" type="password" required>
-        </div>
-
+      
         <div class="flex-config">
           <div class="btn-centrado btn-margen-top">
-            <a href="inicioUsuario"><button type="submit" class="btn btn-success btn-registro btn-rojo-usuario">Darse de baja</button></a>
+            <a href="bajaUsuario"><button type="submit" class="btn btn-success btn-registro btn-rojo-usuario">Darse de baja</button></a>
           </div>
           <div class="btn-centrado btn-margen-top">
-            <a href="inicioUsuario"><button type="submit" class="btn btn-success btn-registro ">Guardar cambios</button></a>
+            <button type="submit" class="btn btn-success btn-registro ">Guardar cambios</button>
           </div>
         </div>
       </div>
-
     </div>
   </div>
-</div>
+</div> -->
 <!-- Bienvenida usuario -->
   <div>
-    <h2 class="titulo-usuario margin-bottom30">¡Bienvenido <a class="titulo-usuario margin-bottom30" th:if="${session.personasession != null}" th:text="${session.personasession.nombre}"></a>!</h2>
+    <h2 class="titulo-usuario margin-bottom30">¡Bienvenido <a style="text-decoration: none; color: black" class="titulo-usuario margin-bottom30" th:if="${session.personasession != null}" th:text="${session.personasession.nombre}"></a>!</h2>
   </div>
   <!-- Contenido del centro -->
   <div class="flex-config2 ">
@@ -159,7 +135,7 @@
         <button type="button" class="btn btn-success btn-usuario" data-bs-toggle="modal" data-bs-target="#exampleModal"> ¡Veni a Donar, y salvá cuatro vidas!</button>
       </div>
       <div>
-        <a href="donantes"><button type="button" class="btn btn-success btn-usuario">Comenzar busqueda de
+        <a href="/listaDonantes"><button type="button" class="btn btn-success btn-usuario">Comenzar busqueda de
             donadores</button></a>
       </div>
     </div>
@@ -199,7 +175,7 @@
 
 
   <!--  footer  -->
-  <footer class="footer footer-bajo">
+  <footer class="footer footer-bajo2">
     <div class="grid-3">
       <h3 class="derechos-footer">Todos los derechos reservados &copy; </h3>
       <div>
@@ -252,6 +228,12 @@
     integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    
+    <!-- <script type="text/javascript" th:inline="javascript">
+      let btnMiPerfil = document.getElementById("miPerfil")
+      if ([[${error}]] !== null) {
+      btnMiPerfil.click()
+      }
+    </script> -->
 </body>
-
 </html>
