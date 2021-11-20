@@ -30,7 +30,6 @@ public class Ciudad implements Serializable, Comparable<Ciudad>{
         this.nombre = nombre;
         this.provincia = provincia;
     }
-//Vamo los pibe
     public String getId() {
         return id;
     }

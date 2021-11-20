@@ -29,8 +29,6 @@ public class Persona implements Serializable{
     private String id;
     private String nombre;
     private String apellido;
-//    @Temporal(TemporalType.DATE)
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Integer edad;
     private String date;
     @Enumerated(EnumType.STRING)
