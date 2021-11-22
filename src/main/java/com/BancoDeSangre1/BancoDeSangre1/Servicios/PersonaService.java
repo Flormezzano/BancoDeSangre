@@ -22,7 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -49,12 +48,11 @@ public class PersonaService implements UserDetailsService {
 
     @Autowired
     private ProvinciaService provinciaServise;
-    
+
     @Autowired
     private Filtro filtro;
 
-//    @Autowired(required=true)
-//    private BCryptPasswordEncoder encoder;
+    //Registro Persona
     public Persona Registro(Persona persona) throws ExceptionService {
         validacion(persona);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); //LO Puse general para que Sprint lo trabaje y pueda usarlo en los dos metodos
@@ -88,7 +86,6 @@ public class PersonaService implements UserDetailsService {
         persona.setProvincia(provincia);
         Ciudad ciudad = ciudadServise.traerPorID(persona.getCiudad().getId());
         persona.setCiudad(ciudad);
-
         if (validacioDate(persona) == true) {
             persona.setDonante(persona.getDonante());
         } else {
@@ -100,82 +97,117 @@ public class PersonaService implements UserDetailsService {
         return persona;
     }
 
+    //Modificar Persona
     @Transactional
     public Persona modificar(Persona persona) throws ExceptionService {
+        return validarModificaciones(persona);
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    }
 
+    private Persona validarModificaciones(Persona persona) throws ExceptionService {
         Optional<Persona> respuesta = personaRepositorio.findById(persona.getId());
+        Persona personaVieja = persona;
         if (respuesta.isPresent()) {
-            persona = respuesta.get();
-            persona.setNombre(persona.getNombre());
-            persona.setApellido(persona.getApellido());
-            persona.setEdad(calcularEdad(persona));
-            persona.setDate(persona.getDate());
-            persona.setSexo(persona.getSexo());
-
-            Persona verificacionMail = personaRepositorio.mail(persona.getMail());
-            if (verificacionMail == null) {
-                persona.setMail(persona.getMail());
-            } else {
-                throw new ExceptionService("Lo sentimos, este mail está en uso");
+            personaVieja = respuesta.get();
+            if (persona.getNombre() != null && !personaVieja.getNombre().equals(persona.getNombre())) {
+                personaVieja.setNombre(persona.getNombre());
             }
 
-            if (validacionPassword(persona)) {
-                if (persona.getContrasenia1().equals(persona.getContrasenia2())) {
-                    persona.setContrasenia1(encoder.encode(persona.getContrasenia1()));
-                    persona.setContrasenia2(encoder.encode(persona.getContrasenia2()));
-                } else {
-                    throw new ExceptionService("Las contraseñas no coinciden");
-                }
-            } else {
-                throw new ExceptionService("La contraseña tiene que tener al menos 6 caracteres");
+            if (persona.getApellido() != null && !personaVieja.getApellido().equals(persona.getApellido())) {
+                personaVieja.setApellido(persona.getApellido());
             }
-
-            TipoDeSangre tipoSangre = tipoSangreServise.traerPorID(persona.getTipo().getId());
-            persona.setTipo(tipoSangre);
-            Provincia provincia = provinciaServise.traerPorID(persona.getProvincia().getId());
-            persona.setProvincia(provincia);
-            Ciudad ciudad = ciudadServise.traerPorID(persona.getCiudad().getId());
-            persona.setCiudad(ciudad);
-
+            if (persona.getEdad() != null && !personaVieja.getEdad().equals(persona.getEdad())) {
+                personaVieja.setEdad(persona.getEdad());
+            }
+            if (persona.getDate() != null && !personaVieja.getDate().equals(persona.getDate())) {
+                personaVieja.setDate(persona.getDate());
+            }
+            if (persona.getSexo() != null && !personaVieja.getSexo().equals(persona.getSexo())) {
+                personaVieja.setSexo(persona.getSexo());
+            }
+            if (persona.getTipo() != null && !personaVieja.getTipo().equals(persona.getTipo())) {
+                TipoDeSangre tipoSangre = tipoSangreServise.traerPorID(persona.getTipo().getId());
+                personaVieja.setTipo(tipoSangre);
+            }
+            if (persona.getProvincia() != null && !personaVieja.getProvincia().equals(persona.getProvincia())) {
+                Provincia provincia = provinciaServise.traerPorID(persona.getProvincia().getId());
+                personaVieja.setProvincia(provincia);
+            }
+            if (persona.getCiudad() != null && !personaVieja.getCiudad().equals(persona.getCiudad())) {
+                Ciudad ciudad = ciudadServise.traerPorID(persona.getCiudad().getId());
+                personaVieja.setCiudad(ciudad);
+            }
             if (validacioDate(persona) == true) {
-                persona.setDonante(persona.getDonante());
+                personaVieja.setDonante(persona.getDonante());
             } else {
-                persona.setDonante(false);
-                throw new ExceptionService("Lo sentimos, no cumple con el requisito de edad para donar sangre");
+                personaVieja.setDonante(false);
             }
 
-            personaRepositorio.save(persona);
-        } else {
-            throw new ExceptionService("No se encuentra el usuario");
+            personaVieja.setAlta(personaVieja.getAlta());
+            personaVieja.setRol(personaVieja.getRol());
+            personaVieja.setMail(personaVieja.getMail());
+            personaVieja.setContrasenia1(personaVieja.getContrasenia1());
+            personaVieja.setContrasenia2(personaVieja.getContrasenia2());
+            personaRepositorio.save(personaVieja);
         }
+        return personaVieja;
+    }
+
+    //Baja de Usuario
+    public void baja(String id) {
+        Persona persona;
+        Optional<Persona> respuesta = personaRepositorio.findById(id);
+        if (respuesta.isPresent()) {    
+           persona=respuesta.get();
+           persona.setAlta(false);
+           personaRepositorio.save(persona);
+        }
+    }
+    
+    //Alta de Usuario
+    public void alta(String id) {
+        Persona persona;
+        Optional<Persona> respuesta = personaRepositorio.findById(id);
+        if (respuesta.isPresent()) {    
+           persona=respuesta.get();
+           persona.setAlta(true);
+           personaRepositorio.save(persona);
+        }
+    }
+    
+    //Cambiar Contraseña
+    public Persona cambiarContrasenia(String id,String password, String confirmPassword) throws ExceptionService{
+        System.out.println("aca entra");
+        Persona persona = personaRepositorio.getById(id);
+        
+        passwordCheck(password, confirmPassword);
+        recuperarContrasenia(persona, password);
         return persona;
     }
-
-    public void baja(Persona persona) {
-        Optional<Persona> respuesta = personaRepositorio.findById(persona.getId());
-        if (respuesta.isPresent()) {
-            persona = respuesta.get();
-            persona.setAlta(false);
-            personaRepositorio.save(persona);
+    
+    //Chequeo de contraseña nueva
+    public void passwordCheck(String password, String confirmPassword) throws ExceptionService {
+         
+        if (password == null || password.isEmpty() || password.length() < 6) {
+            throw new ExceptionService("La clave esta vacia o tiene menos de 6 caracteres");
+        }
+        if (!password.equals(confirmPassword)) {
+            throw new ExceptionService("Las contraseñas no coiciden");
         }
     }
+    
+    //Encriptar nueva contraseña
+    public void recuperarContrasenia(Persona persona, String password) throws ExceptionService {
+         String encrypt = new BCryptPasswordEncoder().encode(password);
+         persona.setContrasenia1(encrypt);
+         persona.setContrasenia2(encrypt);
+         personaRepositorio.save(persona);
+    }
 
-    public void recuperarContrasenia(Persona persona) throws ExceptionService {
-        Persona mail = personaRepositorio.mail(persona.getMail());
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        if (mail != null) {
-            if (mail.getContrasenia1().equals(persona.getContrasenia2())) {
-                mail.setContrasenia1(encoder.encode(persona.getContrasenia1()));
-                mail.setContrasenia2(encoder.encode(persona.getContrasenia2()));
-                personaRepositorio.save(mail);
-            } else {
-                throw new ExceptionService("Las contraseñas no coinciden");
-            }
-        } else {
-            throw new ExceptionService("El mail ingresado no se encuentra registrado");
-        }
+    //Verificar que el mail ingresado sea de un Usuario para recuperar contraseña
+    public Persona buscarPorMail(String mail) {
+        Persona persona = personaRepositorio.mail(mail);
+        return persona;
     }
 
     public List<Persona> listaPersonaPorProvincia(String nombre) {
@@ -191,13 +223,14 @@ public class PersonaService implements UserDetailsService {
     }
 
     public List<Persona> listaPersona() {
-        return personaRepositorio.findAll();
+        return personaRepositorio.listaPersona();
     }
 
     public Persona personaPorId(String id) {
         return personaRepositorio.getById(id);
     }
 
+    //Validaciones para registro
     private void validacion(Persona persona) throws ExceptionService {
         if (persona.getNombre() == null || persona.getNombre().isEmpty()) {
             throw new ExceptionService("Este campo de 'Nombre' no puede estar vacio");
@@ -223,13 +256,11 @@ public class PersonaService implements UserDetailsService {
         if (persona.getTipo() == null) {
             throw new ExceptionService("Este campo de 'Tipo de Sangre' no puede estar nulo");
         }
-        if (persona.getTipo().getNombre().isEmpty()) {
-            throw new ExceptionService("Este campo de 'Tipo de Sangre' no puede estar vacio");
-        }
-        if (persona.getProvincia() == null || persona.getProvincia().getNombre().isEmpty()) {
+
+        if (persona.getProvincia() == null) {
             throw new ExceptionService("Este campo de 'Provincia' no puede estar vacio");
         }
-        if (persona.getCiudad() == null || persona.getCiudad().getNombre().isEmpty()) {
+        if (persona.getCiudad() == null) {
             throw new ExceptionService("Este campo de 'Ciudad' no puede estar vacio");
         }
         if (persona.getDonante() == null) {
@@ -237,6 +268,7 @@ public class PersonaService implements UserDetailsService {
         }
     }
 
+    //Calcular edad del Usuario
     private Integer calcularEdad(Persona persona) {
 
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -248,6 +280,7 @@ public class PersonaService implements UserDetailsService {
         return periodo.getYears();
     }
 
+    //Validacion Contraseña
     private Boolean validacionPassword(Persona persona) {
         Boolean aprobada = false;
         if (persona.getContrasenia1().length() >= 6) {
@@ -256,6 +289,7 @@ public class PersonaService implements UserDetailsService {
         return aprobada;
     }
 
+    //Validacion de edad
     private Boolean validacioDate(Persona persona) throws ExceptionService {
         Boolean donante = false;
 
@@ -271,9 +305,9 @@ public class PersonaService implements UserDetailsService {
         return donante;
     }
 
+    //Filtro dinámico
     public List<Persona> filtrar (String provincia, String ciudad, String tipodesangre){
-       List<Persona> persona= filtro.filtro(provincia,ciudad,tipodesangre);
-       return persona;
+        return filtro.filtro(provincia,ciudad,tipodesangre);
     }
 
     public List<Sexo> sexo() {
@@ -281,18 +315,16 @@ public class PersonaService implements UserDetailsService {
         return sexos;
     }
 
+    //Login Usuario
     @Override
-    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException { // VERIFICAR SI ESTA BIEN TERMINADO
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
         try {
             Persona persona = personaRepositorio.mail(mail);
-//            UserBuilder user;
-            
             List<GrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority("ROLES_" + persona.getRol()));
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + persona.getRol()));
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession(true);
             session.setAttribute("personasession", persona);
-
             User user = new User(persona.getMail(), persona.getContrasenia1(), authorities);
             return user;
         } catch (Exception e) {

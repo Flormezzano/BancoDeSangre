@@ -39,11 +39,12 @@ public class Filtro {
     private boolean filtrar(String parametro) {
         return parametro != null && !parametro.trim().isEmpty();
     }
+    
 
     private String consulta(String provincia, String ciudad,String tipodesangre) {
         StringBuilder consulta = new StringBuilder();
 
-        consulta.append("SELECT p FROM Persona p WHERE p.alta = :true");
+        consulta.append("SELECT p FROM Persona p WHERE p.alta = '1' AND p.donante = '1'");
 
         if (filtrar(provincia)) {
             consulta.append(" AND p.provincia.nombre = :provincia");
@@ -52,7 +53,7 @@ public class Filtro {
             consulta.append(" AND p.ciudad.nombre = :ciudad");
         }
         if (filtrar(tipodesangre)) {
-            consulta.append(" AND p.tipodesangre.nombre = :tipodesangre");
+            consulta.append(" AND p.tipo.nombre = :tipodesangre");
         }
         return consulta.toString();
     }

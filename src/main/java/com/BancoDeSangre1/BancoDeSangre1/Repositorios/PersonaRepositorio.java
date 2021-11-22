@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PersonaRepositorio extends JpaRepository<Persona, String>{
     
-    @Query("select p from Persona p")
+    @Query("select p from Persona p WHERE p.alta = '1' AND p.donante = '1'")
     public List<Persona> listaPersona();
     
     @Query("select p from Persona p where p.provincia.nombre like :nombre")

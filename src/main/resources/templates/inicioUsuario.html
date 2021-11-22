@@ -27,10 +27,9 @@
                 </a>
             </div>
             <nav>
-                <a th:href="@{/persona/editar(id=__${session.personasession.id}__)}">PERFIL</a>
-                <button sec:authorize="isAuthenticated()" th:href="@{/persona/editar(id=__${session.personasession.id}__)}" type="button" class="btn btn-outline-success button-index" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="letras">Mi perfil</span></button>
+                <button id="miPerfil" sec:authorize="isAuthenticated()" th:href="@{/persona/editar(id=__${session.personasession.id}__)}" type="button" class="btn btn-outline-success button-index" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="letras">Mis Datos</span></button>
+                <a href="/logout"><button sec:authorize="isAuthenticated()" th:href="@{/inicioUsuario}" type="button" class="btn btn-outline-success button-index"><span class="letras">Cerrar Sesión</span></button></a>
                 <a href="nosotros"><button type="button" class="btn btn-outline-success button-index"><span class="letras">Nosotros</span></button></a>
-                <a href="/logout"><button sec:authorize="isAuthenticated()" th:href="@{/inicioUsuario}" type="button" class="btn btn-outline-success button-index"><span class="letras">CerrarSesión</span></button></a>
             </nav>
         </header>
         <!-- model usuario -->
@@ -52,94 +51,78 @@
                             <line x1="16" y1="5" x2="19" y2="8" />
                             </svg>
                         </button>
+
                         <h2 class="titulo-general"><span class="subrayado">Datos Personales</span></h2>
+                        <p class="texto-error" th:if="${error != null}" th:text="${error}" style="color: red"></p>
 
-                        <form th:action="@{/registrar}" method="POST">
+                        <form th:action="@{/persona/actualizar}" method="POST" th:object="${persona}">
+                            <input hidden th:field="*{id}">
 
                             <div class="campo-usuario">
-                                <label class="label-usuario">Nombre</label>
-                                <input class="input-usuario" type="text" required>
-                            </div>
-                            <div class="campo-usuario">
-                                <label class="label-usuario">Apellido</label>
-                                <input class="input-usuario" type="text" required>
-                            </div>
-                            <div class="campo-usuario">
-                                <label class="label-usuario">Fecha de nacimiento</label>
-                                <input class="input-usuario" type="date" required>
-                            </div>
-                            <div class="campo-usuario">
-                                <label class="label-usuario">Tipo de Sangre</label>
-                                <select class="input-usuario select-registro" placeholder="Seleccionar" required>
-                                    <option disabled selected>Seleccionar</option>
-                                    <option>A+</option>
-                                    <option>A-</option>
-                                    <option>B+</option>
-                                    <option>B-</option>
+                                <label class="label-usuario" for="nombre">Nombre</label>
+                                <input class="input-usuario" type="text" name="nombre" th:field="*{nombre}" required/>
 
+                            </div>
+                            <div class="campo-usuario">
+                                <label class="label-usuario" for="apellido" >Apellido</label>
+                                <input class="input-usuario" type="text" name="apellido" th:field="*{apellido}" required>
+                            </div>
+                            <div class="campo-usuario">
+                                <label class="label-usuario" for="date">Fecha de nacimiento</label>
+                                <input class="input-usuario" type="date"  th:field="*{date}"  required>
+
+                            </div>
+                            <div class="campo-usuario">
+                                <label class="label-usuario" for="tipo" >Tipo de Sangre</label>
+                                <select class="input-usuario select-registro" name="tipo" th:field="*{tipo}"  required>
+                                    <option disabled selected th:value="null">Seleccionar</option>
+                                    <option th:each="t : ${sangre}" th:text="${t.nombre}" th:value="${t.id}"></option>
                                 </select>
                             </div>
                             <div class="campo-usuario">
-                                <label class="label-usuario">Sexo</label>
-                                <select class="input-usuario select-registro" placeholder="Seleccionar" required>
-                                    <option disabled selected>Seleccionar</option>
-                                    <option>M</option>
-                                    <option>F</option>
-                                    <option>O</option>
+                                <label class="label-usuario" for="sexo" >Sexo</label>
+                                <select class="input-usuario select-registro"  th:field="*{sexo}" name="sexo" required>
+                                    <option disabled selected th:value="null">Seleccionar</option>
+                                    <option th:each="s : ${T(com.BancoDeSangre1.BancoDeSangre1.Enums.Sexo).values()}" th:text="${s}" th:value="${s}"></option>
                                 </select>
                             </div>
                             <div class="campo-usuario">
-                                <label class="label-usuario">Provincia</label>
-                                <select class="input-usuario select-registro" placeholder="Seleccionar" required>
-                                    <option disabled selected>Seleccionar</option>
-                                    <option>Santa Fe</option>
-                                    <option>Buenos Aires</option>
+                                <label class="label-usuario" for="provincia">Provincia</label>
+                                <select class="input-usuario select-registro" name="provincia" th:field="*{provincia}" required>
+                                    <option disabled selected th:value="null">Seleccionar</option>
+                                    <option th:each="p : ${provincias}" th:text="${p.nombre}" th:value="${p.id}"></option>
                                 </select>
                             </div>
                             <div class="campo-usuario">
-                                <label class="label-usuario">Ciudad</label>
-                                <select class="input-usuario select-registro" placeholder="Seleccionar" required>
-                                    <option disabled selected>Seleccionar</option>
-                                    <option>Rosario</option>
-                                    <option>Granadero Baigorria</option>
+                                <label class="label-usuario" for="ciudad">Ciudad</label>
+                                <select class="input-usuario select-registro" name="ciudad" th:field="*{ciudad}" required>
+                                    <option disabled selected th:value="*{null}">Seleccionar</option>
+                                    <option th:each="c : ${ciudades}" th:text="${c.nombre}" th:value="${c.id}"></option>
                                 </select>
                             </div>
-                            <div class="campo-usuario">
-                                <label class="label-usuario">Mail</label>
-                                <input class="input-usuario" type="email" required>
+                            <h2 class="titulo-general"><span class="subrayado">Sumate a ser donante</span></h2>
+                            <div class="flex-usuario">
+                                <div>
+                                    <span class="label-usuario">Si</span>
+                                    <input  th:field="*{donante}" th:value="true" class="donante-registro" type="radio" name="donar">
+                                </div>
+                                <div>
+                                    <span class="label-usuario">No</span>
+                                    <input th:field="*{donante}" th:value="false" class="donante-registro" type="radio" name="donar">
+                                </div>
+                            </div>
+
+
+                            <div class="flex-config">
+                                <div class="btn-centrado btn-margen-top">
+                                    <a th:if="${persona.alta == true}" href="/bajaUsuario"><button type="button" class="btn btn-success btn-registro btn-rojo-usuario">Darse de baja</button></a>
+                                    <a th:if="${persona.alta == false}" href="/altaUsuario"><button type="button" class="btn btn-success btn-registro btn-azul-usuario">Darse de alta</button></a>
+                                </div>
+                                <div class="btn-centrado btn-margen-top">
+                                    <a href="/inicioUsuario"><button type="submit" class="btn btn-success btn-registro ">Guardar cambios</button></a>
+                                </div>
                             </div>
                         </form>
-
-                        <h2 class="titulo-general"><span class="subrayado">Sumate a ser donante</span></h2>
-                        <div class="flex-usuario">
-                            <div>
-                                <span class="label-usuario">Si</span>
-                                <input class="donante-registro" type="radio" name="donar">
-                            </div>
-                            <div>
-                                <span class="label-usuario">No</span><input class="donante-registro" type="radio" name="donar">
-                            </div>
-                        </div>
-
-
-                        <h2 class="titulo-general"><span class="subrayado">Cambio de contraseña</span></h2>
-                        <div class="campo-usuario">
-                            <label class="label-usuario">Nuevo contraseña</label>
-                            <input class="input-usuario" type="password" required>
-                        </div>
-                        <div class="campo-usuario">
-                            <label class="label-usuario">Repetir contraseña</label>
-                            <input class="input-usuario" type="password" required>
-                        </div>
-
-                        <div class="flex-config">
-                            <div class="btn-centrado btn-margen-top">
-                                <a href="inicioUsuario"><button type="submit" class="btn btn-success btn-registro btn-rojo-usuario">Darse de baja</button></a>
-                            </div>
-                            <div class="btn-centrado btn-margen-top">
-                                <a href="inicioUsuario"><button type="submit" class="btn btn-success btn-registro ">Guardar cambios</button></a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -166,7 +149,7 @@
                 <ul class="lista-requisitos">
                     <li>
                         Tener entre 18 y 65 años de edad (los menores entre 16 y 18 años, <br> lo pueden hacer con autorización de
-                        lospadres o tutores y los mayores de 65 años con autorización médica).
+                        los padres o tutores y los mayores de 65 años con autorización médica).
                     </li>
                     <li>
                         Pesar como mínimo 50 kg.
@@ -239,14 +222,18 @@
 
         </footer>
 
-
-
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+        <script type="text/javascript" th:inline="javascript">
+            let btnMiPerfil = document.getElementById("miPerfil")
+            if ([[${error}]] !== null) {
+            btnMiPerfil.click()
+            }
+        </script>
+
     </body>
 </html>

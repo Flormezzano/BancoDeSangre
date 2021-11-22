@@ -30,64 +30,60 @@ public class PersonaController {
     @Autowired
     TipoDeSangreService tipoServ;
 
-//    @PreAuthorize("hasAnyRole('ROLE_USER')")
-    @GetMapping("/lista")
-    public String lista(Model model) {
-        model.addAttribute("persona", personaServ.listaPersona());
-        return "listaDonantes";
-    }
-
-//    @GetMapping("/registrar") // NO FUNCIONA - ANDA EL DE CONTROLLERGRAL
-//    public String registrar(ModelMap model) {
-//        model.addAttribute("persona", new Persona());
-//        model.addAttribute("provincias", provinciaServ.listar());
-//        model.addAttribute("ciudades", ciudadServ.listar());
-//        model.addAttribute("sangre", tipoServ.listar());
-//        model.addAttribute("sexos", personaServ.sexo());
-//        return "index";
-//    }
-//
-//    @PostMapping("/registrar")
-//        try {
-//    public String registro(ModelMap model, @ModelAttribute() Persona persona, RedirectAttributes redirectAttributes) {
-//            personaServ.Registro(persona);
-//            return "inicioUsuario";
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            redirectAttributes.addFlashAttribute("persona", persona); // se usa para pasar los datos al otro controller/Metodo
-//            redirectAttributes.addFlashAttribute("error", e.getMessage());
-//            return "redirect:/error";
-//        }
-//    }
-//    @PreAuthorize("hasAnyRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/editar")
+
     public String editar(@RequestParam(required = true) String id, ModelMap model) {
         model.addAttribute("provincias", provinciaServ.listar());
         model.addAttribute("ciudades", ciudadServ.listar());
         model.addAttribute("sangre", tipoServ.listar());
-            Persona persona = personaServ.personaPorId(id);
-            if(id.equals(persona.getId())){
-                model.addAttribute("persona", persona);
-                return "modelUsuario";
-            }
+        Persona persona = personaServ.personaPorId(id);
+        if (id.equals(persona.getId())) {
+            model.addAttribute("persona", persona);
+            return "inicioUsuario";
+        }
         return "inicioUsuaruio";
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping("/actualizar")
-    public String iniciar(ModelMap model, HttpSession session, @RequestParam() String id, @ModelAttribute() Persona persona) {
+    public String iniciar(ModelMap model, HttpSession session, @ModelAttribute() Persona persona) {
         try {
-            Persona pers = personaServ.personaPorId(id);
-            personaServ.modificar(pers);
-            session.setAttribute("personasession", pers);
-            return "inicioUsuario";
+            personaServ.modificar(persona);
+            session.setAttribute("personasession", persona);
+            model.addAttribute("provincias", provinciaServ.listar());
+            model.addAttribute("ciudades", ciudadServ.listar());
+            model.addAttribute("sangre", tipoServ.listar());
+            return "redirect:/inicioUsuario";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("provincias", provinciaServ.listar());
             model.addAttribute("ciudades", ciudadServ.listar());
             model.addAttribute("sangre", tipoServ.listar());
-            model.addAttribute("perfil", persona);
-            model.put("error", e.getMessage());
-            return "modelUsuario";
+            model.addAttribute("persona", persona);
+            model.addAttribute("error", e.getMessage());
+            return "inicioUsuario";
         }
+
+    }
+    
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/dardebaja")
+    public String darseDeBaja(HttpSession session, Model model, @RequestParam(required = true) String id) {
+        Persona persona = personaServ.personaPorId(id);
+        personaServ.baja(id);
+        model.addAttribute("persona", persona);
+        session.setAttribute("personasession", persona);
+        return "redirect:/inicioUsuario";
+    }
+    
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/dardealta")
+    public String darseDeAlta(HttpSession session, Model model, @RequestParam(required = true)String id){
+      Persona persona= personaServ.personaPorId(id);
+      personaServ.alta(id);
+      model.addAttribute("persona", persona);
+      session.setAttribute("personasession", persona);
+      return "redirect:/inicioUsuario";
     }
 }

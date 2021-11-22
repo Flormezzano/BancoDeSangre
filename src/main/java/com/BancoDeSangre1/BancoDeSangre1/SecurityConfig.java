@@ -18,13 +18,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private PersonaService ps;
-    
+
 //ERROR 
 //    @Bean
 //    public BCryptPasswordEncoder passwordEncoder() {
 //        return new BCryptPasswordEncoder();
 //    }
-
     @Autowired
     private void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(ps).passwordEncoder(new BCryptPasswordEncoder());
@@ -33,7 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //Para q no pida la contraseña para entrar todo el tiempo
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/css/*", "/fonts/*", "/img/*", "/js/*").permitAll()
+        http.authorizeRequests().antMatchers("**").permitAll()
+                .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login")
                 .usernameParameter("mail")
@@ -42,21 +42,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/logincheck")
                 .failureUrl("/login?error=error")
                 .permitAll()
+                .and()
+                .rememberMe().key("uniqueAndSecret")
                 .and().logout()
                 .logoutUrl("/logout")
+                .deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/")
                 .and().csrf().disable();
     }
-
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("admin")
-//                .password("{noop}123")
-//                .roles("ADMIN", "USER")
-//                .and()
-//                .withUser("user")
-//                .password("{noop}123")
-//                .roles("USER");
-//    }
 }
